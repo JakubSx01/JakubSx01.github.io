@@ -146,23 +146,46 @@
       background: rgba(0,0,0,0.8);
       justify-content: center;
       align-items: center;
+      padding: 1rem;
+      box-sizing: border-box;
     }
     .modal-content {
       background: #0f1512;
-      padding: 1rem;
       border-radius: 10px;
-      max-width: 90%;
-      max-height: 90%;
-    }
-    .modal-content embed {
       width: 100%;
-      height: 80vh;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
-    .close {
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .modal-header .close {
       color: #e6f4ea;
-      float: right;
       font-size: 1.5rem;
       cursor: pointer;
+    }
+    .modal-header .download {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #2bbf6a;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #e6f4ea;
+      background: #0f1512;
+      transition: background 0.2s;
+    }
+    .modal-header .download:hover {
+      background: #2bbf6a;
+    }
+    .modal-content embed {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 0 0 10px 10px;
     }
   </style>
 </head>
@@ -298,7 +321,10 @@
   <!-- Modal -->
   <div id="pdfModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-header">
+        <a id="downloadLink" class="download" href="#" target="_blank">⬇️ Pobierz</a>
+        <span class="close" onclick="closeModal()">&times;</span>
+      </div>
       <embed id="pdfEmbed" src="" type="application/pdf">
     </div>
   </div>
@@ -306,11 +332,13 @@
   <script>
     function openModal(pdfPath) {
       document.getElementById('pdfEmbed').src = pdfPath;
+      document.getElementById('downloadLink').href = pdfPath;
       document.getElementById('pdfModal').style.display = 'flex';
     }
     function closeModal() {
       document.getElementById('pdfModal').style.display = 'none';
       document.getElementById('pdfEmbed').src = '';
+      document.getElementById('downloadLink').href = '#';
     }
     window.onclick = function(event) {
       const modal = document.getElementById('pdfModal');
