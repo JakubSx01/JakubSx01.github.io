@@ -2,10 +2,264 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio projektów akademickich z cyberbezpieczeństwa – Jakub Skrzynecki">
   <title>Portfolio – Jakub Skrzynecki</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0f1115;
+      color: #e6f4ea;
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #14171d;
+      border-bottom: 1px solid #1a2f23;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #7cffb2;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #00e676;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+    .hero-text h2 {
+      font-family: 'Fira Code', monospace;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero-text p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+    .cta-buttons a, .btn {
+      display: inline-block;
+      padding: 0.7rem 1.2rem;
+      border: 1px solid #2bbf6a;
+      border-radius: 10px;
+      margin: 0.5rem;
+      text-decoration: none;
+      color: #e6f4ea;
+      background: #0f1512;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-buttons a:hover, .btn:hover {
+      background: #2bbf6a;
+      transform: scale(1.05);
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section h3 {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #00e676;
+      padding-left: 0.8rem;
+    }
+    .projects {
+      display: grid;
+      gap: 1rem;
+    }
+    .project-card {
+      background: #14171d;
+      padding: 1.2rem;
+      border: 1px solid #1a2f23;
+      border-radius: 12px;
+      transition: transform 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+    .project-card summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #7cffb2;
+    }
+    .tags span {
+      display: inline-block;
+      background: #1a2f23;
+      color: #7cffb2;
+      padding: 0.2rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+    }
+    .contact-links a {
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      border: 1px solid #2bbf6a;
+      border-radius: 8px;
+      margin: 0.4rem;
+      text-decoration: none;
+      color: #e6f4ea;
+      background: #14171d;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .contact-links a:hover {
+      background: #2bbf6a;
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #7cffb2;
+      border-top: 1px solid #1a2f23;
+    }
+  </style>
 </head>
 <body>
-  <h1>Portfolio – Jakub Skrzynecki</h1>
-  <p>Strona prezentuje projekty z zakresu cyberbezpieczeństwa.</p>
+  <header>
+    <h1>>_ Jakub Skrzynecki</h1>
+    <nav>
+      <a href="#projekty">📂 Projekty</a>
+      <a href="#certyfikaty">📜 Certyfikaty</a>
+      <a href="#kontakt">✉️ Kontakt</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Specjalista ds. Cyberbezpieczeństwa</h2>
+      <p>Student i pasjonat cyberbezpieczeństwa. Specjalizuję się w testach penetracyjnych, analizie luk, hardeningu i integracji systemów bezpieczeństwa. Jestem otwarty na różne role juniorskie w branży IT i cyberbezpieczeństwa.</p>
+      <div class="cta-buttons">
+        <a href="pliki/dokumenty/cv.pdf" target="_blank">📄 Pobierz CV</a>
+        <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank">🔗 LinkedIn</a>
+        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank">🧩 TryHackMe</a>
+        <a href="https://github.com/JakubSx01" target="_blank">🌐 GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projekty" class="section">
+    <h3>📂 Projekty – Cyberbezpieczeństwo</h3>
+    <div class="projects">
+      <details class="project-card">
+        <summary>🛡️ File Upload Vulnerabilities</summary>
+        <ul>
+          <li>Analiza ryzyk i metod ataków</li>
+          <li>Testy z użyciem Wiresharka, Node.js, PHP, Nginx</li>
+          <li>Rekomendacje defense-in-depth</li>
+        </ul>
+        <div class="cta-buttons">
+          <a href="pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf" target="_blank">📂 Otwórz PDF</a>
+        </div>
+        <div class="tags"><span>WebApp</span><span>Security</span></div>
+      </details>
+      <details class="project-card">
+        <summary>⌨️ Biometria behawioralna – tempo pisania</summary>
+        <ul>
+          <li>Uwierzytelnianie behawioralne</li>
+          <li>Testy skuteczności (AUC ~0.81)</li>
+          <li>Porównanie dwóch algorytmów</li>
+        </ul>
+        <div class="cta-buttons">
+          <a href="pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf" target="_blank">📂 Otwórz PDF</a>
+        </div>
+        <div class="tags"><span>Biometria</span><span>Auth</span></div>
+      </details>
+      <details class="project-card">
+        <summary>🌐 Audyt bezpieczeństwa (MITM)</summary>
+        <ul>
+          <li>Symulacja ARP Poisoning, DNS Spoofing, SSLStrip</li>
+          <li>Lab izolowany z Bettercap, BEEF</li>
+          <li>Rekomendacje zabezpieczeń</li>
+        </ul>
+        <div class="cta-buttons">
+          <a href="pliki/cyberbezpieczeństwo/mitm-audit.pdf" target="_blank">📂 Otwórz PDF</a>
+        </div>
+        <div class="tags"><span>Network</span><span>MITM</span></div>
+      </details>
+      <details class="project-card">
+        <summary>🌱 PlantCare – analiza bezpieczeństwa</summary>
+        <ul>
+          <li>Testy OWASP ZAP</li>
+          <li>Wykryte braki: brak CSRF, CSP, CORS</li>
+          <li>Repo: <a href="https://github.com/JakubSx01/WateringAppV2" target="_blank">💻 GitHub</a></li>
+        </ul>
+        <div class="cta-buttons">
+          <a href="pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf" target="_blank">📂 Otwórz PDF</a>
+        </div>
+        <div class="tags"><span>WebApp</span><span>OWASP</span></div>
+      </details>
+      <details class="project-card">
+        <summary>☁️ SSO w chmurze (Authentik + OIDC/SAML)</summary>
+        <ul>
+          <li>Wdrożenie w Azure</li>
+          <li>Integracja Portainer (OAuth2) + Nextcloud (SAML)</li>
+          <li>Centralizacja tożsamości</li>
+        </ul>
+        <div class="cta-buttons">
+          <a href="pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf" target="_blank">📂 Otwórz PDF</a>
+        </div>
+        <div class="tags"><span>Cloud</span><span>SSO</span></div>
+      </details>
+      <details class="project-card">
+        <summary>🔍 Pentest z ffuf</summary>
+        <ul>
+          <li>Content discovery, param mining, vhost enumeration</li>
+          <li>Porównanie z wfuzz i DirBuster</li>
+          <li>Skuteczna identyfikacja wektorów ataku</li>
+        </ul>
+        <div class="cta-buttons">
+          <a href="pliki/cyberbezpieczeństwo/pentests-ffuf.pdf" target="_blank">📂 Otwórz PDF</a>
+        </div>
+        <div class="tags"><span>Fuzzing</span><span>Pentest</span></div>
+      </details>
+    </div>
+  </section>
+
+  <section id="certyfikaty" class="section">
+    <h3>📜 Osiągnięcia i certyfikaty</h3>
+    <div class="project-card">
+      <strong>CompTIA Security+</strong><br>
+      ID: COMP001022861425 – Data: 18.08.2025<br>
+      Kod: N6CYW7Z54EB4QSFJ – Ważny do: 18.08.2028<br>
+      <div class="cta-buttons">
+        <a href="http://verify.CompTIA.org" target="_blank">🔍 Weryfikacja</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="section">
+    <h3>✉️ Kontakt</h3>
+    <div class="contact-links">
+      <a href="mailto:sjakubskrzynecki@gmail.com">✉️ sjakubskrzynecki@gmail.com</a>
+      <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank">🔗 LinkedIn</a>
+      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank">🧩 TryHackMe</a>
+      <a href="https://github.com/JakubSx01" target="_blank">🌐 GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Jakub Skrzynecki – <a class="btn" href="https://github.com/JakubSx01" target="_blank">🌐 GitHub Repo</a>
+  </footer>
 </body>
 </html>
