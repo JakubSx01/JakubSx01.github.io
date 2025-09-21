@@ -1,1 +1,1 @@
-# Portfolio – Jakub Skrzynecki
+# Portfolio
