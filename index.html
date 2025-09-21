@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List motywacyjny – Projekty akademickie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Work+Sans:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #05070f;
+            --bg-alt: #0c1221;
+            --fg: #e5f5ff;
+            --muted: #9fb3c8;
+            --accent-cyber: #00f7ff;
+            --accent-cyber-soft: rgba(0, 247, 255, 0.18);
+            --accent-elektro: #ff7f50;
+            --accent-elektro-soft: rgba(255, 127, 80, 0.18);
+            --border: rgba(215, 233, 255, 0.08);
+            --panel: rgba(9, 16, 29, 0.85);
+            --chip-bg: rgba(229, 245, 255, 0.08);
+            --shadow: 0 28px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, #101a33 0%, var(--bg) 45%, #020409 100%);
+            color: var(--fg);
+            font-family: 'Work Sans', 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 1.75rem) clamp(3rem, 5vw, 4rem);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(0, 247, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 247, 255, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.6));
+            pointer-events: none;
+        }
+
+        main {
+            width: min(960px, 100%);
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-header-bar {
+            display: grid;
+            gap: 1rem;
+            padding: 1rem clamp(1.2rem, 2vw, 1.75rem);
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.07), rgba(255, 127, 80, 0.05));
+        }
+
+        .terminal-header-bar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 12% 10%, rgba(0, 247, 255, 0.2), transparent 55%), radial-gradient(circle at 88% 12%, rgba(255, 127, 80, 0.2), transparent 50%);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .terminal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem clamp(1.5rem, 3vw, 2.5rem);
+            align-items: center;
+            font-family: 'Source Code Pro', monospace;
+            position: relative;
+            z-index: 1;
+        }
+
+        .window-controls {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .window-controls span {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.35) inset;
+        }
+
+        .window-controls .red { background: #ff5f56; }
+        .window-controls .yellow { background: #ffbd2e; }
+        .window-controls .green { background: #27c93f; }
+
+        .terminal-path {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            color: rgba(229, 245, 255, 0.65);
+        }
+
+        .status-indicator::before {
+            content: "";
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #54ffc6, #00f7ff);
+            box-shadow: 0 0 12px rgba(0, 247, 255, 0.75);
+            animation: pulse 2.6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.75; }
+            50% { transform: scale(1.25); opacity: 1; }
+        }
+
+        .terminal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-chip {
+            border: 1px solid rgba(0, 247, 255, 0.35);
+            background: var(--chip-bg);
+            color: var(--fg);
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-chip:hover {
+            border-color: rgba(0, 247, 255, 0.65);
+            background: rgba(0, 247, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .terminal-body {
+            position: relative;
+            z-index: 1;
+            padding: clamp(1.75rem, 1.2rem + 1vw, 2.85rem) clamp(1.75rem, 2vw, 2.6rem) clamp(2.5rem, 3vw, 3rem);
+            line-height: 1.75;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-family: 'Source Code Pro', monospace;
+            font-size: clamp(1.85rem, 1.45rem + 1.5vw, 2.6rem);
+            margin: 0 0 0.6rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        header p {
+            margin: 0.2rem 0;
+            color: var(--muted);
+            max-width: 68ch;
+        }
+
+        .contact-links {
+            margin-top: 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            font-family: 'Source Code Pro', monospace;
+            color: var(--fg);
+            text-decoration: none;
+            transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            border-color: rgba(0, 247, 255, 0.55);
+            background: rgba(0, 247, 255, 0.08);
+            color: var(--accent-cyber);
+        }
+
+        .contact-links svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        section {
+            margin-bottom: clamp(2.25rem, 2vw + 1.5rem, 3rem);
+        }
+
+        h2 {
+            font-size: clamp(1.4rem, 1.2rem + 0.9vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.02em;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        p {
+            margin: 0 0 1rem;
+        }
+
+        .intro p {
+            text-indent: 1.5em;
+        }
+
+        .command-center {
+            border: 1px solid rgba(0, 247, 255, 0.25);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.08), rgba(0, 47, 57, 0.35));
+            box-shadow: inset 0 0 20px rgba(0, 247, 255, 0.05);
+            padding: 1.5rem;
+            margin-bottom: clamp(2.4rem, 2vw + 1.6rem, 3rem);
+        }
+
+        .command-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .command-display {
+            background: rgba(2, 10, 18, 0.85);
+            border: 1px solid rgba(0, 247, 255, 0.25);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            font-family: 'Source Code Pro', monospace;
+            color: var(--accent-cyber);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .command-display::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(transparent 0, transparent 6px, rgba(0, 0, 0, 0.12) 7px);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .command-output {
+            margin: 0;
+            white-space: pre-wrap;
+            min-height: 4.25rem;
+        }
+
+        .command-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .command-button {
+            background: rgba(6, 18, 25, 0.75);
+            border: 1px solid rgba(0, 247, 255, 0.25);
+            border-radius: 10px;
+            padding: 0.6rem 1.1rem;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9rem;
+            color: var(--fg);
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .command-button:hover,
+        .command-button:focus {
+            border-color: rgba(0, 247, 255, 0.55);
+            background: rgba(0, 247, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .projects {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-controls {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-control {
+            border: 1px solid rgba(0, 247, 255, 0.25);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--fg);
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.85rem;
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .project-control:hover {
+            border-color: rgba(0, 247, 255, 0.6);
+            background: rgba(0, 247, 255, 0.12);
+            color: var(--accent-cyber);
+        }
+
+        .project-group {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.65rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-group::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.65;
+            pointer-events: none;
+            background: radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.12), transparent 55%);
+        }
+
+        .project-group.cyber {
+            border-color: rgba(0, 247, 255, 0.45);
+            background: linear-gradient(135deg, var(--accent-cyber-soft), transparent);
+            box-shadow: 0 0 0 1px rgba(0, 247, 255, 0.18);
+        }
+
+        .project-group.cyber h2 {
+            color: var(--accent-cyber);
+            text-shadow: 0 0 14px rgba(0, 247, 255, 0.45);
+        }
+
+        .project-group.elektro {
+            border-color: rgba(255, 127, 80, 0.35);
+            background: linear-gradient(135deg, var(--accent-elektro-soft), transparent);
+        }
+
+        .project-group.elektro h2 {
+            color: var(--accent-elektro);
+            text-shadow: 0 0 12px rgba(255, 127, 80, 0.3);
+        }
+
+        .project {
+            border-top: 1px solid var(--border);
+            padding-top: 1.2rem;
+            margin-top: 1.2rem;
+            transition: border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .project:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .project.is-open {
+            background: rgba(0, 247, 255, 0.05);
+            border-color: rgba(0, 247, 255, 0.45);
+            border-radius: 14px;
+            padding: 1.2rem 1.2rem 1.1rem;
+        }
+
+        .project.elektro.is-open {
+            background: rgba(255, 127, 80, 0.06);
+            border-color: rgba(255, 127, 80, 0.45);
+        }
+
+        .project-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.75rem 1.2rem;
+            align-items: center;
+        }
+
+        .project-header h3 {
+            margin: 0;
+        }
+
+        .project-header .project-synopsis {
+            color: var(--muted);
+            margin: 0.35rem 0 0;
+            max-width: 52ch;
+        }
+
+        .project-actions {
+            display: inline-flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .project-toggle {
+            border: 1px solid rgba(229, 245, 255, 0.35);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--fg);
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.85rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+            position: relative;
+            padding-left: 2.1rem;
+        }
+
+        .project-toggle::before {
+            content: "+";
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .project-toggle[aria-expanded="true"]::before {
+            content: "−";
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .project-toggle:hover,
+        .project-toggle:focus {
+            border-color: rgba(0, 247, 255, 0.6);
+            background: rgba(0, 247, 255, 0.12);
+            color: var(--accent-cyber);
+        }
+
+        .project.elektro .project-toggle:hover,
+        .project.elektro .project-toggle:focus {
+            color: var(--accent-elektro);
+            border-color: rgba(255, 127, 80, 0.55);
+            background: rgba(255, 127, 80, 0.12);
+        }
+
+        .button-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: 'Source Code Pro', monospace;
+            color: inherit;
+            text-decoration: none;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid currentColor;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .button-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .project-group.cyber .button-link:hover {
+            background: var(--accent-cyber);
+            color: #001218;
+            border-color: transparent;
+        }
+
+        .project-group.elektro .button-link:hover {
+            background: var(--accent-elektro);
+            color: #180602;
+            border-color: transparent;
+        }
+
+        .project-body {
+            margin-top: 1rem;
+        }
+
+        .project-body[hidden] {
+            display: none;
+        }
+
+        .focus-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.75rem 0 0.4rem;
+        }
+
+        .focus-tags span {
+            padding: 0.2rem 0.65rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: rgba(227, 242, 255, 0.08);
+            border: 1px solid rgba(227, 242, 255, 0.16);
+        }
+
+        .project-group.cyber .focus-tags span {
+            background: rgba(0, 247, 255, 0.12);
+            border-color: rgba(0, 247, 255, 0.32);
+            color: var(--accent-cyber);
+        }
+
+        .project-group.elektro .focus-tags span {
+            background: rgba(255, 127, 80, 0.12);
+            border-color: rgba(255, 127, 80, 0.28);
+            color: var(--accent-elektro);
+        }
+
+        .project ul {
+            margin: 0.85rem 0 0;
+            padding-left: 1.2rem;
+            color: var(--muted);
+        }
+
+        .project ul li {
+            margin-bottom: 0.45rem;
+        }
+
+        .resources {
+            display: grid;
+            gap: 1.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .resource-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .resource-card.documents {
+            border-color: rgba(0, 247, 255, 0.35);
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.05), transparent);
+        }
+
+        .resource-card.achievements {
+            border-color: rgba(255, 127, 80, 0.3);
+            background: linear-gradient(135deg, rgba(255, 127, 80, 0.06), transparent);
+        }
+
+        .resource {
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .resource:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .resource p {
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .notes {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .notes h3 {
+            font-family: 'Source Code Pro', monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .notes ul {
+            margin: 0 0 1.5rem 1.1rem;
+            padding: 0;
+            color: var(--muted);
+        }
+
+        .notes ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .ideas {
+            margin-top: 1.75rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.4rem;
+        }
+
+        .idea-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .idea-card {
+            background: rgba(5, 14, 22, 0.85);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .idea-card strong {
+            color: var(--accent-cyber);
+            display: block;
+            margin-bottom: 0.35rem;
+            font-family: 'Source Code Pro', monospace;
+            letter-spacing: 0.03em;
+        }
+
+        .rating {
+            display: inline-flex;
+            align-items: baseline;
+            font-size: 1.1rem;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+
+        .next-steps {
+            margin-top: 2.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.75rem;
+        }
+
+        .next-steps ol {
+            margin: 0;
+            padding-left: 1.35rem;
+            color: var(--muted);
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.95rem;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        @media (max-width: 760px) {
+            .terminal-header-bar {
+                padding: 1rem;
+            }
+
+            .terminal-path {
+                flex-wrap: wrap;
+                gap: 0.4rem 0.75rem;
+            }
+
+            .terminal-actions {
+                justify-content: flex-start;
+            }
+
+            .project-header {
+                align-items: flex-start;
+            }
+
+            .project-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .project.is-open {
+                padding: 1rem 1rem 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="terminal-header-bar">
+            <div class="terminal-meta">
+                <div class="window-controls" aria-hidden="true">
+                    <span class="red"></span>
+                    <span class="yellow"></span>
+                    <span class="green"></span>
+                </div>
+                <div class="terminal-path" aria-label="Aktualna ścieżka robocza">
+                    <span>jakub@portfolio</span>
+                    <span>❯</span>
+                    <span>~/list_motywacyjny</span>
+                </div>
+                <span class="status-indicator" role="status">system aktywny</span>
+            </div>
+            <div class="terminal-actions" aria-label="Skróty nawigacyjne">
+                <button class="nav-chip" type="button" data-scroll-target="#cyber-section">cd projekty/cyber</button>
+                <button class="nav-chip" type="button" data-scroll-target="#elektro-section">cd projekty/elektronika</button>
+                <button class="nav-chip" type="button" data-scroll-target="#resources">open dokumenty</button>
+                <button class="nav-chip" type="button" data-scroll-target="#analysis">cat analiza.txt</button>
+            </div>
+        </div>
+        <div class="terminal-body">
+            <header>
+                <h1>List motywacyjny</h1>
+                <p>Szanowni Państwo, nazywam się Jakub S. i pasjonuje mnie łączenie cyberbezpieczeństwa z elektroniką oraz telekomunikacją. Poniżej przedstawiam wybrane projekty akademickie, które ilustrują moje podejście do rozwiązywania złożonych problemów inżynierskich.</p>
+                <p>W pracy stawiam na przejrzystą komunikację, analityczne myślenie oraz tworzenie rozwiązań przyjaznych użytkownikom, nawet w najbardziej wymagających środowiskach technicznych.</p>
+                <div class="contact-links" aria-label="Profile zawodowe">
+                    <a href="https://www.linkedin.com/in/jakub-security" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM5 10H2v11h3V10zm4 0H6v11h3v-6c0-1.66 1.34-3 3-3s3 1.34 3 3v6h3v-6.5c0-3.04-2.46-5.5-5.5-5.5S9 11.46 9 14.5V10z" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://tryhackme.com/p/JakubCyber" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2l8 4v6c0 5-3.4 9.74-8 10-4.6-.26-8-5-8-10V6l8-4zm0 4.18L6 7.88v4.74c0 3.72 2.54 7.36 6 7.56 3.46-.2 6-3.84 6-7.56V7.88l-6-1.7zm0 2.82a2.5 2.5 0 110 5 2.5 2.5 0 010-5z" />
+                        </svg>
+                        TryHackMe
+                    </a>
+                </div>
+            </header>
+
+            <section class="intro">
+                <p>Przez ostatnie lata rozwijam kompetencje w zakresie testów penetracyjnych, architektury sieciowej i bezpieczeństwa aplikacji, równolegle projektując układy elektroniczne i systemy komunikacji bezprzewodowej. Taka interdyscyplinarna perspektywa pozwala mi patrzeć szerzej na wyzwania organizacji i proponować działania, które wzmacniają odporność infrastruktury oraz zwiększają jej funkcjonalność.</p>
+            </section>
+
+            <section class="command-center" aria-labelledby="command-center-title">
+                <h2 id="command-center-title">Tryb terminala – szybkie polecenia</h2>
+                <div class="command-grid">
+                    <div class="command-display" aria-live="polite">
+                        <p class="command-output" data-command-output>&gt; Wybierz jedną z komend, aby zobaczyć symulację działania i przejść do odpowiedniej sekcji.</p>
+                    </div>
+                    <div class="command-buttons">
+                        <button class="command-button" type="button" data-command="cyber" data-message="&gt; ls projekty/cyber
+analiza_incydentu.pdf
+siec_zero_trust.pdf" data-scroll-target="#cyber-section">ls projekty/cyber</button>
+                        <button class="command-button" type="button" data-command="incident" data-message="&gt; tail -n 3 analiza_incydentu.log
+[+] Korelacja alertów MITRE ATT&CK zakończona powodzeniem
+[+] Raport PDF gotowy do pobrania" data-scroll-target="#incident-project">tail analiza_incydentu.log</button>
+                        <button class="command-button" type="button" data-command="elektro" data-message="&gt; ls projekty/elektronika
+tor_pomiarowy.pdf
+system_rf.pdf" data-scroll-target="#elektro-section">ls projekty/elektronika</button>
+                        <button class="command-button" type="button" data-command="resources" data-message="&gt; open dokumenty
+cv_jakub_s.pdf
+certyfikat_comptia_security_plus.pdf" data-scroll-target="#resources">open dokumenty</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <div class="project-controls" aria-label="Sterowanie widocznością projektów">
+                    <button class="project-control" type="button" data-project-control="expand">rozwiń wszystkie</button>
+                    <button class="project-control" type="button" data-project-control="collapse">zwiń wszystkie</button>
+                </div>
+
+                <div class="project-group cyber" id="cyber-section">
+                    <h2>Projekty – Cyberbezpieczeństwo</h2>
+                    <p>Najważniejsze prace koncentrują się na projektowaniu odpornej infrastruktury i reagowaniu na incydenty. Każdy projekt zawiera dokumentację w formacie PDF.</p>
+
+                    <article class="project" data-project id="incident-project">
+                        <div class="project-header">
+                            <div>
+                                <h3>Analiza incydentu bezpieczeństwa</h3>
+                                <p class="project-synopsis">Studium przypadku naruszenia danych z procedurami reagowania i odbudowy usług.</p>
+                            </div>
+                            <div class="project-actions">
+                                <button class="project-toggle" type="button" aria-expanded="false">Szczegóły</button>
+                                <a class="button-link" href="projekty/cyberbezpieczenstwo/analiza_incydentu.pdf" target="_blank" rel="noopener">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                                    </svg>
+                                    Otwórz PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body" hidden>
+                            <div class="focus-tags" aria-label="Zakres projektu">
+                                <span>SIEM</span>
+                                <span>Reagowanie na incydenty</span>
+                                <span>Forensics</span>
+                            </div>
+                            <p>Studium przypadku realnego naruszenia danych, obejmujące analizę logów, korelację zdarzeń oraz rekomendacje naprawcze.</p>
+                            <ul>
+                                <li>Automatyczna korelacja alertów w systemie SIEM (Splunk) na podstawie wzorców MITRE ATT&amp;CK.</li>
+                                <li>Stworzenie procedury komunikacji kryzysowej i checklisty przywracania usług po incydencie.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project" data-project>
+                        <div class="project-header">
+                            <div>
+                                <h3>Architektura sieci Zero Trust</h3>
+                                <p class="project-synopsis">Projekt segmentacji i automatyzacji reakcji na incydenty w środowisku korporacyjnym.</p>
+                            </div>
+                            <div class="project-actions">
+                                <button class="project-toggle" type="button" aria-expanded="false">Szczegóły</button>
+                                <a class="button-link" href="projekty/cyberbezpieczenstwo/siec_zero_trust.pdf" target="_blank" rel="noopener">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                                    </svg>
+                                    Pobierz PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body" hidden>
+                            <div class="focus-tags" aria-label="Zakres projektu">
+                                <span>Zero Trust</span>
+                                <span>Segmentacja</span>
+                                <span>Automatyzacja</span>
+                            </div>
+                            <p>Kompletny projekt sieci korporacyjnej z segmentacją, kontrolą dostępu oraz automatyzacją reagowania na incydenty.</p>
+                            <ul>
+                                <li>Makieta polityk mikrosegmentacji w oparciu o firewalle warstwy 7 i mechanizmy NAC.</li>
+                                <li>Integracja SOAR z playbookami automatycznego odcinania zagrożonych węzłów.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="project-group elektro" id="elektro-section">
+                    <h2>Projekty – Elektronika i Telekomunikacja</h2>
+                    <p>Uzupełniające projekty pokazują, jak przekładam zasady cyberbezpieczeństwa na warstwę sprzętową i komunikacyjną.</p>
+
+                    <article class="project elektro" data-project>
+                        <div class="project-header">
+                            <div>
+                                <h3>Tor pomiarowy dla czujników IoT</h3>
+                                <p class="project-synopsis">Bezpieczna infrastruktura IoT z szyfrowaniem komunikacji i autokalibracją czujników.</p>
+                            </div>
+                            <div class="project-actions">
+                                <button class="project-toggle" type="button" aria-expanded="false">Szczegóły</button>
+                                <a class="button-link" href="projekty/elektronika/tor_pomiarowy.pdf" target="_blank" rel="noopener">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                                    </svg>
+                                    Otwórz PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body" hidden>
+                            <div class="focus-tags" aria-label="Zakres projektu">
+                                <span>IoT</span>
+                                <span>Kalibracja</span>
+                                <span>Szyfrowanie</span>
+                            </div>
+                            <p>Projekt układu pomiarowego z komunikacją długodystansową oraz wbudowanymi mechanizmami kalibracji.</p>
+                            <ul>
+                                <li>Zaprojektowanie szyfrowanego kanału LoRaWAN wraz z rotacją kluczy urządzeń.</li>
+                                <li>Implementacja algorytmu autokalibracji bazującego na referencyjnych próbkach środowiskowych.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project elektro" data-project>
+                        <div class="project-header">
+                            <div>
+                                <h3>System RF dla telekomunikacji</h3>
+                                <p class="project-synopsis">Redundantny tor RF 2,4 GHz zoptymalizowany pod kątem odporności na zakłócenia.</p>
+                            </div>
+                            <div class="project-actions">
+                                <button class="project-toggle" type="button" aria-expanded="false">Szczegóły</button>
+                                <a class="button-link" href="projekty/elektronika/system_rf.pdf" target="_blank" rel="noopener">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                                    </svg>
+                                    Pobierz PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body" hidden>
+                            <div class="focus-tags" aria-label="Zakres projektu">
+                                <span>RF</span>
+                                <span>EMC</span>
+                                <span>Redundancja</span>
+                            </div>
+                            <p>Opis modułu RF w paśmie 2,4 GHz z optymalizacją anteny i analizą odporności na zakłócenia.</p>
+                            <ul>
+                                <li>Analiza odporności elektromagnetycznej z wykorzystaniem symulacji HFSS i testów w komorze GTEM.</li>
+                                <li>Projekt redundantnego toru transmisji z przełączaniem awaryjnym poniżej 200 ms.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="resources" id="resources">
+                <div class="resource-card documents">
+                    <h2>Dokumenty do pobrania</h2>
+                    <article class="resource">
+                        <h3>CV – Jakub S.</h3>
+                        <p>Aktualne CV z podsumowaniem doświadczenia akademickiego, projektów badawczych oraz certyfikacji.</p>
+                        <a class="button-link" href="projekty/dokumenty/cv_jakub_s.pdf" target="_blank" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                            </svg>
+                            Pobierz CV
+                        </a>
+                    </article>
+                </div>
+                <div class="resource-card achievements">
+                    <h2>Osiągnięcia</h2>
+                    <article class="resource">
+                        <h3>Certyfikat CompTIA Security+</h3>
+                        <p>Międzynarodowy certyfikat potwierdzający umiejętności w zakresie bezpieczeństwa systemów i reagowania na incydenty.</p>
+                        <a class="button-link" href="projekty/dokumenty/certyfikat_comptia_security_plus.pdf" target="_blank" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                            </svg>
+                            Zobacz certyfikat
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="notes" id="analysis">
+                <div class="designer-comment">
+                    <h3>Komentarz projektanta</h3>
+                    <p>Strona utrzymuje klimat terminala dzięki neonowym akcentom, skanlines i układowi przypominającemu aplikację CLI, ale wprowadza przyciski i interaktywne karty, które zwiększają przystępność przekazu. Rozwijane sekcje porządkują treści, a panel komend pozwala rekruterowi eksplorować projekty jak w rzeczywistej konsoli.</p>
+                </div>
+                <div class="style-guide">
+                    <h3>Propozycje stylu graficznego</h3>
+                    <ul>
+                        <li>Kolorystyka: gradientowe tło w odcieniach granatu (#05070f → #101a33) z neonowymi akcentami cyjanowymi (#00f7ff) i koralowymi (#ff7f50) dla rozróżnienia sekcji.</li>
+                        <li>Czcionki: nagłówki i elementy terminalowe w „Source Code Pro”, tekst główny w „Work Sans” dla zachowania czytelności przy dłuższych akapitach.</li>
+                        <li>Elementy dekoracyjne: skanlines, siatka tła oraz subtelne poświaty wokół kart projektów imitują rozświetlony monitor, jednocześnie nie przeciążając użytkownika.</li>
+                        <li>Animacje: pulsujący wskaźnik statusu i podświetlanie aktywnych kart nadają dynamiki bez nadmiernych efektów.</li>
+                    </ul>
+                </div>
+                <div class="analysis">
+                    <h3>Analiza z perspektywy pracodawcy</h3>
+                    <p><span class="rating">Ocena: <strong>8.5/10</strong></span></p>
+                    <p>Aby zwiększyć skuteczność strony jako narzędzia rekrutacyjnego, warto uzupełnić projekty o konkretne dane liczbowe (np. skrócenie czasu reakcji, zmniejszenie powierzchni ataku) i krótkie rekomendacje od prowadzących. Dobrym krokiem będzie również dodanie modułu kontaktowego lub kalendarza do umawiania rozmów.</p>
+                </div>
+                <div class="ideas">
+                    <h3>Pomysły na kolejne interaktywne elementy</h3>
+                    <div class="idea-grid">
+                        <div class="idea-card">
+                            <strong>Wizualizacja postępów</strong>
+                            Pasek lub radar umiejętności, który dynamicznie reaguje na wybór projektu i podświetla kompetencje użyte w danym przykładzie.
+                        </div>
+                        <div class="idea-card">
+                            <strong>Tryb prezentacji</strong>
+                            Automatyczna sekwencja slajdów lub „story mode”, który prowadzi rekrutera przez najważniejsze projekty z komentarzem audio.
+                        </div>
+                        <div class="idea-card">
+                            <strong>Interaktywny timeline</strong>
+                            Oś czasu z kamieniami milowymi studiów, certyfikacji i projektów, reagująca na najechanie kursorem.
+                        </div>
+                        <div class="idea-card">
+                            <strong>Panel integracji</strong>
+                            Widgety łączące się z GitHubem lub TryHackMe w czasie rzeczywistym, prezentujące ostatnie aktywności i statystyki.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps" aria-labelledby="next-steps-title">
+                <h2 id="next-steps-title">Następne kroki – pytania do uzupełnienia</h2>
+                <ol>
+                    <li>Jakie konkretne przykłady doświadczeń zawodowych lub akademickich chcesz dodać do wstępu, aby precyzyjniej przedstawić swój profil?</li>
+                    <li>Które metryki (np. skrócenie czasu reakcji, liczba obsłużonych incydentów) mogę dopisać do projektów z cyberbezpieczeństwa?</li>
+                    <li>Jakie pomiary, komponenty lub osiągnięte parametry z projektów elektronicznych warto dodatkowo podkreślić?</li>
+                    <li>Czy chcesz rozszerzyć sekcję „Dokumenty” o portfolio GitHub lub inne certyfikaty?</li>
+                    <li>Czy dodać moduł kontaktowy (np. formularz, kalendarz) oraz jaką treść powinien zawierać?</li>
+                </ol>
+            </section>
+
+            <footer>
+                <p>Z wyrazami szacunku,<br>Jakub S.</p>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const scrollButtons = document.querySelectorAll('[data-scroll-target]');
+        scrollButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selector = button.getAttribute('data-scroll-target');
+                const target = document.querySelector(selector);
+                if (!target) return;
+                const behavior = prefersReducedMotion ? 'auto' : 'smooth';
+                target.scrollIntoView({ behavior, block: 'start' });
+            });
+        });
+
+        const commandOutput = document.querySelector('[data-command-output]');
+        document.querySelectorAll('.command-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const message = button.getAttribute('data-message');
+                if (commandOutput) {
+                    commandOutput.textContent = message;
+                }
+            });
+        });
+
+        const projects = document.querySelectorAll('[data-project]');
+        const toggleProject = (project, expand) => {
+            const body = project.querySelector('.project-body');
+            const toggle = project.querySelector('.project-toggle');
+            if (!body || !toggle) return;
+            const shouldExpand = typeof expand === 'boolean' ? expand : toggle.getAttribute('aria-expanded') !== 'true';
+            toggle.setAttribute('aria-expanded', shouldExpand);
+            body.hidden = !shouldExpand;
+            project.classList.toggle('is-open', shouldExpand);
+        };
+
+        projects.forEach(project => {
+            const toggle = project.querySelector('.project-toggle');
+            toggle?.addEventListener('click', () => toggleProject(project));
+        });
+
+        document.querySelectorAll('[data-project-control]').forEach(control => {
+            control.addEventListener('click', () => {
+                const action = control.getAttribute('data-project-control');
+                const expand = action === 'expand';
+                projects.forEach(project => toggleProject(project, expand));
+            });
+        });
+    </script>
+</body>
+</html>
