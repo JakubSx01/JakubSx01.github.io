@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List motywacyjny – Projekty akademickie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Work+Sans:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #080b12;
+            --fg: #e3f2ff;
+            --muted: #9fb3c8;
+            --accent-cyber: #00f7ff;
+            --accent-cyber-soft: rgba(0, 247, 255, 0.2);
+            --accent-elektro: #ff7f50;
+            --accent-elektro-soft: rgba(255, 127, 80, 0.15);
+            --border: rgba(227, 242, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at top, #111a2b 0%, var(--bg) 40%, #04060a 100%);
+            font-family: 'Work Sans', 'Segoe UI', Roboto, sans-serif;
+            color: var(--fg);
+            padding: 2.5rem 1.25rem 3rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        main {
+            width: min(860px, 100%);
+            background: rgba(8, 11, 18, 0.88);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(8px);
+            padding: clamp(1.75rem, 1.2rem + 1vw, 2.75rem);
+            line-height: 1.75;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-family: 'Source Code Pro', monospace;
+            font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.4rem);
+            margin: 0 0 0.5rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        header p {
+            margin: 0.2rem 0;
+            color: var(--muted);
+            max-width: 60ch;
+        }
+
+        header .contact-links {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        header .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            font-family: 'Source Code Pro', monospace;
+            color: var(--fg);
+            text-decoration: none;
+            transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        header .contact-links a:hover {
+            border-color: rgba(0, 247, 255, 0.55);
+            background: rgba(0, 247, 255, 0.08);
+            color: var(--accent-cyber);
+        }
+
+        header .contact-links a svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1.4rem, 1.2rem + 0.9vw, 1.9rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.02em;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        p {
+            margin: 0 0 1rem;
+        }
+
+        .intro p {
+            text-indent: 1.5em;
+        }
+
+        .projects {
+            display: grid;
+            gap: 1.75rem;
+        }
+
+        .project-group {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-group::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.6;
+            pointer-events: none;
+            background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.14), transparent 55%);
+        }
+
+        .project-group.cyber {
+            border-color: rgba(0, 247, 255, 0.4);
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.06), transparent);
+            box-shadow: 0 0 0 1px var(--accent-cyber-soft);
+        }
+
+        .project-group.cyber h2 {
+            color: var(--accent-cyber);
+            text-shadow: 0 0 14px rgba(0, 247, 255, 0.5);
+        }
+
+        .project-group.elektro {
+            border-color: rgba(255, 127, 80, 0.35);
+            background: linear-gradient(135deg, rgba(255, 127, 80, 0.07), transparent);
+        }
+
+        .project {
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .project p {
+            color: var(--muted);
+        }
+
+        .button-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: 'Source Code Pro', monospace;
+            color: inherit;
+            text-decoration: none;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid currentColor;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .button-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .project-group.cyber .button-link:hover {
+            background: var(--accent-cyber);
+            color: #001218;
+            border-color: transparent;
+        }
+
+        .project-group.elektro .button-link:hover {
+            background: var(--accent-elektro);
+            color: #180602;
+            border-color: transparent;
+        }
+
+        .focus-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.75rem 0 0.4rem;
+        }
+
+        .focus-tags span {
+            padding: 0.2rem 0.65rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: rgba(227, 242, 255, 0.08);
+            border: 1px solid rgba(227, 242, 255, 0.16);
+        }
+
+        .project-group.cyber .focus-tags span {
+            background: rgba(0, 247, 255, 0.12);
+            border-color: rgba(0, 247, 255, 0.3);
+            color: var(--accent-cyber);
+        }
+
+        .project-group.elektro .focus-tags span {
+            background: rgba(255, 127, 80, 0.12);
+            border-color: rgba(255, 127, 80, 0.25);
+            color: var(--accent-elektro);
+        }
+
+        .project ul {
+            margin: 0.75rem 0 0;
+            padding-left: 1.1rem;
+            color: var(--muted);
+        }
+
+        .project ul li {
+            margin-bottom: 0.45rem;
+        }
+
+        .resources {
+            display: grid;
+            gap: 1.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .resource-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .resource-card.documents {
+            border-color: rgba(0, 247, 255, 0.35);
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.05), transparent);
+        }
+
+        .resource-card.achievements {
+            border-color: rgba(255, 127, 80, 0.3);
+            background: linear-gradient(135deg, rgba(255, 127, 80, 0.06), transparent);
+        }
+
+        .resource {
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .resource:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .resource p {
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .notes {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .notes h3 {
+            font-family: 'Source Code Pro', monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .notes ul {
+            margin: 0 0 1.5rem 1.1rem;
+            padding: 0;
+            color: var(--muted);
+        }
+
+        .notes ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .rating {
+            display: inline-flex;
+            align-items: baseline;
+            font-size: 1.1rem;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.95rem;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1.5rem 1rem 2.5rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>List motywacyjny</h1>
+            <p>Szanowni Państwo, nazywam się Jakub S. i pasjonuje mnie łączenie cyberbezpieczeństwa z elektroniką oraz telekomunikacją. Poniżej przedstawiam wybrane projekty akademickie, które ilustrują moje podejście do rozwiązywania złożonych problemów inżynierskich.</p>
+            <p>W pracy stawiam na przejrzystą komunikację, analityczne myślenie oraz tworzenie rozwiązań przyjaznych użytkownikom, nawet w najbardziej wymagających środowiskach technicznych.</p>
+            <div class="contact-links" aria-label="Profile zawodowe">
+                <a href="https://www.linkedin.com/in/jakub-security" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM5 10H2v11h3V10zm4 0H6v11h3v-6c0-1.66 1.34-3 3-3s3 1.34 3 3v6h3v-6.5c0-3.04-2.46-5.5-5.5-5.5S9 11.46 9 14.5V10z" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://tryhackme.com/p/JakubCyber" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2l8 4v6c0 5-3.4 9.74-8 10-4.6-.26-8-5-8-10V6l8-4zm0 4.18L6 7.88v4.74c0 3.72 2.54 7.36 6 7.56 3.46-.2 6-3.84 6-7.56V7.88l-6-1.7zm0 2.82a2.5 2.5 0 110 5 2.5 2.5 0 010-5z" />
+                    </svg>
+                    TryHackMe
+                </a>
+            </div>
+        </header>
+
+        <section class="intro">
+            <p>Przez ostatnie lata rozwijam kompetencje w zakresie testów penetracyjnych, architektury sieciowej i bezpieczeństwa aplikacji, równolegle projektując układy elektroniczne i systemy komunikacji bezprzewodowej. Taka interdyscyplinarna perspektywa pozwala mi patrzeć szerzej na wyzwania organizacji i proponować działania, które wzmacniają odporność infrastruktury oraz zwiększają jej funkcjonalność.</p>
+        </section>
+
+        <section class="projects">
+            <div class="project-group cyber">
+                <h2>Projekty – Cyberbezpieczeństwo</h2>
+                <p>Najważniejsze prace koncentrują się na projektowaniu odpornej infrastruktury i reagowaniu na incydenty. Każdy projekt zawiera dokumentację w formacie PDF.</p>
+                <article class="project">
+                    <h3>Analiza incydentu bezpieczeństwa</h3>
+                    <div class="focus-tags" aria-label="Zakres projektu">
+                        <span>SIEM</span>
+                        <span>Reagowanie na incydenty</span>
+                        <span>Forensics</span>
+                    </div>
+                    <p>Studium przypadku realnego naruszenia danych, obejmujące analizę logów, korelację zdarzeń oraz rekomendacje naprawcze.</p>
+                    <ul>
+                        <li>Automatyczna korelacja alertów w systemie SIEM (Splunk) na podstawie wzorców MITRE ATT&amp;CK.</li>
+                        <li>Stworzenie procedury komunikacji kryzysowej i checklisty przywracania usług po incydencie.</li>
+                    </ul>
+                    <a class="button-link" href="projekty/cyberbezpieczenstwo/analiza_incydentu.pdf" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                        </svg>
+                        Otwórz PDF
+                    </a>
+                </article>
+                <article class="project">
+                    <h3>Architektura sieci Zero Trust</h3>
+                    <div class="focus-tags" aria-label="Zakres projektu">
+                        <span>Zero Trust</span>
+                        <span>Segmentacja</span>
+                        <span>Automatyzacja</span>
+                    </div>
+                    <p>Kompletny projekt sieci korporacyjnej z segmentacją, kontrolą dostępu oraz automatyzacją reagowania na incydenty.</p>
+                    <ul>
+                        <li>Makieta polityk mikrosegmentacji w oparciu o firewalle warstwy 7 i mechanizmy NAC.</li>
+                        <li>Integracja SOAR z playbookami automatycznego odcinania zagrożonych węzłów.</li>
+                    </ul>
+                    <a class="button-link" href="projekty/cyberbezpieczenstwo/siec_zero_trust.pdf" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                        </svg>
+                        Pobierz PDF
+                    </a>
+                </article>
+            </div>
+
+            <div class="project-group elektro">
+                <h2>Projekty – Elektronika i Telekomunikacja</h2>
+                <p>Uzupełniające projekty pokazują, jak przekładam zasady cyberbezpieczeństwa na warstwę sprzętową i komunikacyjną.</p>
+                <article class="project">
+                    <h3>Tor pomiarowy dla czujników IoT</h3>
+                    <div class="focus-tags" aria-label="Zakres projektu">
+                        <span>IoT</span>
+                        <span>Kalibracja</span>
+                        <span>Szyfrowanie</span>
+                    </div>
+                    <p>Projekt układu pomiarowego z komunikacją długodystansową oraz wbudowanymi mechanizmami kalibracji.</p>
+                    <ul>
+                        <li>Zaprojektowanie szyfrowanego kanału LoRaWAN wraz z rotacją kluczy urządzeń.</li>
+                        <li>Implementacja algorytmu autokalibracji bazującego na referencyjnych próbkach środowiskowych.</li>
+                    </ul>
+                    <a class="button-link" href="projekty/elektronika/tor_pomiarowy.pdf" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                        </svg>
+                        Otwórz PDF
+                    </a>
+                </article>
+                <article class="project">
+                    <h3>System RF dla telekomunikacji</h3>
+                    <div class="focus-tags" aria-label="Zakres projektu">
+                        <span>RF</span>
+                        <span>EMC</span>
+                        <span>Redundancja</span>
+                    </div>
+                    <p>Opis modułu RF w paśmie 2,4 GHz z optymalizacją anteny i analizą odporności na zakłócenia.</p>
+                    <ul>
+                        <li>Analiza odporności elektromagnetycznej z wykorzystaniem symulacji HFSS i testów w komorze GTEM.</li>
+                        <li>Projekt redundantnego toru transmisji z przełączaniem awaryjnym poniżej 200 ms.</li>
+                    </ul>
+                    <a class="button-link" href="projekty/elektronika/system_rf.pdf" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                        </svg>
+                        Pobierz PDF
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section class="resources">
+            <div class="resource-card documents">
+                <h2>Dokumenty do pobrania</h2>
+                <article class="resource">
+                    <h3>CV – Jakub S.</h3>
+                    <p>Aktualne CV z podsumowaniem doświadczenia akademickiego, projektów badawczych oraz certyfikacji.</p>
+                    <a class="button-link" href="projekty/dokumenty/cv_jakub_s.pdf" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                        </svg>
+                        Pobierz CV
+                    </a>
+                </article>
+            </div>
+            <div class="resource-card achievements">
+                <h2>Osiągnięcia</h2>
+                <article class="resource">
+                    <h3>Certyfikat CompTIA Security+</h3>
+                    <p>Międzynarodowy certyfikat potwierdzający umiejętności w zakresie bezpieczeństwa systemów i reagowania na incydenty.</p>
+                    <a class="button-link" href="projekty/dokumenty/certyfikat_comptia_security_plus.pdf" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M13 5v6h5v2h-7V5h2zm-6 6h2v8h10v2H7V11z" />
+                        </svg>
+                        Zobacz certyfikat
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section class="notes">
+            <div class="designer-comment">
+                <h3>Komentarz projektanta</h3>
+                <p>Strona zachowuje formę listu motywacyjnego dzięki linearnemu układowi i stonowanej typografii, a jednocześnie akcentuje cyberbezpieczeństwo neonowymi rozbłyskami inspirowanymi estetyką cyberpunkową. Wyróżniki, takie jak tagi zakresu, blok z certyfikatem oraz odnośniki do profili, prowadzą rekrutera przez najważniejsze dowody kompetencji.</p>
+            </div>
+            <div class="style-guide">
+                <h3>Propozycje stylu graficznego</h3>
+                <ul>
+                    <li>Kolorystyka: tło w odcieniach granatu (#080b12) z akcentami cyjanowymi (#00f7ff) dla cyberbezpieczeństwa i koralowymi (#ff7f50) dla elektroniki.</li>
+                    <li>Czcionki: nagłówki w „Source Code Pro” dla technicznego charakteru, tekst główny w „Work Sans” dla czytelności.</li>
+                    <li>Elementy dekoracyjne: subtelne gradienty i świetliste obrysy sekcji zamiast ciężkich grafik, aby zachować minimalistyczny charakter.</li>
+                    <li>Ikony w stylu liniowym i animacje hover ograniczone do zmian koloru, co dodaje interaktywności bez przeciążania odbiorcy.</li>
+                </ul>
+            </div>
+            <div class="analysis">
+                <h3>Analiza z perspektywy pracodawcy</h3>
+                <p><span class="rating">Ocena: <strong>8.5/10</strong></span></p>
+                <p>Aby zwiększyć skuteczność strony jako narzędzia rekrutacyjnego, warto uzupełnić projekty o konkretne dane liczbowe (np. skrócenie czasu reakcji, zmniejszenie powierzchni ataku) i krótkie rekomendacje od prowadzących. Dobrym krokiem będzie również dodanie modułu kontaktowego lub kalendarza do umawiania rozmów.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Z wyrazami szacunku,<br>Jakub S.</p>
+        </footer>
+    </main>
+</body>
+</html>
