@@ -1,112 +1,96 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio projektów akademickich z cyberbezpieczeństwa – Jakub Skrzynecki">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio projektów akademickich z cyberbezpieczeństwa – Jakub Skrzynecki" />
   <title>Portfolio – Jakub Skrzynecki</title>
   <style>
-    body { margin:0; font-family:'Inter',sans-serif; background:#0f1115; color:#e6f4ea; line-height:1.6; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:#14171d; border-bottom:1px solid #1a2f23; position:sticky; top:0; z-index:1000; }
-    header h1 { font-family:'Fira Code',monospace; font-size:1.2rem; margin:0; }
-    nav a { margin-left:1.5rem; text-decoration:none; color:#7cffb2; transition:color .2s; }
-    nav a:hover { color:#00e676; }
+    :root{
+      /* Timing & easing tuned for silky feel */
+      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-emph: cubic-bezier(0.2, 0, 0, 1);
+      --dur-xs: 160ms;  /* micro */
+      --dur-sm: 260ms;  /* small */
+      --dur-md: 380ms;  /* default */
+      --dur-lg: 520ms;  /* long */
+      --brand:#00e676;
+      --ink:#e6f4ea; 
+      --ink-weak:#d0e5d8;
+      --bg:#0f1115; 
+      --elev:#14171d; 
+      --border:#1a2f23;
+      --mint:#7cffb2;
+    }
 
-    .hero { display:grid; grid-template-columns:1fr; gap:2rem; padding:4rem 2rem; max-width:1200px; margin:auto; text-align:center; }
-    .hero-text h2 { font-family:'Fira Code',monospace; font-size:2rem; margin-bottom:1rem; }
-    .hero-text p { max-width:700px; margin:0 auto 1.5rem; font-size:1.05rem; color:#d0e5d8; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
-    .cta-buttons a, .btn { display:inline-block; padding:.7rem 1.4rem; border:2px solid #00e676; border-radius:8px; margin:.5rem; text-decoration:none; color:#e6f4ea; background:transparent; font-weight:600; transition:background .2s, color .2s, transform .2s; cursor:pointer; }
-    .cta-buttons a:hover, .btn:hover { background:#00e676; color:#0f1115; transform:scale(1.05); }
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--elev);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:saturate(1.1) blur(2px)}
+    header h1{font-family:'Fira Code',ui-monospace,monospace;font-size:1.2rem;margin:0}
+    nav a{margin-left:1.5rem;text-decoration:none;color:var(--mint);transition:color var(--dur-sm) var(--ease-smooth)}
+    nav a:hover{color:var(--brand)}
 
-    .section { padding:3rem 2rem; max-width:1200px; margin:auto; }
-    .section h3 { font-family:'Fira Code',monospace; font-size:1.6rem; margin-bottom:1.5rem; border-left:4px solid #00e676; padding-left:.8rem; }
+    .hero{display:grid;grid-template-columns:1fr;gap:2rem;padding:4rem 2rem;max-width:1200px;margin:auto;text-align:center}
+    .hero-text h2{font-family:'Fira Code',ui-monospace,monospace;font-size:2rem;margin-bottom:1rem}
+    .hero-text p{max-width:720px;margin:0 auto 1.5rem;font-size:1.06rem;color:var(--ink-weak)}
 
-    .projects { display:grid; gap:1rem; }
-    details.project-card { background:#14171d; padding:1.2rem; border:1px solid #1a2f23; border-radius:12px; transition:transform .2s; }
-    details.project-card:hover { transform:translateY(-4px); }
+    .cta-buttons a,.btn{display:inline-block;padding:.7rem 1.4rem;border:2px solid var(--brand);border-radius:10px;margin:.5rem;text-decoration:none;color:var(--ink);background:transparent;font-weight:600;transition:background var(--dur-sm) var(--ease-smooth),color var(--dur-sm) var(--ease-smooth),transform var(--dur-sm) var(--ease-emph),box-shadow var(--dur-sm) var(--ease-emph);cursor:pointer}
+    .cta-buttons a:hover,.btn:hover{background:var(--brand);color:#0f1115;transform:translateY(-2px) scale(1.02);box-shadow:0 12px 24px rgba(0,230,118,.16),0 0 0 1px rgba(0,230,118,.25) inset}
+    .btn:active{transform:translateY(0) scale(1)}
+
+    .section{padding:3rem 2rem;max-width:1200px;margin:auto}
+    .section h3{font-family:'Fira Code',ui-monospace,monospace;font-size:1.6rem;margin-bottom:1.5rem;border-left:4px solid var(--brand);padding-left:.8rem}
+
+    .projects{display:grid;gap:1rem}
+    details.project-card{background:var(--elev);padding:1.2rem;border:1px solid var(--border);border-radius:14px;transition:transform var(--dur-sm) var(--ease-smooth), box-shadow var(--dur-sm) var(--ease-smooth);will-change:transform}
+    details.project-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
 
     /* Summary row with animated chevron */
-    .project-card summary { cursor:pointer; font-weight:700; color:#7cffb2; display:flex; align-items:center; justify-content:space-between; list-style:none; }
-    .project-card summary::-webkit-details-marker{ display:none; }
-    .project-card summary::after { content:'\25B8'; margin-left:.5rem; transition:transform 320ms cubic-bezier(0.22, 1, 0.36, 1); color:#7cffb2; }
-    .project-card[open] summary::after { transform:rotate(90deg); }
+    .project-card summary{cursor:pointer;font-weight:700;color:var(--mint);display:flex;align-items:center;justify-content:space-between;list-style:none;gap:1rem}
+    .project-card summary::-webkit-details-marker{display:none}
+    .project-card summary::after{content:'\25B8';margin-left:.5rem;transition:transform var(--dur-md) var(--ease-emph);color:var(--mint);flex:none}
+    .project-card[open] summary::after{transform:rotate(90deg)}
+    .project-card summary:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:8px}
 
-    /* Collapsible container (animated via WAAPI; keep base state lean) */
-    .accordion { overflow:hidden; height:0; opacity:0; will-change:height, opacity; }
-    .accordion > * { opacity:0; transform:translateY(-6px); transition:opacity 240ms ease, transform 240ms ease; }
-    .project-card.is-open .accordion > * { opacity:1; transform:translateY(0); }
+    /* Collapsible container (animated by WAAPI; keep base state lean) */
+    .accordion{overflow:hidden;height:0;opacity:0;contain:content;}
+    .accordion > *{opacity:0;transform:translateY(-6px);transition:opacity var(--dur-sm) ease, transform var(--dur-sm) ease}
+    .project-card.is-open .accordion > *{opacity:1;transform:translateY(0)}
 
-    .tags span { display:inline-block; background:#1a2f23; color:#7cffb2; padding:.2rem .6rem; border-radius:8px; font-size:.8rem; margin-right:.5rem; }
+    .tags span{display:inline-block;background:#1a2f23;color:var(--mint);padding:.25rem .6rem;border-radius:999px;font-size:.8rem;margin-right:.5rem}
 
-    .contact-links a { display:inline-block; padding:.6rem 1rem; border:1px solid #2bbf6a; border-radius:8px; margin:.4rem; text-decoration:none; color:#e6f4ea; background:#14171d; transition:background .2s, transform .2s; }
-    .contact-links a:hover { background:#2bbf6a; transform:scale(1.05); }
+    .contact-links a{display:inline-block;padding:.6rem 1rem;border:1px solid #2bbf6a;border-radius:10px;margin:.4rem;text-decoration:none;color:var(--ink);background:var(--elev);transition:background var(--dur-sm) var(--ease-smooth), transform var(--dur-sm) var(--ease-emph)}
+    .contact-links a:hover{background:#2bbf6a;transform:translateY(-2px)}
 
-    footer { text-align:center; padding:2rem; font-size:.9rem; color:#7cffb2; border-top:1px solid #1a2f23; }
+    footer{text-align:center;padding:2rem;font-size:.9rem;color:var(--mint);border-top:1px solid var(--border)}
 
-    /* Modal styles – z animacją otwierania */
-    .modal{
-      position:fixed; inset:0;
-      display:grid; place-items:center;
-      background:rgba(0,0,0,.7);
-      opacity:0; visibility:hidden; pointer-events:none;
-      z-index:2000; padding:1rem; box-sizing:border-box;
-      transition:opacity 260ms ease, visibility 0s linear 260ms;
+    /* Modal styles with smoother open/close */
+    .modal{position:fixed;inset:0;display:grid;place-items:center;background:rgba(2,10,6,.65);backdrop-filter:saturate(1.2) blur(3px);opacity:0;visibility:hidden;pointer-events:none;z-index:2000;padding:1rem;transition:opacity var(--dur-md) var(--ease-smooth), visibility 0s linear var(--dur-md);
+      /* allow discrete visibility transitions in supporting browsers */
+      transition-behavior: allow-discrete;
     }
-    .modal.is-open{
-      opacity:1; visibility:visible; pointer-events:auto;
-      transition:opacity 300ms cubic-bezier(0.22,1,0.36,1);
-    }
+    .modal.is-open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity var(--dur-md) var(--ease-smooth)}
+    .modal.is-leaving{opacity:0}
 
-    .modal-content{
-      background:#0f1512;
-      width:min(1100px,96vw);
-      height:min(92vh,900px);
-      border-radius:12px;
-      box-shadow:0 20px 60px rgba(0,0,0,.45), 0 0 0 1px #0f2a1d inset;
-      display:flex; flex-direction:column;
-      transform:translateY(10px) scale(.98);
-      opacity:.98;
-      transition:
-        transform 340ms cubic-bezier(0.22,1,0.36,1),
-        opacity 340ms ease;
-      will-change:transform,opacity;
-    }
+    .modal-content{background:#0f1512;width:min(1100px,96vw);height:min(92vh,900px);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.45), 0 0 0 1px #0f2a1d inset;display:flex;flex-direction:column;transform:translateY(10px) scale(.985);opacity:.98;transition:transform var(--dur-lg) var(--ease-emph), opacity var(--dur-lg) ease;will-change:transform,opacity;contain:paint}
+    .modal.is-open .modal-content{transform:translateY(0) scale(1);opacity:1}
+    .modal.is-leaving .modal-content{transform:translateY(8px) scale(.985);opacity:.98}
 
-    .modal.is-open .modal-content{
-      transform:translateY(0) scale(1);
-      opacity:1;
-    }
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;gap:.75rem;border-bottom:1px solid var(--border);margin-bottom:.25rem}
+    .modal-header .close{color:var(--ink);font-size:1.5rem;cursor:pointer;line-height:1;padding:.25rem .5rem;border-radius:10px;transition:background var(--dur-xs) var(--ease-smooth), transform var(--dur-xs) var(--ease-emph)}
+    .modal-header .close:hover{background:#16221a;transform:scale(1.06)}
+    .modal-header .download{font-size:.9rem;padding:.45rem .8rem;border:1px solid #2bbf6a;border-radius:10px;text-decoration:none;color:var(--ink);background:#0f1512;transition:background var(--dur-sm) var(--ease-smooth), color var(--dur-sm) var(--ease-smooth)}
+    .modal-header .download:hover{background:#2bbf6a;color:#0f1115}
 
-    .modal-header{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:.6rem .8rem; gap:.75rem;
-      border-bottom:1px solid #1a2f23; margin-bottom:.25rem;
-    }
-
-    .modal-header .close{
-      color:#e6f4ea; font-size:1.5rem; cursor:pointer;
-      line-height:1; padding:.25rem .5rem; border-radius:8px;
-    }
-    .modal-header .close:hover{ background:#16221a; }
-
-    .modal-header .download{
-      font-size:.9rem; padding:.45rem .8rem;
-      border:1px solid #2bbf6a; border-radius:8px;
-      text-decoration:none; color:#e6f4ea; background:#0f1512;
-      transition:background .2s;
-    }
-    .modal-header .download:hover{ background:#2bbf6a; color:#0f1115; }
-
-    .modal-content embed{
-      flex:1; width:100%; height:100%;
-      border-radius:0 0 12px 12px; background:#0b0f0d;
-    }
+    .modal-content embed{flex:1;width:100%;height:100%;border-radius:0 0 14px 14px;background:#0b0f0d;opacity:0;transition:opacity var(--dur-md) var(--ease-smooth)}
+    .modal-content embed.is-visible{opacity:1}
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
-      .accordion > *, .project-card summary::after { transition:none; }
-      .modal, .modal-content{ transition:none !important; }
+      .accordion > *, .project-card summary::after{transition:none}
+      .modal, .modal-content{transition:none !important}
     }
   </style>
 </head>
@@ -232,8 +216,7 @@
     <details class="project-card">
       <summary>📜 CompTIA Security+</summary>
       <div class="accordion">
-        <p>ID: COMP001022861425 – Data: 18.08.2025<br>
-        Kod: N6CYW7Z54EB4QSFJ – Ważny do: 18.08.2028</p>
+        <p>ID: COMP001022861425 – Data: 18.08.2025<br/>Kod: N6CYW7Z54EB4QSFJ – Ważny do: 18.08.2028</p>
         <div class="cta-buttons">
           <a href="http://verify.CompTIA.org" target="_blank" rel="noopener">🔍 Weryfikacja</a>
           <a onclick="openModal('pliki/dokumenty/CompTIA%20Security%2B%20ce%20certificate.pdf')">📜 Zobacz Certyfikat</a>
@@ -263,18 +246,23 @@
         <a id="downloadLink" class="download" href="#" target="_blank" rel="noopener">⬇️ Pobierz</a>
         <span class="close" aria-label="Zamknij" title="Zamknij">&times;</span>
       </div>
-      <embed id="pdfEmbed" src="" type="application/pdf" aria-label="Podgląd dokumentu PDF">
+      <embed id="pdfEmbed" src="" type="application/pdf" aria-label="Podgląd dokumentu PDF" />
     </div>
   </div>
 
   <script>
-    // Smooth, resilient accordion animations using WAAPI
+    // ===== Smooth accordion with dynamic duration =====
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const EASING_OUT = 'cubic-bezier(0.22, 1, 0.36, 1)'; // smooth out
-    const EASING_IN  = 'cubic-bezier(0.4, 0, 0.2, 1)';   // smooth in
-    const DURATION = 320;
+    const EASE_OUT = 'cubic-bezier(0.22, 1, 0.36, 1)';
+    const EASE_IN  = 'cubic-bezier(0.2, 0, 0, 1)';
 
     const running = new WeakMap(); // track ongoing animations per content
+
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+    function durationFromHeight(h){
+      // scale duration gently with content height for more natural feel
+      return clamp(180 + h * 0.45, 240, 640);
+    }
 
     document.querySelectorAll('details.project-card').forEach((el)=>{
       const summary = el.querySelector('summary');
@@ -294,26 +282,29 @@
 
       function cancelRunning(){
         const anim = running.get(content);
-        if(anim){ anim.cancel(); running.delete(content); }
+        if(anim){ try{anim.cancel();}catch(_){} running.delete(content); }
       }
 
       function expand(){
         el.open = true; // make it measurable
         el.classList.add('is-open');
+        content.style.height = 'auto';
         const end = content.scrollHeight;
         content.style.height = '0px';
         content.style.opacity = '0';
         if(reduceMotion){ content.style.height='auto'; content.style.opacity='1'; return; }
         cancelRunning();
+        const dur = durationFromHeight(end);
+        summary.style.pointerEvents='none';
         const anim = content.animate([
           { height:'0px',   opacity:0 },
           { height:end+'px', opacity:1 }
-        ], { duration:DURATION, easing:EASING_OUT, fill:'forwards' });
+        ], { duration: dur, easing: EASE_OUT, fill:'forwards' });
         running.set(content, anim);
         anim.finished.then(()=>{
           if(running.get(content) === anim){ running.delete(content); }
           content.style.height = 'auto';
-        }).catch(()=>{});
+        }).finally(()=>{ summary.style.pointerEvents=''; });
       }
 
       function collapse(){
@@ -322,20 +313,24 @@
         content.style.opacity = '1';
         if(reduceMotion){ el.open=false; el.classList.remove('is-open'); content.style.height='0px'; content.style.opacity='0'; return; }
         cancelRunning();
+        const dur = durationFromHeight(start);
+        summary.style.pointerEvents='none';
         const anim = content.animate([
           { height:start+'px', opacity:1 },
           { height:'0px',      opacity:0 }
-        ], { duration:DURATION, easing:EASING_IN, fill:'forwards' });
+        ], { duration: dur, easing: EASE_IN, fill:'forwards' });
         running.set(content, anim);
         anim.finished.then(()=>{
           if(running.get(content) === anim){ running.delete(content); }
           el.open = false; // update semantic state after animation
           el.classList.remove('is-open');
-        }).catch(()=>{});
+        }).finally(()=>{ summary.style.pointerEvents=''; });
       }
 
       function onActivate(e){
         e.preventDefault(); // control timing ourselves
+        // Avoid double-trigger while animating by checking pointer-events lock
+        if(summary.style.pointerEvents==='none') return;
         if(el.open){ collapse(); } else { expand(); }
       }
 
@@ -345,7 +340,7 @@
   </script>
 
   <script>
-    // ===== Modal PDF z animacją =====
+    // ===== Modal PDF with smoother open/close & fade-in on load =====
     const modal = document.getElementById('pdfModal');
     const embed = document.getElementById('pdfEmbed');
     const downloadLink = document.getElementById('downloadLink');
@@ -355,30 +350,27 @@
     const reduceMotionModal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function openModal(pdfPath){
-      // zapamiętaj fokus, ustaw źródła
       lastActive = document.activeElement;
+      embed.classList.remove('is-visible');
       embed.src = pdfPath;
       downloadLink.href = pdfPath;
 
-      // pokaż modal (klasa z animacją)
+      modal.classList.remove('is-leaving');
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
 
-      // przenieś fokus na przycisk zamykania
+      // focus close after paint
       setTimeout(()=> closeBtn.focus(), 10);
     }
 
     function closeModal(){
-      // animowane domknięcie: po przejściu usuń src, schowaj
       function hide(){
-        modal.classList.remove('is-open');
+        modal.classList.remove('is-open','is-leaving');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        // wyczyść dopiero po zniknięciu, by uniknąć „mignięcia”
         embed.src = '';
         downloadLink.href = '#';
-        // przywróć fokus
         if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
         modal.removeEventListener('transitionend', hide);
       }
@@ -386,25 +378,26 @@
       if (reduceMotionModal){
         hide();
       } else {
-        // poczekaj na koniec przejścia tła
+        modal.classList.add('is-leaving');
         modal.addEventListener('transitionend', hide);
-        // jeśli coś przerwie, fallback po 350ms
-        setTimeout(hide, 350);
+        setTimeout(hide, 700); // safety fallback for any edge
       }
     }
 
-    // Klik tła zamyka
-    modal.addEventListener('click', (e)=>{
-      if (e.target === modal) closeModal();
+    // Fade in the PDF once ready
+    embed.addEventListener('load', ()=>{
+      requestAnimationFrame(()=> embed.classList.add('is-visible'));
     });
 
-    // Klawisz ESC zamyka
-    window.addEventListener('keydown', (e)=>{
-      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-    });
-
-    // Przycisk zamykania
+    // Click background to close
+    modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
+    // ESC to close
+    window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
+    // Close button
     closeBtn.addEventListener('click', closeModal);
+
+    // expose openModal globally for inline handlers
+    window.openModal = openModal;
   </script>
 </body>
 </html>
