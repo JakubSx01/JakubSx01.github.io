@@ -29,12 +29,12 @@
     /* Summary row with animated chevron */
     .project-card summary { cursor:pointer; font-weight:700; color:#7cffb2; display:flex; align-items:center; justify-content:space-between; list-style:none; }
     .project-card summary::-webkit-details-marker{ display:none; }
-    .project-card summary::after { content:'\25B8'; margin-left:.5rem; transition:transform 220ms ease; color:#7cffb2; }
+    .project-card summary::after { content:'\25B8'; margin-left:.5rem; transition:transform 320ms cubic-bezier(0.22, 1, 0.36, 1); color:#7cffb2; }
     .project-card[open] summary::after { transform:rotate(90deg); }
 
-    /* Collapsible container (we animate it manually in JS) */
-    .accordion { overflow:hidden; height:0; opacity:0; }
-    .accordion > * { opacity:0; transform:translateY(-6px); transition:opacity 220ms ease, transform 220ms ease; }
+    /* Collapsible container (animated via WAAPI; keep base state lean) */
+    .accordion { overflow:hidden; height:0; opacity:0; will-change:height, opacity; }
+    .accordion > * { opacity:0; transform:translateY(-6px); transition:opacity 240ms ease, transform 240ms ease; }
     .project-card.is-open .accordion > * { opacity:1; transform:translateY(0); }
 
     .tags span { display:inline-block; background:#1a2f23; color:#7cffb2; padding:.2rem .6rem; border-radius:8px; font-size:.8rem; margin-right:.5rem; }
@@ -229,8 +229,13 @@
     }
     window.onclick = function(e){ const m=document.getElementById('pdfModal'); if(e.target===m) closeModal(); }
 
-    // Accessible animated accordions without breaking <details>
+    // Smooth, resilient accordion animations using WAAPI
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const EASING_OUT = 'cubic-bezier(0.22, 1, 0.36, 1)'; // smooth out
+    const EASING_IN  = 'cubic-bezier(0.4, 0, 0.2, 1)';   // smooth in
+    const DURATION = 320;
+
+    const running = new WeakMap(); // track ongoing animations per content
 
     document.querySelectorAll('details.project-card').forEach((el)=>{
       const summary = el.querySelector('summary');
@@ -248,57 +253,55 @@
         content.style.opacity = '0';
       }
 
-      const openAnimated = () => {
-        el.open = true; // ensure visible for measurement
-        el.classList.add('is-open');
-        const start = 0;
-        const end = content.scrollHeight;
-        content.style.height = start + 'px';
-        content.style.opacity = '0';
-        // force reflow
-        content.getBoundingClientRect();
-        if(reduceMotion){ content.style.height = 'auto'; content.style.opacity='1'; return; }
-        content.style.transition = 'height 220ms ease, opacity 220ms ease';
-        content.style.height = end + 'px';
-        content.style.opacity = '1';
-        content.addEventListener('transitionend', function done(ev){
-          if(ev.propertyName === 'height'){
-            content.style.transition = '';
-            content.style.height = 'auto';
-            content.removeEventListener('transitionend', done);
-          }
-        });
-      };
+      function cancelRunning(){
+        const anim = running.get(content);
+        if(anim){ anim.cancel(); running.delete(content); }
+      }
 
-      const closeAnimated = () => {
-        const start = content.scrollHeight;
-        content.style.height = start + 'px';
-        content.style.opacity = '1';
-        // force reflow
-        content.getBoundingClientRect();
-        if(reduceMotion){ el.open = false; content.style.height='0px'; content.style.opacity='0'; el.classList.remove('is-open'); return; }
-        content.style.transition = 'height 220ms ease, opacity 220ms ease';
+      function expand(){
+        el.open = true; // make it measurable
+        el.classList.add('is-open');
+        const end = content.scrollHeight;
         content.style.height = '0px';
         content.style.opacity = '0';
-        content.addEventListener('transitionend', function done(ev){
-          if(ev.propertyName === 'height'){
-            el.open = false; // close after animation
-            el.classList.remove('is-open');
-            content.style.transition = '';
-            content.removeEventListener('transitionend', done);
-          }
-        });
-      };
+        if(reduceMotion){ content.style.height='auto'; content.style.opacity='1'; return; }
+        cancelRunning();
+        const anim = content.animate([
+          { height:'0px',   opacity:0 },
+          { height:end+'px', opacity:1 }
+        ], { duration:DURATION, easing:EASING_OUT, fill:'forwards' });
+        running.set(content, anim);
+        anim.finished.then(()=>{
+          if(running.get(content) === anim){ running.delete(content); }
+          content.style.height = 'auto';
+        }).catch(()=>{});
+      }
 
-      const onActivate = (e) => {
-        e.preventDefault(); // override native to control timing
-        if(el.open){ closeAnimated(); } else { openAnimated(); }
-      };
+      function collapse(){
+        const start = content.scrollHeight;
+        content.style.height = start+'px';
+        content.style.opacity = '1';
+        if(reduceMotion){ el.open=false; el.classList.remove('is-open'); content.style.height='0px'; content.style.opacity='0'; return; }
+        cancelRunning();
+        const anim = content.animate([
+          { height:start+'px', opacity:1 },
+          { height:'0px',      opacity:0 }
+        ], { duration:DURATION, easing:EASING_IN, fill:'forwards' });
+        running.set(content, anim);
+        anim.finished.then(()=>{
+          if(running.get(content) === anim){ running.delete(content); }
+          el.open = false; // update semantic state after animation
+          el.classList.remove('is-open');
+        }).catch(()=>{});
+      }
+
+      function onActivate(e){
+        e.preventDefault(); // control timing ourselves
+        if(el.open){ collapse(); } else { expand(); }
+      }
 
       summary.addEventListener('click', onActivate);
-      summary.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter' || e.key === ' '){ onActivate(e); }
-      });
+      summary.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ onActivate(e); } });
     });
   </script>
 </body>
