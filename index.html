@@ -44,17 +44,70 @@
 
     footer { text-align:center; padding:2rem; font-size:.9rem; color:#7cffb2; border-top:1px solid #1a2f23; }
 
-    /* Modal styles */
-    .modal { display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.8); justify-content:center; align-items:center; padding:1rem; box-sizing:border-box; }
-    .modal-content { background:#0f1512; border-radius:10px; width:100%; height:100%; display:flex; flex-direction:column; }
-    .modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem; }
-    .modal-header .close { color:#e6f4ea; font-size:1.5rem; cursor:pointer; }
-    .modal-header .download { font-size:.9rem; padding:.4rem .8rem; border:1px solid #2bbf6a; border-radius:6px; text-decoration:none; color:#e6f4ea; background:#0f1512; transition:background .2s; }
-    .modal-header .download:hover { background:#2bbf6a; }
-    .modal-content embed { flex:1; width:100%; height:100%; border-radius:0 0 10px 10px; }
+    /* Modal styles – z animacją otwierania */
+    .modal{
+      position:fixed; inset:0;
+      display:grid; place-items:center;
+      background:rgba(0,0,0,.7);
+      opacity:0; visibility:hidden; pointer-events:none;
+      z-index:2000; padding:1rem; box-sizing:border-box;
+      transition:opacity 260ms ease, visibility 0s linear 260ms;
+    }
+    .modal.is-open{
+      opacity:1; visibility:visible; pointer-events:auto;
+      transition:opacity 300ms cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .modal-content{
+      background:#0f1512;
+      width:min(1100px,96vw);
+      height:min(92vh,900px);
+      border-radius:12px;
+      box-shadow:0 20px 60px rgba(0,0,0,.45), 0 0 0 1px #0f2a1d inset;
+      display:flex; flex-direction:column;
+      transform:translateY(10px) scale(.98);
+      opacity:.98;
+      transition:
+        transform 340ms cubic-bezier(0.22,1,0.36,1),
+        opacity 340ms ease;
+      will-change:transform,opacity;
+    }
+
+    .modal.is-open .modal-content{
+      transform:translateY(0) scale(1);
+      opacity:1;
+    }
+
+    .modal-header{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:.6rem .8rem; gap:.75rem;
+      border-bottom:1px solid #1a2f23; margin-bottom:.25rem;
+    }
+
+    .modal-header .close{
+      color:#e6f4ea; font-size:1.5rem; cursor:pointer;
+      line-height:1; padding:.25rem .5rem; border-radius:8px;
+    }
+    .modal-header .close:hover{ background:#16221a; }
+
+    .modal-header .download{
+      font-size:.9rem; padding:.45rem .8rem;
+      border:1px solid #2bbf6a; border-radius:8px;
+      text-decoration:none; color:#e6f4ea; background:#0f1512;
+      transition:background .2s;
+    }
+    .modal-header .download:hover{ background:#2bbf6a; color:#0f1115; }
+
+    .modal-content embed{
+      flex:1; width:100%; height:100%;
+      border-radius:0 0 12px 12px; background:#0b0f0d;
+    }
 
     /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){ .accordion > *, .project-card summary::after { transition:none; } }
+    @media (prefers-reduced-motion: reduce){
+      .accordion > *, .project-card summary::after { transition:none; }
+      .modal, .modal-content{ transition:none !important; }
+    }
   </style>
 </head>
 <body>
@@ -204,31 +257,17 @@
   </footer>
 
   <!-- Modal -->
-  <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="pdfTitle">
+  <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="pdfTitle" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
         <a id="downloadLink" class="download" href="#" target="_blank" rel="noopener">⬇️ Pobierz</a>
-        <span class="close" onclick="closeModal()" aria-label="Zamknij">&times;</span>
+        <span class="close" aria-label="Zamknij" title="Zamknij">&times;</span>
       </div>
       <embed id="pdfEmbed" src="" type="application/pdf" aria-label="Podgląd dokumentu PDF">
     </div>
   </div>
 
   <script>
-    // PDF modal controls
-    function openModal(pdfPath){
-      const embed = document.getElementById('pdfEmbed');
-      const link = document.getElementById('downloadLink');
-      embed.src = pdfPath; link.href = pdfPath;
-      document.getElementById('pdfModal').style.display = 'flex';
-    }
-    function closeModal(){
-      document.getElementById('pdfModal').style.display = 'none';
-      document.getElementById('pdfEmbed').src = '';
-      document.getElementById('downloadLink').href = '#';
-    }
-    window.onclick = function(e){ const m=document.getElementById('pdfModal'); if(e.target===m) closeModal(); }
-
     // Smooth, resilient accordion animations using WAAPI
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const EASING_OUT = 'cubic-bezier(0.22, 1, 0.36, 1)'; // smooth out
@@ -303,6 +342,69 @@
       summary.addEventListener('click', onActivate);
       summary.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ onActivate(e); } });
     });
+  </script>
+
+  <script>
+    // ===== Modal PDF z animacją =====
+    const modal = document.getElementById('pdfModal');
+    const embed = document.getElementById('pdfEmbed');
+    const downloadLink = document.getElementById('downloadLink');
+    const closeBtn = modal.querySelector('.close');
+
+    let lastActive = null;
+    const reduceMotionModal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function openModal(pdfPath){
+      // zapamiętaj fokus, ustaw źródła
+      lastActive = document.activeElement;
+      embed.src = pdfPath;
+      downloadLink.href = pdfPath;
+
+      // pokaż modal (klasa z animacją)
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      // przenieś fokus na przycisk zamykania
+      setTimeout(()=> closeBtn.focus(), 10);
+    }
+
+    function closeModal(){
+      // animowane domknięcie: po przejściu usuń src, schowaj
+      function hide(){
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        // wyczyść dopiero po zniknięciu, by uniknąć „mignięcia”
+        embed.src = '';
+        downloadLink.href = '#';
+        // przywróć fokus
+        if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+        modal.removeEventListener('transitionend', hide);
+      }
+
+      if (reduceMotionModal){
+        hide();
+      } else {
+        // poczekaj na koniec przejścia tła
+        modal.addEventListener('transitionend', hide);
+        // jeśli coś przerwie, fallback po 350ms
+        setTimeout(hide, 350);
+      }
+    }
+
+    // Klik tła zamyka
+    modal.addEventListener('click', (e)=>{
+      if (e.target === modal) closeModal();
+    });
+
+    // Klawisz ESC zamyka
+    window.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    // Przycisk zamykania
+    closeBtn.addEventListener('click', closeModal);
   </script>
 </body>
 </html>
