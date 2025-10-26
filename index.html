@@ -25,9 +25,9 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    body{margin:0;padding-top:60px;font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
-    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--elev);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:saturate(1.1) blur(2px)}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--elev);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:saturate(1.1) blur(2px)}
     header h1{font-family:'Fira Code',ui-monospace,monospace;font-size:1.2rem;margin:0}
     nav a{margin-left:1.5rem;text-decoration:none;color:var(--mint);transition:color var(--dur-sm) var(--ease-smooth)}
     nav a:hover{color:var(--brand)}
@@ -78,11 +78,9 @@
     .modal.is-open .modal-content{transform:translateY(0) scale(1);opacity:1}
     .modal.is-leaving .modal-content{transform:translateY(8px) scale(.985);opacity:.98}
 
-    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;gap:.75rem;border-bottom:1px solid var(--border);margin-bottom:.25rem}
+    .modal-header{display:flex;justify-content:flex-end;align-items:center;padding:.3rem .5rem;gap:.5rem;border-bottom:1px solid var(--border);margin-bottom:0}
     .modal-header .close{color:var(--ink);font-size:1.5rem;cursor:pointer;line-height:1;padding:.25rem .5rem;border-radius:10px;transition:background var(--dur-xs) var(--ease-smooth), transform var(--dur-xs) var(--ease-emph)}
     .modal-header .close:hover{background:#16221a;transform:scale(1.06)}
-    .modal-header .download{font-size:.9rem;padding:.45rem .8rem;border:1px solid #2bbf6a;border-radius:10px;text-decoration:none;color:var(--ink);background:#0f1512;transition:background var(--dur-sm) var(--ease-smooth), color var(--dur-sm) var(--ease-smooth)}
-    .modal-header .download:hover{background:#2bbf6a;color:#0f1115}
 
     .modal-content embed{flex:1;width:100%;height:100%;border-radius:0 0 14px 14px;background:#0b0f0d;opacity:0;transition:opacity var(--dur-md) var(--ease-smooth)}
     .modal-content embed.is-visible{opacity:1}
@@ -223,6 +221,16 @@
         </div>
       </div>
     </details>
+
+    <details class="project-card">
+      <summary>🔒 Network Security Certificate</summary>
+      <div class="accordion">
+        <p>Certyfikat potwierdzający kompetencje w zakresie bezpieczeństwa sieciowego.</p>
+        <div class="cta-buttons">
+          <a onclick="openModal('pliki/dokumenty/network_security_certificate.pdf')">📜 Zobacz Certyfikat</a>
+        </div>
+      </div>
+    </details>
   </section>
 
   <section id="kontakt" class="section">
@@ -243,7 +251,6 @@
   <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="pdfTitle" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
-        <a id="downloadLink" class="download" href="#" target="_blank" rel="noopener">⬇️ Pobierz</a>
         <span class="close" aria-label="Zamknij" title="Zamknij">&times;</span>
       </div>
       <embed id="pdfEmbed" src="" type="application/pdf" aria-label="Podgląd dokumentu PDF" />
@@ -343,7 +350,6 @@
     // ===== Modal PDF with smoother open/close & fade-in on load =====
     const modal = document.getElementById('pdfModal');
     const embed = document.getElementById('pdfEmbed');
-    const downloadLink = document.getElementById('downloadLink');
     const closeBtn = modal.querySelector('.close');
 
     let lastActive = null;
@@ -353,7 +359,6 @@
       lastActive = document.activeElement;
       embed.classList.remove('is-visible');
       embed.src = pdfPath;
-      downloadLink.href = pdfPath;
 
       modal.classList.remove('is-leaving');
       modal.classList.add('is-open');
@@ -370,7 +375,6 @@
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         embed.src = '';
-        downloadLink.href = '#';
         if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
         modal.removeEventListener('transitionend', hide);
       }
