@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,9 +8,11 @@
   <title>Portfolio – Jakub Skrzynecki</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
-    :root{
+    :root {
       /* Enhanced timing & easing */
       --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-emph: cubic-bezier(0.2, 0, 0, 1);
@@ -40,47 +43,125 @@
     }
 
     @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      25% { background-position: 100% 30%; }
-      50% { background-position: 50% 100%; }
-      75% { background-position: 0% 70%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      25% {
+        background-position: 100% 30%;
+      }
+
+      50% {
+        background-position: 50% 100%;
+      }
+
+      75% {
+        background-position: 0% 70%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     @keyframes float {
-      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      25% { transform: translate(50px, -40px) rotate(90deg) scale(1.1); }
-      50% { transform: translate(-30px, 30px) rotate(180deg) scale(0.9); }
-      75% { transform: translate(40px, 40px) rotate(270deg) scale(1.05); }
-      100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+
+      25% {
+        transform: translate(50px, -40px) rotate(90deg) scale(1.1);
+      }
+
+      50% {
+        transform: translate(-30px, 30px) rotate(180deg) scale(0.9);
+      }
+
+      75% {
+        transform: translate(40px, 40px) rotate(270deg) scale(1.05);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+      }
     }
 
     @keyframes floatAlt {
-      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      20% { transform: translate(-50px, 30px) rotate(-60deg) scale(1.15); }
-      40% { transform: translate(20px, -50px) rotate(-120deg) scale(0.85); }
-      60% { transform: translate(-40px, -20px) rotate(-180deg) scale(1.1); }
-      80% { transform: translate(30px, 40px) rotate(-240deg) scale(0.95); }
-      100% { transform: translate(0, 0) rotate(-360deg) scale(1); }
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+
+      20% {
+        transform: translate(-50px, 30px) rotate(-60deg) scale(1.15);
+      }
+
+      40% {
+        transform: translate(20px, -50px) rotate(-120deg) scale(0.85);
+      }
+
+      60% {
+        transform: translate(-40px, -20px) rotate(-180deg) scale(1.1);
+      }
+
+      80% {
+        transform: translate(30px, 40px) rotate(-240deg) scale(0.95);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(-360deg) scale(1);
+      }
     }
 
     @keyframes floatSlow {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(-25px, 35px) rotate(45deg); }
-      66% { transform: translate(35px, -25px) rotate(-45deg); }
-      100% { transform: translate(0, 0) rotate(0deg); }
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      33% {
+        transform: translate(-25px, 35px) rotate(45deg);
+      }
+
+      66% {
+        transform: translate(35px, -25px) rotate(-45deg);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
     }
 
     @keyframes pulse-glow {
-      0%, 100% { opacity: 0.2; filter: blur(70px); }
-      50% { opacity: 0.45; filter: blur(85px); }
+
+      0%,
+      100% {
+        opacity: 0.2;
+        filter: blur(70px);
+      }
+
+      50% {
+        opacity: 0.45;
+        filter: blur(85px);
+      }
     }
 
     @keyframes morphShape {
-      0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-      25% { border-radius: 60% 40% 50% 50% / 70% 30% 50% 50%; }
-      50% { border-radius: 50% 60% 30% 70% / 50% 50% 70% 30%; }
-      75% { border-radius: 70% 30% 50% 50% / 40% 70% 30% 60%; }
+
+      0%,
+      100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      }
+
+      25% {
+        border-radius: 60% 40% 50% 50% / 70% 30% 50% 50%;
+      }
+
+      50% {
+        border-radius: 50% 60% 30% 70% / 50% 50% 70% 30%;
+      }
+
+      75% {
+        border-radius: 70% 30% 50% 50% / 40% 70% 30% 60%;
+      }
     }
 
     @keyframes fadeInUp {
@@ -88,6 +169,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -95,28 +177,39 @@
     }
 
     @keyframes gridPulse {
-      0%, 100% {
+
+      0%,
+      100% {
         opacity: 0.08;
         transform: scale(1) rotate(0deg);
       }
+
       33% {
         opacity: 0.25;
         transform: scale(1.02) rotate(0.5deg);
       }
+
       66% {
         opacity: 0.15;
         transform: scale(0.98) rotate(-0.5deg);
       }
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 80px;
     }
 
-    html, body { height: 100%; }
+    html,
+    body {
+      height: 100%;
+    }
 
     body {
       padding-top: 70px;
@@ -379,7 +472,8 @@
       margin-top: 2rem;
     }
 
-    .cta-buttons a, .btn {
+    .cta-buttons a,
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -401,7 +495,8 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .cta-buttons a:hover, .btn:hover {
+    .cta-buttons a:hover,
+    .btn:hover {
       background: var(--brand);
       color: var(--bg);
       border-color: var(--brand-light);
@@ -412,11 +507,13 @@
         inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
 
-    .cta-buttons a .emoji, .btn .emoji {
+    .cta-buttons a .emoji,
+    .btn .emoji {
       filter: none;
     }
 
-    .cta-buttons a:active, .btn:active {
+    .cta-buttons a:active,
+    .btn:active {
       transform: translateY(0) scale(1);
     }
 
@@ -467,7 +564,8 @@
     }
 
     /* Enhanced project cards with glassmorphism */
-    .projects, .certificates {
+    .projects,
+    .certificates {
       display: grid;
       gap: 1.5rem;
     }
@@ -574,7 +672,7 @@
       opacity: 0;
     }
 
-    .accordion > * {
+    .accordion>* {
       opacity: 0;
       transform: translateY(-10px);
       transition: opacity var(--dur-sm) ease, transform var(--dur-sm) ease;
@@ -584,7 +682,7 @@
       padding: 0.5rem 0;
     }
 
-    .project-card.is-open .accordion > * {
+    .project-card.is-open .accordion>* {
       opacity: 1;
       transform: translateY(0);
     }
@@ -859,7 +957,10 @@
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -867,6 +968,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Floating orbs for ambiance -->
   <div class="orb orb-1"></div>
@@ -886,11 +988,16 @@
   <section class="hero">
     <div class="hero-text">
       <h2>Specjalista ds. Cyberbezpieczeństwa</h2>
-      <p>Student i pasjonat cyberbezpieczeństwa. Specjalizuję się w testach penetracyjnych, analizie luk, hardeningu i integracji systemów bezpieczeństwa. Jestem otwarty na różne role juniorskie w branży IT i cyberbezpieczeństwa.</p>
+      <p>Student i pasjonat cyberbezpieczeństwa. Specjalizuję się w testach penetracyjnych, analizie luk, hardeningu i
+        integracji systemów bezpieczeństwa. Jestem otwarty na różne role juniorskie w branży IT i cyberbezpieczeństwa.
+      </p>
       <div class="cta-buttons">
-        <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank" rel="noopener"><span class="emoji">🔗</span> <span>LinkedIn</span></a>
-        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><span class="emoji">🧩</span> <span>TryHackMe</span></a>
-        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><span class="emoji">🌐</span> <span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank" rel="noopener"><span
+            class="emoji">🔗</span> <span>LinkedIn</span></a>
+        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><span class="emoji">🧩</span>
+          <span>TryHackMe</span></a>
+        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><span class="emoji">🌐</span>
+          <span>GitHub</span></a>
       </div>
     </div>
   </section>
@@ -907,7 +1014,8 @@
             <li>Implementacja rekomendacji defense-in-depth</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')"><span class="emoji">📂</span> <span>Otwórz PDF</span></a>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')"><span
+                class="emoji">📂</span> <span>Otwórz PDF</span></a>
           </div>
           <div class="tags"><span>WebApp</span><span>Security</span><span>Pentest</span></div>
         </div>
@@ -922,7 +1030,8 @@
             <li>Porównanie wydajności dwóch różnych algorytmów klasyfikacji</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')"><span class="emoji">📂</span> <span>Otwórz PDF</span></a>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')"><span
+                class="emoji">📂</span> <span>Otwórz PDF</span></a>
           </div>
           <div class="tags"><span>Biometria</span><span>Authentication</span><span>ML</span></div>
         </div>
@@ -937,7 +1046,8 @@
             <li>Kompleksowe rekomendacje zabezpieczeń sieciowych</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')"><span class="emoji">📂</span> <span>Otwórz PDF</span></a>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')"><span class="emoji">📂</span>
+              <span>Otwórz PDF</span></a>
           </div>
           <div class="tags"><span>Network Security</span><span>MITM</span><span>Audit</span></div>
         </div>
@@ -952,8 +1062,10 @@
             <li>Propozycje implementacji zabezpieczeń zgodnie z OWASP Top 10</li>
           </ul>
           <div class="cta-buttons">
-            <a href="https://github.com/JakubSx01/WateringAppV2" target="_blank" rel="noopener"><span class="emoji">💻</span> <span>Repo GitHub</span></a>
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')"><span class="emoji">📂</span> <span>Otwórz PDF</span></a>
+            <a href="https://github.com/JakubSx01/WateringAppV2" target="_blank" rel="noopener"><span
+                class="emoji">💻</span> <span>Repo GitHub</span></a>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')"><span
+                class="emoji">📂</span> <span>Otwórz PDF</span></a>
           </div>
           <div class="tags"><span>WebApp</span><span>OWASP</span><span>Security Audit</span></div>
         </div>
@@ -968,7 +1080,8 @@
             <li>Centralizacja zarządzania tożsamością i dostępem</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')"><span class="emoji">📂</span> <span>Otwórz PDF</span></a>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')"><span
+                class="emoji">📂</span> <span>Otwórz PDF</span></a>
           </div>
           <div class="tags"><span>Cloud</span><span>SSO</span><span>Identity Management</span></div>
         </div>
@@ -983,7 +1096,8 @@
             <li>Skuteczna identyfikacja i eksploitacja wektorów ataku</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')"><span class="emoji">📂</span> <span>Otwórz PDF</span></a>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')"><span class="emoji">📂</span>
+              <span>Otwórz PDF</span></a>
           </div>
           <div class="tags"><span>Fuzzing</span><span>Pentest</span><span>Recon</span></div>
         </div>
@@ -996,41 +1110,51 @@
     <div class="certificates">
       <details class="project-card">
         <summary>📜 CompTIA Security+</summary>
-      <div class="accordion">
-        <p><strong>ID:</strong> COMP001022861425 | <strong>Data:</strong> 18.08.2025<br/>
-        <strong>Kod weryfikacyjny:</strong> N6CYW7Z54EB4QSFJ | <strong>Ważny do:</strong> 18.08.2028</p>
-        <div class="cta-buttons">
-          <a href="http://verify.CompTIA.org" target="_blank" rel="noopener"><span class="emoji">🔍</span> <span>Weryfikacja Online</span></a>
-          <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')"><span class="emoji">📜</span> <span>Zobacz Certyfikat</span></a>
+        <div class="accordion">
+          <p><strong>ID:</strong> COMP001022861425 | <strong>Data:</strong> 18.08.2025<br />
+            <strong>Kod weryfikacyjny:</strong> N6CYW7Z54EB4QSFJ | <strong>Ważny do:</strong> 18.08.2028
+          </p>
+          <div class="cta-buttons">
+            <a href="http://verify.CompTIA.org" target="_blank" rel="noopener"><span class="emoji">🔍</span>
+              <span>Weryfikacja Online</span></a>
+            <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')"><span class="emoji">📜</span>
+              <span>Zobacz Certyfikat</span></a>
+          </div>
         </div>
-      </div>
-    </details>
+      </details>
 
-    <details class="project-card">
-      <summary>🔒 Network Security Certificate</summary>
-      <div class="accordion">
-        <p>Certyfikat potwierdzający kompleksowe kompetencje w zakresie bezpieczeństwa sieciowego, wydany przez Politechnikę Rzeszowską im. I. Łukasiewicza poprzez program Cisco Networking Academy.</p>
-        <div class="cta-buttons">
-          <a onclick="openModal('pliki/dokumenty/network_Security_certificate.pdf')"><span class="emoji">📜</span> <span>Zobacz Certyfikat</span></a>
+      <details class="project-card">
+        <summary>🔒 Network Security Certificate</summary>
+        <div class="accordion">
+          <p>Certyfikat potwierdzający kompleksowe kompetencje w zakresie bezpieczeństwa sieciowego, wydany przez
+            Politechnikę Rzeszowską im. I. Łukasiewicza poprzez program Cisco Networking Academy.</p>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/dokumenty/network_Security_certificate.pdf')"><span class="emoji">📜</span>
+              <span>Zobacz Certyfikat</span></a>
+          </div>
         </div>
-      </div>
-    </details>
+      </details>
     </div>
   </section>
 
   <section id="kontakt" class="section reveal">
     <h3><span class="emoji">✉️</span> <span class="section-title">Kontakt</span></h3>
     <div class="contact-links">
-      <a href="mailto:sjakubskrzynecki@gmail.com"><span class="emoji">✉️</span> <span>sjakubskrzynecki@gmail.com</span></a>
-      <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank" rel="noopener"><span class="emoji">🔗</span> <span>LinkedIn</span></a>
-      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><span class="emoji">🧩</span> <span>TryHackMe</span></a>
-      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><span class="emoji">🌐</span> <span>GitHub</span></a>
+      <a href="mailto:sjakubskrzynecki@gmail.com"><span class="emoji">✉️</span>
+        <span>sjakubskrzynecki@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank" rel="noopener"><span
+          class="emoji">🔗</span> <span>LinkedIn</span></a>
+      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><span class="emoji">🧩</span>
+        <span>TryHackMe</span></a>
+      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><span class="emoji">🌐</span>
+        <span>GitHub</span></a>
     </div>
   </section>
 
   <footer>
     © 2025 Jakub Skrzynecki
-    <a class="btn" href="https://github.com/JakubSx01" target="_blank" rel="noopener"><span class="emoji">🌐</span> <span>GitHub Repo</span></a>
+    <a class="btn" href="https://github.com/JakubSx01" target="_blank" rel="noopener"><span class="emoji">🌐</span>
+      <span>GitHub Repo</span></a>
   </footer>
 
   <!-- Modal -->
@@ -1210,4 +1334,5 @@
     window.openModal = openModal;
   </script>
 </body>
+
 </html>
