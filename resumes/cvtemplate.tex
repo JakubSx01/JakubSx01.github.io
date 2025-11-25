@@ -97,22 +97,29 @@ Ambitny student studiów magisterskich na kierunku Cyberbezpieczeństwo z solidn
 
 \cvproject{Wdrożenie Identity \& Access Management}{Projekt Akademicki}{Authentik, Microsoft Azure, Docker}
 \begin{itemize}[leftmargin=1.5em, label=\textbullet]
-    \item \textbf{Wdrożenie SSO}: Skonfigurowałem Authentik jako dostawcę tożsamości (IdP) w Azure, umożliwiając Single Sign-On (SSO) dla wielu aplikacji.
-    \item \textbf{Integracja}: Zintegrowałem usługi przy użyciu protokołów SAML 2.0 i OAuth2 z Active Directory (LDAP), centralizując zarządzanie użytkownikami.
+    \item \textbf{Wdrożenie SSO}: Skonfigurowałem Authentik jako dostawcę tożsamości (IdP) w Azure, umożliwiając Single Sign-On (SSO) dla wielu aplikacji poprzez \textbf{OIDC} i \textbf{SAML 2.0}.
+    \item \textbf{Integracja}: Zintegrowałem usługi z Active Directory (LDAP), centralizując zarządzanie użytkownikami dla symulowanej organizacji (3 grupy, 18 użytkowników).
     \item \textbf{Wzmocnienie bezpieczeństwa}: Zaimplementowałem MFA i ścisłe polityki dostępu, chroniąc przed nieautoryzowanym dostępem.
 \end{itemize}
 
 \cvproject{Audyt Bezpieczeństwa Aplikacji Webowej (PlantCare)}{Projekt Akademicki}{OWASP ZAP, Burp Suite, Python}
 \begin{itemize}[leftmargin=1.5em, label=\textbullet]
-    \item \textbf{Ocena podatności}: Przeprowadziłem kompleksowy audyt bezpieczeństwa w oparciu o OWASP Top 10, identyfikując krytyczne luki (XSS, SQLi).
+    \item \textbf{Ocena podatności}: Przeprowadziłem kompleksowy audyt bezpieczeństwa w oparciu o OWASP Top 10, identyfikując krytyczne luki, w tym \textbf{Unrestricted File Upload} i XSS.
     \item \textbf{Automatyczne skanowanie}: Wykorzystałem OWASP ZAP do skanowania automatycznego oraz GitHub Dependabot do analizy zależności (SCA).
-    \item \textbf{Remediacja}: Opracowałem szczegółowe raporty naprawcze i wspierałem proces łatania zidentyfikowanych podatności CVE.
+    \item \textbf{Remediacja}: Opracowałem szczegółowe raporty naprawcze i naprawiłem zidentyfikowane podatności CVE w kodzie.
 \end{itemize}
 
-\cvproject{Symulacja Ataku i Obrony Sieciowej}{Home Lab}{Bettercap, Wireshark, Snort}
+\cvproject{Analiza Biometryczna Dynamiki Pisania}{Projekt Badawczy}{Python, Machine Learning, Scikit-learn}
+\begin{itemize}[leftmargin=1.5em, label=\textbullet]
+    \item \textbf{Uwierzytelnianie behawioralne}: Opracowałem model uczenia maszynowego do uwierzytelniania użytkowników na podstawie wzorców pisania (czas lotu, czas nacisku).
+    \item \textbf{Detekcja anomalii}: Osiągnąłem wynik \textbf{AUC \textasciitilde0.81} w odróżnianiu użytkowników uprawnionych od intruzów przy użyciu klasyfikatorów Random Forest.
+    \item \textbf{Zastosowanie}: Zademonstrowałem skuteczność biometrii behawioralnej jako warstwy ciągłego uwierzytelniania.
+\end{itemize}
+
+\cvproject{Symulacja Ataku i Obrony Sieciowej}{Home Lab}{Bettercap, Wireshark, Snort, ffuf}
 \begin{itemize}[leftmargin=1.5em, label=\textbullet]
     \item \textbf{Analiza ruchu}: Symulowałem ataki MitM (ARP Spoofing, DNS Spoofing), aby zrozumieć wektory ataku i sygnatury detekcji.
-    \item \textbf{Inspekcja pakietów}: Analizowałem przechwycony ruch za pomocą Wireshark w celu identyfikacji anomalii i niezaszyfrowanych poświadczeń.
+    \item \textbf{Fuzzing aplikacji}: Przeprowadziłem rozległe testy fuzzingowe przy użyciu \textbf{ffuf}, odkrywając ukryte endpointy i pliki konfiguracyjne.
     \item \textbf{Detekcja}: Skonfigurowałem reguły IDS (Snort) do wykrywania i alarmowania o podejrzanych wzorcach sieciowych.
 \end{itemize}
 
@@ -121,10 +128,17 @@ Ambitny student studiów magisterskich na kierunku Cyberbezpieczeństwo z solidn
 
 \begin{itemize}[leftmargin=1.5em, label={}]
     \item \textbf{Security Operations}: SIEM (ELK Stack), Zarządzanie Podatnościami (OpenVAS, Nessus), IDS/IPS (Snort), Honeypots (T-Pot).
-    \item \textbf{Web Security}: OWASP Top 10, Burp Suite, OWASP ZAP, Security Headers, koncepcje WAF.
+    \item \textbf{Web Security}: OWASP Top 10, Burp Suite, OWASP ZAP, Security Headers, koncepcje WAF, Bezpieczeństwo Uploadu Plików.
     \item \textbf{Sieci}: TCP/IP, Model OSI, Wireshark, Nmap, VPN, DNS, DHCP, Routing (podstawy BGP).
-    \item \textbf{Chmura i IAM}: Microsoft Azure, Active Directory, Authentik, OAuth 2.0, SAML, Docker, Linux (Kali, Ubuntu).
+    \item \textbf{Chmura i IAM}: Microsoft Azure, Active Directory, Authentik, OIDC, SAML, Docker, Linux (Kali, Ubuntu).
     \item \textbf{Programowanie}: Python (Skrypty, Automatyzacja), SQL, Bash, JavaScript (Podstawy).
+\end{itemize}
+
+% Języki
+\cvsection{Języki Obce}
+\begin{itemize}[leftmargin=1.5em, label=\textbullet]
+    \item \textbf{Angielski}: C1 (Zaawansowany) -- Pełna biegłość zawodowa
+    \item \textbf{Polski}: Ojczysty
 \end{itemize}
 
 % Wykształcenie

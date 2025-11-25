@@ -97,22 +97,29 @@ Ambitious Master's student in Cybersecurity with a strong foundation in network 
 
 \cvproject{Identity \& Access Management Implementation}{Academic Project}{Authentik, Microsoft Azure, Docker}
 \begin{itemize}[leftmargin=1.5em, label=\textbullet]
-    \item \textbf{SSO Deployment}: Deployed Authentik as an Identity Provider (IdP) in Azure, enabling Single Sign-On (SSO) for multiple applications.
-    \item \textbf{Integration}: Configured SAML 2.0 and OAuth2 protocols to integrate with Active Directory (LDAP), centralizing user management.
+    \item \textbf{SSO Deployment}: Deployed Authentik as an Identity Provider (IdP) in Azure, enabling Single Sign-On (SSO) for multiple applications via \textbf{OIDC} and \textbf{SAML 2.0}.
+    \item \textbf{Integration}: Integrated with Active Directory (LDAP) to centralize user management for a simulated organization (3 groups, 18 users).
     \item \textbf{Security Hardening}: Implemented MFA and strict access policies to prevent unauthorized access.
 \end{itemize}
 
 \cvproject{Web Application Security Audit (PlantCare)}{Academic Project}{OWASP ZAP, Burp Suite, Python}
 \begin{itemize}[leftmargin=1.5em, label=\textbullet]
-    \item \textbf{Vulnerability Assessment}: Performed a comprehensive security audit based on OWASP Top 10, identifying critical vulnerabilities (XSS, SQLi).
+    \item \textbf{Vulnerability Assessment}: Performed a comprehensive security audit based on OWASP Top 10, identifying critical vulnerabilities including \textbf{Unrestricted File Upload} and XSS.
     \item \textbf{Automated Scanning}: Utilized OWASP ZAP for automated scanning and GitHub Dependabot for software composition analysis (SCA).
     \item \textbf{Remediation}: Provided detailed remediation reports and fixed identified CVEs in the application code.
 \end{itemize}
 
-\cvproject{Network Attack \& Defense Simulation}{Home Lab}{Bettercap, Wireshark, Snort}
+\cvproject{Biometric Keystroke Dynamics Analysis}{Research Project}{Python, Machine Learning, Scikit-learn}
+\begin{itemize}[leftmargin=1.5em, label=\textbullet]
+    \item \textbf{Behavioral Authentication}: Developed a machine learning model to authenticate users based on typing patterns (flight time, dwell time).
+    \item \textbf{Anomaly Detection}: Achieved \textbf{AUC \textasciitilde0.81} in distinguishing legitimate users from impostors using Random Forest classifiers.
+    \item \textbf{Security Application}: Demonstrated the viability of behavioral biometrics as a continuous authentication layer.
+\end{itemize}
+
+\cvproject{Network Attack \& Defense Simulation}{Home Lab}{Bettercap, Wireshark, Snort, ffuf}
 \begin{itemize}[leftmargin=1.5em, label=\textbullet]
     \item \textbf{Traffic Analysis}: Simulated MitM attacks (ARP Spoofing, DNS Spoofing) to understand attack vectors and detection signatures.
-    \item \textbf{Packet Inspection}: Analyzed captured traffic using Wireshark to identify anomalies and cleartext credentials.
+    \item \textbf{Web Fuzzing}: Conducted extensive directory and parameter fuzzing using \textbf{ffuf} to discover hidden endpoints and sensitive files.
     \item \textbf{Defense}: Configured IDS rules (Snort) to detect and alert on suspicious network patterns.
 \end{itemize}
 
@@ -121,10 +128,17 @@ Ambitious Master's student in Cybersecurity with a strong foundation in network 
 
 \begin{itemize}[leftmargin=1.5em, label={}]
     \item \textbf{Security Operations}: SIEM (ELK Stack), Vulnerability Management (OpenVAS, Nessus), IDS/IPS (Snort), Honeypots (T-Pot).
-    \item \textbf{Web Security}: OWASP Top 10, Burp Suite, OWASP ZAP, Security Headers, WAF concepts.
+    \item \textbf{Web Security}: OWASP Top 10, Burp Suite, OWASP ZAP, Security Headers, WAF concepts, File Upload Security.
     \item \textbf{Networking}: TCP/IP, OSI Model, Wireshark, Nmap, VPN, DNS, DHCP, Routing (BGP basics).
-    \item \textbf{Cloud \& IAM}: Microsoft Azure, Active Directory, Authentik, OAuth 2.0, SAML, Docker, Linux (Kali, Ubuntu).
+    \item \textbf{Cloud \& IAM}: Microsoft Azure, Active Directory, Authentik, OIDC, SAML, Docker, Linux (Kali, Ubuntu).
     \item \textbf{Programming}: Python (Scripting, Automation), SQL, Bash, JavaScript (Basic).
+\end{itemize}
+
+% Languages
+\cvsection{Languages}
+\begin{itemize}[leftmargin=1.5em, label=\textbullet]
+    \item \textbf{English}: C1 (Advanced) -- Professional working proficiency
+    \item \textbf{Polish}: Native
 \end{itemize}
 
 % Education
