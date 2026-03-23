@@ -1,91 +1,54 @@
 # Jakub Skrzynecki — Portfolio
 
-Personal portfolio website of Jakub Skrzynecki — Electronics Engineer (B.Eng.) and Cybersecurity Specialist (M.Sc.).
-
 **Live:** [jakubsx01.github.io](https://jakubsx01.github.io)
 
----
-
-## About
-
-Single-page portfolio built with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies.
-Showcases engineering projects, cybersecurity academic work, certifications, and contact links.
+Electronics Engineer specializing in Telecommunications, M.Sc. in Cybersecurity.
+I solve real-world problems through embedded systems, network security, and software engineering.
 
 ---
 
-## Features
+## Personal Projects
 
-- **Light / Dark mode** — toggle in the header, preference saved to `localStorage`
-- **EN / PL language toggle** — full bilingual content, saved to `localStorage`
-- **Animated dot background** — reacts to cursor position
-- **Smooth accordions** — project cards expand/collapse with CSS transitions
-- **PDF viewer modal** — project reports open inline without leaving the page
-- **Scroll reveal animations** — sections animate in as they enter the viewport
-- **Credly badge embed** — live certification badges in the hero section
-- **Fully responsive** — works on desktop and mobile
+### Mini Gauge – Hyundai Coupé
+Upgrading to an aftermarket 2DIN radio in the Hyundai Coupé/Tiburon removes the original factory multi-gauge — it physically cannot fit. I built a compact custom embedded device that displays battery voltage, coolant temperature from the ECU via CAN bus, and real-time fuel consumption. It features automatic night mode and a 60 FPS interface on a 1.28" round LCD, seamlessly replacing the OEM gauge with no loss of information.
+
+### MyCarWallet
+There was no convenient offline-first tool for tracking multi-vehicle expenses, fuel, and maintenance without a cloud dependency. I built an Android app with a multi-vehicle garage manager, OCR receipt scanning, maintenance alerts, and interactive analytics — all stored locally on the device with nothing leaving it.
 
 ---
 
-## Tech stack
+## Cybersecurity Projects
 
-| Layer | Choice |
-|-------|--------|
-| Markup | HTML5 (single file) |
-| Styling | Pure CSS with custom properties (CSS variables) |
-| Scripting | Vanilla JavaScript |
-| Fonts | Inter (UI), Fira Code (headings) — Google Fonts |
-| Badges | Credly embed |
-| Hosting | GitHub Pages |
+### File Upload Vulnerabilities
+An end-to-end penetration test and defense analysis of file upload mechanisms, covering MIME type spoofing, extension bypass, and server-side validation gaps — together with a hardened reference implementation.
 
----
+### Behavioural Biometrics – Keystroke Dynamics
+Research into passive user authentication using typing rhythm. Two machine learning classifiers were trained and evaluated, reaching an AUC of ~0.81 without any additional hardware.
 
-## Page structure
+### Security Audit – MITM Attack Simulation
+A controlled lab audit demonstrating ARP Poisoning, DNS Spoofing, and SSLStrip attacks on a local network. The report covers detection methods and mitigation strategies for each attack vector.
 
-```
-Hero            — intro, trait chips, CTA links, Credly badges
-My Projects     — personal engineering projects
-Cybersecurity   — 6 academic security project write-ups (with PDF reports)
-Certificates    — CompTIA Security+, Cisco Network Security
-Contact         — email, LinkedIn, TryHackMe, GitHub
-```
+### PlantCare – Security Analysis
+A full OWASP Top 10 audit of an existing web application, uncovering CSRF, CSP, and CORS misconfigurations. The report includes both findings and concrete remediation steps.
+
+### Cloud SSO with Authentik
+Design and deployment of a Single Sign-On infrastructure on Azure Cloud, integrating Portainer via OAuth2 and Nextcloud via SAML — providing centralised identity management across multiple services.
+
+### Web Fuzzing with ffuf
+A comparative study of content discovery and parameter mining techniques, benchmarking ffuf against wfuzz and DirBuster across multiple target scenarios.
 
 ---
 
-## Projects
+## Certifications
 
-### Personal
-
-| Project | Stack | Description |
-|---------|-------|-------------|
-| [Mini Gauge – Hyundai Coupé](https://github.com/JakubSx01/Mini_gauge_Hyundai_coupe) | ESP32, C/C++, LVGL, CAN bus | Custom embedded gauge replacing the OEM factory display after a 2DIN radio upgrade |
-| [MyCarWallet](https://github.com/JakubSx01/MyCarWallet) | Flutter, SQLite, Google ML Kit | Offline-first Android app for tracking vehicle fuel, expenses and maintenance |
-
-### Cybersecurity (academic)
-
-- File Upload Vulnerabilities — penetration testing & defense
-- Behavioural Biometrics — keystroke dynamics with ML classifiers (AUC ~0.81)
-- MITM Security Audit — ARP Poisoning, DNS Spoofing, SSLStrip
-- PlantCare App — OWASP Top 10 audit with OWASP ZAP
-- Cloud SSO — Authentik with OIDC/SAML on Azure
-- Web Fuzzing — content discovery with ffuf vs wfuzz vs DirBuster
-
----
-
-## Running locally
-
-No build step required. Just open `index.html` in any modern browser.
-
-```bash
-git clone https://github.com/JakubSx01/JakubSx01.github.io.git
-cd JakubSx01.github.io
-# open index.html
-```
+- **CompTIA Security+** — valid 2025–2028
+- **Network Security** — Cisco Networking Academy / Politechnika Rzeszowska
 
 ---
 
 ## Contact
 
-- **Email:** sjakubskrzynecki@gmail.com
-- **LinkedIn:** [jakub-skrzynecki-f0r-vv0rk](https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/)
-- **TryHackMe:** [CyberhelperJS](https://tryhackme.com/p/CyberhelperJS)
-- **GitHub:** [JakubSx01](https://github.com/JakubSx01)
+- sjakubskrzynecki@gmail.com
+- [LinkedIn](https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/)
+- [TryHackMe](https://tryhackme.com/p/CyberhelperJS)
+- [GitHub](https://github.com/JakubSx01)
