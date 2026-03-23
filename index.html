@@ -843,10 +843,10 @@
         </a>
       </nav>
       <button class="header-btn" id="lang-toggle" aria-label="Toggle language">
-        <span class="btn-text" id="lang-label">PL</span>
+        <span class="btn-text" id="lang-label">🇬🇧 EN</span>
       </button>
       <button class="header-btn" id="theme-toggle" aria-label="Toggle theme">
-        <span class="btn-text" id="theme-icon">🌙</span>
+        <span class="btn-text" id="theme-icon">☀️ Light</span>
       </button>
       <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span class="bar"></span>
@@ -1287,7 +1287,7 @@
         }
       });
       document.documentElement.lang = lang;
-      document.getElementById('lang-label').textContent = lang === 'en' ? 'PL' : 'EN';
+      document.getElementById('lang-label').textContent = lang === 'en' ? '🇬🇧 EN' : '🇵🇱 PL';
     }
 
     document.getElementById('lang-toggle').addEventListener('click', () => {
@@ -1301,7 +1301,7 @@
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
-      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      themeIcon.textContent = theme === 'dark' ? '🌙 Dark' : '☀️ Light';
       localStorage.setItem('theme', theme);
     }
 
