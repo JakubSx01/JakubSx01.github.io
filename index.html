@@ -833,6 +833,14 @@
           <span class="emoji">🛡️</span>
           <span class="nav-text" data-i18n="nav_cyber">Cybersecurity</span>
         </a>
+        <a href="#security-research">
+          <span class="emoji">🔬</span>
+          <span class="nav-text" data-i18n="nav_security_research">Research</span>
+        </a>
+        <a href="#project-management">
+          <span class="emoji">📊</span>
+          <span class="nav-text" data-i18n="nav_project_management">Management</span>
+        </a>
         <a href="#certificates">
           <span class="emoji">📜</span>
           <span class="nav-text" data-i18n="nav_certs">Certificates</span>
@@ -1071,6 +1079,100 @@
     </div>
   </section>
 
+  <!-- SECURITY RESEARCH SECTION -->
+  <section id="security-research" class="section reveal">
+    <h3>
+      <span class="emoji">🔬</span>
+      <span class="section-title" data-i18n="security_research_title">Security Research &amp; SOC</span>
+    </h3>
+    <div class="projects">
+
+      <!-- Research 1: AI SOC Incident Prediction -->
+      <details class="project-card">
+        <summary data-i18n="research1_title">🤖 AI-Driven Incident Prediction in SOC</summary>
+        <div class="accordion">
+          <ul>
+            <li data-i18n="research1_b1">Analysis of how AI can support early detection and prediction of security incidents in SOC environments</li>
+            <li data-i18n="research1_b2">Focus on event correlation, alert prioritisation, anomaly detection, and incident response acceleration</li>
+            <li data-i18n="research1_b3">Practical view on integrating predictive models into monitoring and triage workflows</li>
+          </ul>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/predykcja-incydentow-przy-uzyciu-ai-w-srodowisku-soc.pdf')">
+              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            </a>
+          </div>
+          <div class="tags"><span>SOC</span><span>AI</span><span>Incident Response</span></div>
+        </div>
+      </details>
+
+      <!-- Research 2: Malicious Software Threats -->
+      <details class="project-card">
+        <summary data-i18n="research2_title">🦠 Malicious Software Threats in IT Systems</summary>
+        <div class="accordion">
+          <ul>
+            <li data-i18n="research2_b1">Structured overview of threats caused by malicious software in modern IT environments</li>
+            <li data-i18n="research2_b2">Discussion of attack vectors, system impact, detection challenges, and defensive controls</li>
+            <li data-i18n="research2_b3">Emphasis on practical security awareness and layered protection strategies</li>
+          </ul>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/zagrozenia-bezpieczenstwa-systemow-it-wynikajace-ze-zlosliwego.pdf')">
+              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            </a>
+          </div>
+          <div class="tags"><span>Malware</span><span>Threat Analysis</span><span>Defense-in-Depth</span></div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- PROJECT MANAGEMENT SECTION -->
+  <section id="project-management" class="section reveal">
+    <h3>
+      <span class="emoji">📊</span>
+      <span class="section-title" data-i18n="project_management_title">Project Management Methods</span>
+    </h3>
+    <div class="projects">
+
+      <!-- Management 1: Hybrid Methodologies -->
+      <details class="project-card">
+        <summary data-i18n="management1_title">📈 Hybrid Project Management Methodologies</summary>
+        <div class="accordion">
+          <ul>
+            <li data-i18n="management1_b1">Comparison of AgilePM, PRINCE2 Agile, Hybrid Waterfall, and Disciplined Agile approaches</li>
+            <li data-i18n="management1_b2">Evaluation of governance, delivery flexibility, documentation level, and implementation context</li>
+            <li data-i18n="management1_b3">Useful reference for selecting a methodology based on project risk, team maturity, and organisational constraints</li>
+          </ul>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid-waterfall-disciplined-agile.pdf')">
+              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            </a>
+          </div>
+          <div class="tags"><span>AgilePM</span><span>PRINCE2 Agile</span><span>Hybrid</span><span>Disciplined Agile</span></div>
+        </div>
+      </details>
+
+      <!-- Management 2: AgilePM / PRINCE2 Agile / Hybrid -->
+      <details class="project-card">
+        <summary data-i18n="management2_title">🧭 AgilePM, PRINCE2 Agile &amp; Hybrid Comparison</summary>
+        <div class="accordion">
+          <ul>
+            <li data-i18n="management2_b1">Focused comparison of hybrid project-management frameworks used in technology projects</li>
+            <li data-i18n="management2_b2">Highlights differences in roles, control points, iteration planning, and change management</li>
+            <li data-i18n="management2_b3">Supports choosing a delivery model for projects combining formal governance with agile execution</li>
+          </ul>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid.pdf')">
+              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            </a>
+          </div>
+          <div class="tags"><span>Project Management</span><span>Agile</span><span>Governance</span></div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
   <!-- CERTIFICATES SECTION -->
   <section id="certificates" class="section reveal">
     <h3>
@@ -1160,6 +1262,8 @@
       en: {
         nav_myprojects:      'My Projects',
         nav_cyber:           'Cybersecurity',
+        nav_security_research: 'Research',
+        nav_project_management: 'Management',
         nav_certs:           'Certificates',
         nav_contact:         'Contact',
         hero_title:          'Electronics Engineer &amp; Cybersecurity Specialist',
@@ -1202,6 +1306,24 @@
         proj6_b1:            'Content discovery, parameter mining, virtual host enumeration',
         proj6_b2:            'Comparative tool analysis: ffuf vs wfuzz vs DirBuster',
         proj6_b3:            'Effective identification and exploitation of attack vectors',
+        security_research_title: 'Security Research &amp; SOC',
+        research1_title:     '🤖 AI-Driven Incident Prediction in SOC',
+        research1_b1:        'Analysis of how AI can support early detection and prediction of security incidents in SOC environments',
+        research1_b2:        'Focus on event correlation, alert prioritisation, anomaly detection, and incident response acceleration',
+        research1_b3:        'Practical view on integrating predictive models into monitoring and triage workflows',
+        research2_title:     '🦠 Malicious Software Threats in IT Systems',
+        research2_b1:        'Structured overview of threats caused by malicious software in modern IT environments',
+        research2_b2:        'Discussion of attack vectors, system impact, detection challenges, and defensive controls',
+        research2_b3:        'Emphasis on practical security awareness and layered protection strategies',
+        project_management_title: 'Project Management Methods',
+        management1_title:   '📈 Hybrid Project Management Methodologies',
+        management1_b1:      'Comparison of AgilePM, PRINCE2 Agile, Hybrid Waterfall, and Disciplined Agile approaches',
+        management1_b2:      'Evaluation of governance, delivery flexibility, documentation level, and implementation context',
+        management1_b3:      'Useful reference for selecting a methodology based on project risk, team maturity, and organisational constraints',
+        management2_title:   '🧭 AgilePM, PRINCE2 Agile &amp; Hybrid Comparison',
+        management2_b1:      'Focused comparison of hybrid project-management frameworks used in technology projects',
+        management2_b2:      'Highlights differences in roles, control points, iteration planning, and change management',
+        management2_b3:      'Supports choosing a delivery model for projects combining formal governance with agile execution',
         btn_pdf:             'Open PDF',
         btn_ghrepo:          'GitHub Repo',
         certs_title:         'Achievements &amp; Certificates',
@@ -1218,6 +1340,8 @@
       pl: {
         nav_myprojects:      'Moje Projekty',
         nav_cyber:           'Cyberbezpieczeństwo',
+        nav_security_research: 'Badania',
+        nav_project_management: 'Zarządzanie',
         nav_certs:           'Certyfikaty',
         nav_contact:         'Kontakt',
         hero_title:          'Inżynier Elektronik &amp; Specjalista ds. Cyberbezpieczeństwa',
@@ -1260,6 +1384,24 @@
         proj6_b1:            'Content discovery, parameter mining, virtual host enumeration',
         proj6_b2:            'Porównawcza analiza narzędzi: ffuf vs wfuzz vs DirBuster',
         proj6_b3:            'Skuteczna identyfikacja i eksploitacja wektorów ataku',
+        security_research_title: 'Badania bezpieczeństwa i SOC',
+        research1_title:     '🤖 Predykcja incydentów w SOC z użyciem AI',
+        research1_b1:        'Analiza sposobów wykorzystania AI do wczesnego wykrywania i przewidywania incydentów bezpieczeństwa w środowiskach SOC',
+        research1_b2:        'Nacisk na korelację zdarzeń, priorytetyzację alertów, wykrywanie anomalii i przyspieszenie reakcji na incydenty',
+        research1_b3:        'Praktyczne spojrzenie na integrację modeli predykcyjnych z monitoringiem i triage alertów',
+        research2_title:     '🦠 Zagrożenia ze strony złośliwego oprogramowania',
+        research2_b1:        'Uporządkowany przegląd zagrożeń wynikających ze złośliwego oprogramowania w nowoczesnych środowiskach IT',
+        research2_b2:        'Omówienie wektorów ataku, wpływu na systemy, trudności detekcji i mechanizmów obronnych',
+        research2_b3:        'Nacisk na praktyczną świadomość bezpieczeństwa i warstwowe strategie ochrony',
+        project_management_title: 'Metodyki zarządzania projektami',
+        management1_title:   '📈 Hybrydowe metodyki zarządzania projektami',
+        management1_b1:      'Porównanie podejść AgilePM, PRINCE2 Agile, Hybrid Waterfall i Disciplined Agile',
+        management1_b2:      'Ocena nadzoru, elastyczności dostarczania, poziomu dokumentacji i kontekstu wdrożenia',
+        management1_b3:      'Materiał pomocny przy wyborze metodyki według ryzyka projektu, dojrzałości zespołu i ograniczeń organizacyjnych',
+        management2_title:   '🧭 Porównanie AgilePM, PRINCE2 Agile i Hybrid',
+        management2_b1:      'Skoncentrowane porównanie hybrydowych frameworków zarządzania projektami używanych w projektach technologicznych',
+        management2_b2:      'Wskazanie różnic w rolach, punktach kontrolnych, planowaniu iteracji i zarządzaniu zmianą',
+        management2_b3:      'Wsparcie wyboru modelu prowadzenia projektu łączącego formalny nadzór ze zwinną realizacją',
         btn_pdf:             'Otwórz PDF',
         btn_ghrepo:          'Repo GitHub',
         certs_title:         'Osiągnięcia i Certyfikaty',
