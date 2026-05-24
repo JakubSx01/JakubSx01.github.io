@@ -567,6 +567,54 @@
       line-height: 1.7;
     }
 
+    .pdf-preview {
+      margin-top: 1.1rem;
+      border: 1px solid var(--border-bright);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.04);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="dark"] .pdf-preview {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .pdf-preview iframe {
+      display: block;
+      width: 100%;
+      height: min(72vh, 760px);
+      min-height: 520px;
+      border: 0;
+      background: var(--bg);
+    }
+
+    .pdf-open-fallback {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border-bright);
+      color: var(--brand-light);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .pdf-open-fallback:hover {
+      background: var(--border-bright);
+      color: var(--brand);
+    }
+
+    .cta-buttons:empty {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .pdf-preview iframe {
+        height: 68vh;
+        min-height: 420px;
+      }
+    }
+
     /* ===== TAGS ===== */
     .tags {
       display: flex;
@@ -1551,6 +1599,39 @@
       applyTranslations(currentLang);
     })();
 
+    // ===== INLINE PDF PREVIEWS =====
+    function createInlinePdfPreviews() {
+      document.querySelectorAll('a[onclick^="openModal"]').forEach((link) => {
+        const onclick = link.getAttribute('onclick') || '';
+        const match = onclick.match(/openModal\(['"]([^'"]+\.pdf)['"]\)/);
+        const pdfPath = match ? match[1] : '';
+        const accordion = link.closest('.accordion');
+        if (!pdfPath || !accordion) return;
+
+        const preview = document.createElement('div');
+        preview.className = 'pdf-preview';
+        preview.innerHTML = `
+          <iframe data-pdf-src="${pdfPath}#toolbar=1&navpanes=0" title="PDF preview" loading="lazy"></iframe>
+          <a class="pdf-open-fallback" href="${pdfPath}" target="_blank" rel="noopener">
+            <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+          </a>
+        `;
+
+        const buttons = link.closest('.cta-buttons');
+        if (buttons) {
+          buttons.insertAdjacentElement('afterend', preview);
+          link.remove();
+          if (!buttons.querySelector('a')) buttons.remove();
+        } else {
+          link.insertAdjacentElement('afterend', preview);
+          link.remove();
+        }
+      });
+      applyTranslations(currentLang);
+    }
+
+    createInlinePdfPreviews();
+
     // ===== ACCORDION LOGIC =====
     document.querySelectorAll('details.project-card').forEach((el) => {
       const summary = el.querySelector('summary');
@@ -1570,6 +1651,9 @@
           setTimeout(() => { el.open = false; }, 340);
         } else {
           el.open = true;
+          content.querySelectorAll('iframe[data-pdf-src]').forEach((frame) => {
+            if (!frame.src) frame.src = frame.dataset.pdfSrc;
+          });
           const height = content.scrollHeight;
           content.style.height = '0px';
           content.style.opacity = '0';
