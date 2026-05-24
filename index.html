@@ -444,6 +444,39 @@
       gap: 1rem;
     }
 
+    .project-subsection {
+      margin-top: 1.75rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border-bright);
+      border-left: 5px solid var(--brand);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.48);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    [data-theme="dark"] .project-subsection {
+      background: rgba(14, 14, 20, 0.52);
+    }
+
+    .project-subsection:first-child {
+      margin-top: 0;
+    }
+
+    .project-subsection h4 {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.05rem;
+      color: var(--silver);
+      margin-bottom: 0.35rem;
+    }
+
+    .project-subsection p {
+      color: var(--ink-weak);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
     details.project-card {
       background: rgba(255, 255, 255, 0.65);
       padding: 1.5rem;
@@ -833,14 +866,6 @@
           <span class="emoji">🛡️</span>
           <span class="nav-text" data-i18n="nav_cyber">Cybersecurity</span>
         </a>
-        <a href="#security-research">
-          <span class="emoji">🔬</span>
-          <span class="nav-text" data-i18n="nav_security_research">Research</span>
-        </a>
-        <a href="#project-management">
-          <span class="emoji">📊</span>
-          <span class="nav-text" data-i18n="nav_project_management">Management</span>
-        </a>
         <a href="#certificates">
           <span class="emoji">📜</span>
           <span class="nav-text" data-i18n="nav_certs">Certificates</span>
@@ -965,6 +990,11 @@
     </h3>
     <div class="projects">
 
+      <div class="project-subsection">
+        <h4 data-i18n="cyber_group_web_title">🧪 Web &amp; Application Security</h4>
+        <p data-i18n="cyber_group_web_desc">Practical security testing of web applications, upload flows, OWASP controls, and remediation planning.</p>
+      </div>
+
       <!-- Project 1: File Upload -->
       <details class="project-card">
         <summary data-i18n="proj1_title">🛡️ File Upload Vulnerabilities</summary>
@@ -980,42 +1010,6 @@
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>Security</span><span>Pentest</span></div>
-        </div>
-      </details>
-
-      <!-- Project 2: Biometrics -->
-      <details class="project-card">
-        <summary data-i18n="proj2_title">⌨️ Behavioural Biometrics – Keystroke Dynamics</summary>
-        <div class="accordion">
-          <ul>
-            <li data-i18n="proj2_b1">Advanced behavioural authentication based on keystroke dynamics</li>
-            <li data-i18n="proj2_b2">Effectiveness tests with AUC metric reaching ~0.81</li>
-            <li data-i18n="proj2_b3">Comparative analysis of two classification algorithms</li>
-          </ul>
-          <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
-            </a>
-          </div>
-          <div class="tags"><span>Biometrics</span><span>Authentication</span><span>ML</span></div>
-        </div>
-      </details>
-
-      <!-- Project 3: MITM Audit -->
-      <details class="project-card">
-        <summary data-i18n="proj3_title">🌐 Security Audit (MITM)</summary>
-        <div class="accordion">
-          <ul>
-            <li data-i18n="proj3_b1">Attack simulation: ARP Poisoning, DNS Spoofing, SSLStrip</li>
-            <li data-i18n="proj3_b2">Isolated lab environment using Bettercap and BEEF</li>
-            <li data-i18n="proj3_b3">Comprehensive network security recommendations</li>
-          </ul>
-          <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
-            </a>
-          </div>
-          <div class="tags"><span>Network Security</span><span>MITM</span><span>Audit</span></div>
         </div>
       </details>
 
@@ -1037,6 +1031,29 @@
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>OWASP</span><span>Security Audit</span></div>
+        </div>
+      </details>
+
+      <div class="project-subsection">
+        <h4 data-i18n="cyber_group_network_title">🌐 Network, Identity &amp; Reconnaissance</h4>
+        <p data-i18n="cyber_group_network_desc">Network attack simulations, SSO/IAM deployment, reconnaissance, fuzzing, and infrastructure security.</p>
+      </div>
+
+      <!-- Project 3: MITM Audit -->
+      <details class="project-card">
+        <summary data-i18n="proj3_title">🌐 Security Audit (MITM)</summary>
+        <div class="accordion">
+          <ul>
+            <li data-i18n="proj3_b1">Attack simulation: ARP Poisoning, DNS Spoofing, SSLStrip</li>
+            <li data-i18n="proj3_b2">Isolated lab environment using Bettercap and BEEF</li>
+            <li data-i18n="proj3_b3">Comprehensive network security recommendations</li>
+          </ul>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')">
+              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            </a>
+          </div>
+          <div class="tags"><span>Network Security</span><span>MITM</span><span>Audit</span></div>
         </div>
       </details>
 
@@ -1076,16 +1093,33 @@
         </div>
       </details>
 
-    </div>
-  </section>
+      <div class="project-subsection">
+        <h4 data-i18n="cyber_group_auth_title">⌨️ Authentication &amp; Behavioural Biometrics</h4>
+        <p data-i18n="cyber_group_auth_desc">Authentication mechanisms, user behaviour analysis, classification metrics, and identity assurance.</p>
+      </div>
 
-  <!-- SECURITY RESEARCH SECTION -->
-  <section id="security-research" class="section reveal">
-    <h3>
-      <span class="emoji">🔬</span>
-      <span class="section-title" data-i18n="security_research_title">Security Research &amp; SOC</span>
-    </h3>
-    <div class="projects">
+      <!-- Project 2: Biometrics -->
+      <details class="project-card">
+        <summary data-i18n="proj2_title">⌨️ Behavioural Biometrics – Keystroke Dynamics</summary>
+        <div class="accordion">
+          <ul>
+            <li data-i18n="proj2_b1">Advanced behavioural authentication based on keystroke dynamics</li>
+            <li data-i18n="proj2_b2">Effectiveness tests with AUC metric reaching ~0.81</li>
+            <li data-i18n="proj2_b3">Comparative analysis of two classification algorithms</li>
+          </ul>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')">
+              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            </a>
+          </div>
+          <div class="tags"><span>Biometrics</span><span>Authentication</span><span>ML</span></div>
+        </div>
+      </details>
+
+      <div class="project-subsection">
+        <h4 data-i18n="cyber_group_soc_title">🤖 SOC, Threat Research &amp; Malware</h4>
+        <p data-i18n="cyber_group_soc_desc">Security operations, AI-assisted incident prediction, malware threats, and defensive strategy.</p>
+      </div>
 
       <!-- Research 1: AI SOC Incident Prediction -->
       <details class="project-card">
@@ -1123,16 +1157,10 @@
         </div>
       </details>
 
-    </div>
-  </section>
-
-  <!-- PROJECT MANAGEMENT SECTION -->
-  <section id="project-management" class="section reveal">
-    <h3>
-      <span class="emoji">📊</span>
-      <span class="section-title" data-i18n="project_management_title">Project Management Methods</span>
-    </h3>
-    <div class="projects">
+      <div class="project-subsection">
+        <h4 data-i18n="cyber_group_management_title">📊 IT Security Project Management</h4>
+        <p data-i18n="cyber_group_management_desc">Methodology selection and governance for projects where security, delivery control, and agility must be balanced.</p>
+      </div>
 
       <!-- Management 1: Hybrid Methodologies -->
       <details class="project-card">
@@ -1212,6 +1240,46 @@
         </div>
       </details>
 
+
+
+      <!-- Certificate 3: TryHackMe Cyber Security 101 -->
+      <details class="project-card">
+        <summary data-i18n="cert3_title">🧩 TryHackMe – Cyber Security 101</summary>
+        <div class="accordion">
+          <p data-i18n="cert3_desc">Certificate of completion for the Cyber Security 101 Learning Path. Completed on 4 November 2024.</p>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/dokumenty/THM-FDA40U8F8X.pdf')">
+              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            </a>
+          </div>
+        </div>
+      </details>
+
+      <!-- Certificate 4: TryHackMe Red Teaming -->
+      <details class="project-card">
+        <summary data-i18n="cert4_title">🧩 TryHackMe – Red Teaming</summary>
+        <div class="accordion">
+          <p data-i18n="cert4_desc">Certificate of completion for the Red Teaming Learning Path. Completed on 25 September 2024.</p>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/dokumenty/THM-S5DPZ78DVL.pdf')">
+              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            </a>
+          </div>
+        </div>
+      </details>
+
+      <!-- Certificate 5: TryHackMe Web Fundamentals -->
+      <details class="project-card">
+        <summary data-i18n="cert5_title">🧩 TryHackMe – Web Fundamentals</summary>
+        <div class="accordion">
+          <p data-i18n="cert5_desc">Certificate of completion for the Web Fundamentals Learning Path. Completed on 5 November 2024. Time to complete: 17 hours 20 minutes.</p>
+          <div class="cta-buttons">
+            <a onclick="openModal('pliki/dokumenty/THM-Y4LALXDOMB.pdf')">
+              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            </a>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -1262,8 +1330,6 @@
       en: {
         nav_myprojects:      'My Projects',
         nav_cyber:           'Cybersecurity',
-        nav_security_research: 'Research',
-        nav_project_management: 'Management',
         nav_certs:           'Certificates',
         nav_contact:         'Contact',
         hero_title:          'Electronics Engineer &amp; Cybersecurity Specialist',
@@ -1282,6 +1348,16 @@
         mycarwallet_bullet3: 'Impact: Clean Architecture Android app that puts the user fully in control of their vehicle data, with a polished chart-driven dashboard.',
         btn_github:          'GitHub Repo',
         cyber_title:         'Cybersecurity Projects',
+        cyber_group_web_title: '🧪 Web &amp; Application Security',
+        cyber_group_web_desc: 'Practical security testing of web applications, upload flows, OWASP controls, and remediation planning.',
+        cyber_group_network_title: '🌐 Network, Identity &amp; Reconnaissance',
+        cyber_group_network_desc: 'Network attack simulations, SSO/IAM deployment, reconnaissance, fuzzing, and infrastructure security.',
+        cyber_group_auth_title: '⌨️ Authentication &amp; Behavioural Biometrics',
+        cyber_group_auth_desc: 'Authentication mechanisms, user behaviour analysis, classification metrics, and identity assurance.',
+        cyber_group_soc_title: '🤖 SOC, Threat Research &amp; Malware',
+        cyber_group_soc_desc: 'Security operations, AI-assisted incident prediction, malware threats, and defensive strategy.',
+        cyber_group_management_title: '📊 IT Security Project Management',
+        cyber_group_management_desc: 'Methodology selection and governance for projects where security, delivery control, and agility must be balanced.',
         proj1_title:         '🛡️ File Upload Vulnerabilities',
         proj1_b1:            'Risk analysis and attack methodology for file upload endpoints',
         proj1_b2:            'Penetration testing using Wireshark, Node.js, PHP, Nginx',
@@ -1306,7 +1382,6 @@
         proj6_b1:            'Content discovery, parameter mining, virtual host enumeration',
         proj6_b2:            'Comparative tool analysis: ffuf vs wfuzz vs DirBuster',
         proj6_b3:            'Effective identification and exploitation of attack vectors',
-        security_research_title: 'Security Research &amp; SOC',
         research1_title:     '🤖 AI-Driven Incident Prediction in SOC',
         research1_b1:        'Analysis of how AI can support early detection and prediction of security incidents in SOC environments',
         research1_b2:        'Focus on event correlation, alert prioritisation, anomaly detection, and incident response acceleration',
@@ -1315,7 +1390,6 @@
         research2_b1:        'Structured overview of threats caused by malicious software in modern IT environments',
         research2_b2:        'Discussion of attack vectors, system impact, detection challenges, and defensive controls',
         research2_b3:        'Emphasis on practical security awareness and layered protection strategies',
-        project_management_title: 'Project Management Methods',
         management1_title:   '📈 Hybrid Project Management Methodologies',
         management1_b1:      'Comparison of AgilePM, PRINCE2 Agile, Hybrid Waterfall, and Disciplined Agile approaches',
         management1_b2:      'Evaluation of governance, delivery flexibility, documentation level, and implementation context',
@@ -1332,6 +1406,12 @@
         cert1_verify:        'Verify Online',
         cert2_title:         '🔒 Network Security Certificate',
         cert2_desc:          'Certificate confirming comprehensive competencies in network security, issued by Rzeszów University of Technology (I. Łukasiewicz) through the Cisco Networking Academy programme.',
+        cert3_title:         '🧩 TryHackMe – Cyber Security 101',
+        cert3_desc:          'Certificate of completion for the Cyber Security 101 Learning Path. Completed on 4 November 2024.',
+        cert4_title:         '🧩 TryHackMe – Red Teaming',
+        cert4_desc:          'Certificate of completion for the Red Teaming Learning Path. Completed on 25 September 2024.',
+        cert5_title:         '🧩 TryHackMe – Web Fundamentals',
+        cert5_desc:          'Certificate of completion for the Web Fundamentals Learning Path. Completed on 5 November 2024. Time to complete: 17 hours 20 minutes.',
         btn_viewcert:        'View Certificate',
         contact_title:       'Contact',
         footer_text:         '© 2025 Jakub Skrzynecki',
@@ -1340,8 +1420,6 @@
       pl: {
         nav_myprojects:      'Moje Projekty',
         nav_cyber:           'Cyberbezpieczeństwo',
-        nav_security_research: 'Badania',
-        nav_project_management: 'Zarządzanie',
         nav_certs:           'Certyfikaty',
         nav_contact:         'Kontakt',
         hero_title:          'Inżynier Elektronik &amp; Specjalista ds. Cyberbezpieczeństwa',
@@ -1360,6 +1438,16 @@
         mycarwallet_bullet3: 'Efekt: Aplikacja Android w architekturze Clean Architecture dająca użytkownikowi pełną kontrolę nad danymi pojazdu, z dopracowanym dashboardem opartym na wykresach.',
         btn_github:          'Repo GitHub',
         cyber_title:         'Projekty – Cyberbezpieczeństwo',
+        cyber_group_web_title: '🧪 Bezpieczeństwo aplikacji webowych',
+        cyber_group_web_desc: 'Praktyczne testy bezpieczeństwa aplikacji webowych, uploadu plików, kontroli OWASP i planowania poprawek.',
+        cyber_group_network_title: '🌐 Sieci, tożsamość i rekonesans',
+        cyber_group_network_desc: 'Symulacje ataków sieciowych, wdrożenia SSO/IAM, rekonesans, fuzzing i bezpieczeństwo infrastruktury.',
+        cyber_group_auth_title: '⌨️ Uwierzytelnianie i biometria behawioralna',
+        cyber_group_auth_desc: 'Mechanizmy uwierzytelniania, analiza zachowań użytkownika, metryki klasyfikacji i potwierdzanie tożsamości.',
+        cyber_group_soc_title: '🤖 SOC, analiza zagrożeń i malware',
+        cyber_group_soc_desc: 'Operacje bezpieczeństwa, predykcja incydentów wspierana AI, zagrożenia malware i strategia obrony.',
+        cyber_group_management_title: '📊 Zarządzanie projektami IT/security',
+        cyber_group_management_desc: 'Dobór metodyki i nadzoru dla projektów, w których trzeba równoważyć bezpieczeństwo, kontrolę dostarczania i zwinność.',
         proj1_title:         '🛡️ Podatności File Upload',
         proj1_b1:            'Analiza ryzyk i metod ataków związanych z przesyłaniem plików',
         proj1_b2:            'Testy penetracyjne z użyciem Wiresharka, Node.js, PHP, Nginx',
@@ -1384,7 +1472,6 @@
         proj6_b1:            'Content discovery, parameter mining, virtual host enumeration',
         proj6_b2:            'Porównawcza analiza narzędzi: ffuf vs wfuzz vs DirBuster',
         proj6_b3:            'Skuteczna identyfikacja i eksploitacja wektorów ataku',
-        security_research_title: 'Badania bezpieczeństwa i SOC',
         research1_title:     '🤖 Predykcja incydentów w SOC z użyciem AI',
         research1_b1:        'Analiza sposobów wykorzystania AI do wczesnego wykrywania i przewidywania incydentów bezpieczeństwa w środowiskach SOC',
         research1_b2:        'Nacisk na korelację zdarzeń, priorytetyzację alertów, wykrywanie anomalii i przyspieszenie reakcji na incydenty',
@@ -1393,7 +1480,6 @@
         research2_b1:        'Uporządkowany przegląd zagrożeń wynikających ze złośliwego oprogramowania w nowoczesnych środowiskach IT',
         research2_b2:        'Omówienie wektorów ataku, wpływu na systemy, trudności detekcji i mechanizmów obronnych',
         research2_b3:        'Nacisk na praktyczną świadomość bezpieczeństwa i warstwowe strategie ochrony',
-        project_management_title: 'Metodyki zarządzania projektami',
         management1_title:   '📈 Hybrydowe metodyki zarządzania projektami',
         management1_b1:      'Porównanie podejść AgilePM, PRINCE2 Agile, Hybrid Waterfall i Disciplined Agile',
         management1_b2:      'Ocena nadzoru, elastyczności dostarczania, poziomu dokumentacji i kontekstu wdrożenia',
@@ -1410,6 +1496,12 @@
         cert1_verify:        'Weryfikacja Online',
         cert2_title:         '🔒 Certyfikat Network Security',
         cert2_desc:          'Certyfikat potwierdzający kompleksowe kompetencje w zakresie bezpieczeństwa sieciowego, wydany przez Politechnikę Rzeszowską im. I. Łukasiewicza poprzez program Cisco Networking Academy.',
+        cert3_title:         '🧩 TryHackMe – Cyber Security 101',
+        cert3_desc:          'Certyfikat ukończenia ścieżki Cyber Security 101 Learning Path. Ukończono 4 listopada 2024.',
+        cert4_title:         '🧩 TryHackMe – Red Teaming',
+        cert4_desc:          'Certyfikat ukończenia ścieżki Red Teaming Learning Path. Ukończono 25 września 2024.',
+        cert5_title:         '🧩 TryHackMe – Web Fundamentals',
+        cert5_desc:          'Certyfikat ukończenia ścieżki Web Fundamentals Learning Path. Ukończono 5 listopada 2024. Czas ukończenia: 17 godzin 20 minut.',
         btn_viewcert:        'Zobacz Certyfikat',
         contact_title:       'Kontakt',
         footer_text:         '© 2025 Jakub Skrzynecki',
