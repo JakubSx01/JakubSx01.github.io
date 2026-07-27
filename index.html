@@ -5,14 +5,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Jakub Skrzynecki – Electronics Engineer & Cybersecurity Specialist" />
+  <meta name="description" content="Portfolio of Jakub Skrzynecki – Cybersecurity & Electronics graduate. Linux, Windows Server, Proxmox, networking, security monitoring." />
   <title>Portfolio – Jakub Skrzynecki</title>
 
-  <!-- FONTS: Inter for UI text, Fira Code for headings/code -->
+  <!-- FONTS: IBM Plex Sans (UI) + IBM Plex Mono (naglowki, dane techniczne) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
   <style>
@@ -26,41 +26,70 @@
       --dur-lg: 520ms;
       --dur-xl: 800ms;
 
-      /* Light mode palette — clean charcoal on neutral white */
-      --bg: #f2f2f2;
+      /* Skala promieni — trzy wartości, żadnych wyjątków */
+      --r-sm: 3px;
+      --r-md: 6px;
+      --r-pill: 999px;
+
+      /* Jednostka siatki */
+      --gutter: 1.5rem;
+      --maxw: 1080px;
+
+      /* Tryb jasny — grafit na ciepłej bieli, jeden akcent */
+      --bg: #faf9f7;
       --bg-elevated: #ffffff;
-      --ink: #1a1a1a;
-      --ink-weak: #606060;
-      --brand: #1e1e1e;
-      --brand-dark: #0a0a0a;
-      --brand-light: #383838;
-      --accent: #2e2e2e;
-      --silver: #111111;
-      --silver-gradient: linear-gradient(135deg, #111111 0%, #3a3a3a 100%);
+      --ink: #18181b;
+      --ink-weak: #57575e;
+      --brand: #18181b;
+      --brand-dark: #000000;
+      --brand-light: #3f3f46;
+      --accent: #b23b0f;
+      --silver: #18181b;
+      --silver-gradient: #18181b;
       --hover-text: #ffffff;
-      --glow: rgba(0, 0, 0, 0.08);
-      --glow-strong: rgba(0, 0, 0, 0.18);
-      --border-bright: rgba(0, 0, 0, 0.10);
-      --bg-gradient: linear-gradient(160deg, #f5f5f5 0%, #eeeeee 40%, #e8e8e8 70%, #f0f0f0 100%);
+      --glow: rgba(0, 0, 0, 0.05);
+      --glow-strong: rgba(0, 0, 0, 0.10);
+      --border-bright: #e3e1dc;
+      --bg-gradient: #faf9f7;
     }
 
-    /* ===== DARK MODE OVERRIDES — white/silver on deep neutral dark ===== */
+    /* ===== TRYB CIEMNY ===== */
     [data-theme="dark"] {
-      --bg: #141418;
-      --bg-elevated: #1e1e26;
-      --ink: #f0f0f0;
-      --ink-weak: #909090;
-      --brand: #d8d8d8;
-      --brand-dark: #aaaaaa;
-      --brand-light: #f0f0f0;
-      --accent: #c0c0c0;
-      --silver: #f5f5f5;
-      --silver-gradient: linear-gradient(135deg, #f5f5f5 0%, #bebebe 100%);
-      --hover-text: #111111;
-      --glow: rgba(220, 220, 220, 0.10);
-      --glow-strong: rgba(220, 220, 220, 0.25);
-      --border-bright: rgba(255, 255, 255, 0.10);
-      --bg-gradient: linear-gradient(160deg, #161619 0%, #111114 40%, #141418 70%, #17171c 100%);
+      --bg: #0c0c0e;
+      --bg-elevated: #151518;
+      --ink: #f4f4f5;
+      --ink-weak: #9b9ba3;
+      --brand: #f4f4f5;
+      --brand-dark: #d4d4d8;
+      --brand-light: #ffffff;
+      --accent: #f0743c;
+      --silver: #f4f4f5;
+      --silver-gradient: #f4f4f5;
+      --hover-text: #0c0c0e;
+      --glow: rgba(255, 255, 255, 0.05);
+      --glow-strong: rgba(255, 255, 255, 0.12);
+      --border-bright: #27272a;
+      --bg-gradient: #0c0c0e;
+    }
+
+    /* ===== DOSTEPNOSC: ograniczony ruch ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ===== WIDOCZNY FOCUS ===== */
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: var(--r-sm);
     }
 
     /* ===== BACKGROUND CONTAINER ===== */
@@ -85,13 +114,13 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: rgba(242, 242, 242, 0.55);
+      background: transparent;
       pointer-events: none;
       transition: background 0.5s ease;
     }
 
     [data-theme="dark"] #bg-overlay {
-      background: rgba(20, 20, 24, 0.55);
+      background: transparent;
     }
 
     /* ===== GLOBAL RESET ===== */
@@ -112,7 +141,7 @@
 
     body {
       padding-top: 60px;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
       color: var(--silver);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -124,7 +153,6 @@
     }
 
     [data-theme="dark"] body {
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     /* ===== HEADER ===== */
@@ -133,24 +161,22 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.75rem 2.5rem;
-      background: rgba(242, 242, 242, 0.85);
+      background: var(--bg);
       border-bottom: 1px solid var(--border-bright);
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
       transition: border-color 0.5s ease, background 0.5s ease;
     }
 
     [data-theme="dark"] header {
-      background: rgba(14, 14, 18, 0.88);
+      background: var(--bg);
     }
 
     header h1 {
-      font-family: 'Fira Code', monospace;
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
       font-size: 1.3rem;
       font-weight: 600;
       margin: 0;
@@ -177,19 +203,19 @@
       color: var(--ink);
       font-weight: 500;
       font-size: 0.95rem;
-      border-radius: 8px;
+      border-radius: var(--r-sm);
       transition: all var(--dur-sm) var(--ease-smooth);
       position: relative;
       overflow: hidden;
       background: none;
       border: none;
       cursor: pointer;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
     }
 
     .header-btn {
       border: 1.5px solid var(--border-bright) !important;
-      border-radius: 8px;
+      border-radius: var(--r-sm);
       font-size: 0.85rem;
       padding: 0.45rem 0.9rem;
     }
@@ -202,7 +228,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      background: var(--brand);
       opacity: 0;
       transition: opacity var(--dur-sm) var(--ease-smooth);
       z-index: 0;
@@ -260,9 +286,10 @@
     }
 
     .hero-text h2 {
-      font-family: 'Fira Code', monospace;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -0.025em;
       margin-bottom: 1rem;
       color: var(--silver);
       line-height: 1.2;
@@ -276,12 +303,10 @@
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, var(--brand), transparent);
-      border-radius: 2px;
-      box-shadow: 0 0 20px var(--glow-strong);
-      transition: background 0.5s ease, box-shadow 0.5s ease;
+      width: 44px;
+      height: 2px;
+      background: var(--accent);
+      transition: background 0.5s ease;
     }
 
     .hero-text p {
@@ -307,7 +332,7 @@
       background: rgba(0, 0, 0, 0.06);
       color: var(--brand);
       padding: 0.45rem 1rem;
-      border-radius: 999px;
+      border-radius: var(--r-sm);
       font-size: 0.9rem;
       font-weight: 600;
       border: 1px solid var(--brand);
@@ -319,10 +344,8 @@
     }
 
     .hero-traits span:hover {
-      background: var(--brand);
-      color: var(--hover-text);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px var(--glow);
+      color: var(--ink);
+      border-color: var(--ink);
     }
 
     /* ===== CTA BUTTONS ===== */
@@ -342,7 +365,7 @@
       gap: 0.5rem;
       padding: 0.7rem 1.4rem;
       border: 1.5px solid var(--brand);
-      border-radius: 10px;
+      border-radius: var(--r-md);
       text-decoration: none;
       color: var(--brand);
       background: transparent;
@@ -351,7 +374,7 @@
       transition: all var(--dur-sm) var(--ease-smooth);
       cursor: pointer;
       letter-spacing: 0.01em;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      box-shadow: none;
     }
 
     .cta-buttons a:hover,
@@ -361,7 +384,7 @@
       color: var(--hover-text);
       border-color: var(--brand);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px var(--glow), 0 0 0 1px var(--brand);
+      box-shadow: 0 0 0 1px var(--brand);
     }
 
     /* ===== CREDLY BADGES ===== */
@@ -374,21 +397,21 @@
     }
 
     .badge-wrapper {
-      background-color: rgba(255, 255, 255, 0.7);
-      border-radius: 8px;
-      border: 1.5px solid var(--border-bright);
+      background-color: var(--bg-elevated);
+      border-radius: var(--r-sm);
+      border: 1px solid var(--border-bright);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all var(--dur-sm) var(--ease-smooth);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: none;
       cursor: pointer;
     }
 
     .badge-wrapper:hover {
       border-color: var(--brand);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px var(--glow);
+      box-shadow: none;
     }
 
     /* ===== SECTIONS ===== */
@@ -400,12 +423,12 @@
     }
 
     .section h3 {
-      font-family: 'Fira Code', monospace;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 700;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
       margin-bottom: 1.75rem;
-      padding-left: 1.5rem;
-      border-left: 5px solid var(--brand);
+      padding-left: 1.25rem;
       position: relative;
       display: flex;
       align-items: center;
@@ -430,11 +453,10 @@
       position: absolute;
       left: -5px;
       top: 0;
-      width: 5px;
+      width: 2px;
       height: 100%;
-      background: linear-gradient(180deg, var(--brand) 0%, var(--accent) 100%);
-      box-shadow: 0 0 20px var(--glow-strong);
-      transition: background 0.5s ease, box-shadow 0.5s ease;
+      background: var(--accent);
+      transition: background 0.5s ease;
     }
 
     /* ===== PROJECT CARDS ===== */
@@ -448,15 +470,13 @@
       margin-top: 1.75rem;
       padding: 1rem 1.25rem;
       border: 1px solid var(--border-bright);
-      border-left: 5px solid var(--brand);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.48);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      border-left: 2px solid var(--accent);
+      border-radius: var(--r-md);
+      background: var(--bg-elevated);
     }
 
     [data-theme="dark"] .project-subsection {
-      background: rgba(14, 14, 20, 0.52);
+      background: var(--bg-elevated);
     }
 
     .project-subsection:first-child {
@@ -464,7 +484,7 @@
     }
 
     .project-subsection h4 {
-      font-family: 'Fira Code', monospace;
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
       font-size: 1.05rem;
       color: var(--silver);
       margin-bottom: 0.35rem;
@@ -478,27 +498,25 @@
     }
 
     details.project-card {
-      background: rgba(255, 255, 255, 0.65);
+      background: var(--bg-elevated);
       padding: 1.5rem;
       border: 1px solid var(--border-bright);
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--r-md);
       transition: all var(--dur-md) var(--ease-smooth);
       will-change: transform;
       position: relative;
       overflow: visible;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      box-shadow: none;
     }
 
     [data-theme="dark"] details.project-card {
-      background: rgba(14, 14, 20, 0.70);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      background: var(--bg-elevated);
+      box-shadow: none;
     }
 
     details.project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 30px var(--glow), 0 0 0 1px var(--brand);
+      box-shadow: 0 0 0 1px var(--ink);
     }
 
     .project-card summary {
@@ -513,7 +531,7 @@
       gap: 1rem;
       padding: 0.5rem;
       margin: -0.5rem;
-      border-radius: 12px;
+      border-radius: var(--r-md);
       transition: all var(--dur-sm) var(--ease-smooth);
     }
 
@@ -522,12 +540,12 @@
     }
 
     .project-card summary::after {
-      content: '▸';
+      content: '';
       font-size: 1.2rem;
       transition: transform var(--dur-md) var(--ease-emph);
       color: var(--brand);
       flex: none;
-      text-shadow: 0 0 10px var(--glow);
+      
     }
 
     .project-card[open] summary::after {
@@ -570,10 +588,10 @@
     .pdf-preview {
       margin-top: 1.1rem;
       border: 1px solid var(--border-bright);
-      border-radius: 14px;
+      border-radius: var(--r-md);
       overflow: hidden;
       background: rgba(0, 0, 0, 0.04);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
+      box-shadow: none;
     }
 
     [data-theme="dark"] .pdf-preview {
@@ -625,24 +643,26 @@
 
     .tags span {
       display: inline-block;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.08));
-      color: var(--brand-light);
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      background: transparent;
+      color: var(--ink-weak);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--r-sm);
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
       border: 1px solid var(--border-bright);
-      transition: all var(--dur-sm) var(--ease-smooth);
+      transition: color var(--dur-sm) var(--ease-smooth), border-color var(--dur-sm) var(--ease-smooth);
     }
 
     [data-theme="dark"] .tags span {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.11));
+      background: transparent;
     }
 
     .tags span:hover {
       border-color: var(--brand);
       transform: translateY(-1px) scale(1.05);
-      box-shadow: 0 3px 10px var(--glow);
+      box-shadow: none;
     }
 
     /* ===== CONTACT LINKS ===== */
@@ -661,11 +681,10 @@
       color: var(--ink-weak);
       border-top: 1px solid var(--border-bright);
       background: rgba(242, 242, 242, 0.9);
-      backdrop-filter: blur(10px);
     }
 
     [data-theme="dark"] footer {
-      background: rgba(14, 14, 18, 0.88);
+      background: var(--bg);
     }
 
     footer a {
@@ -679,7 +698,6 @@
       display: grid;
       place-items: center;
       background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -699,9 +717,9 @@
       background: var(--bg-elevated);
       width: min(1100px, 96vw);
       height: min(92vh, 900px);
-      border-radius: 16px;
+      border-radius: var(--r-md);
       border: 1px solid var(--border-bright);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
       display: flex;
       flex-direction: column;
       transform: translateY(20px) scale(0.95);
@@ -728,7 +746,7 @@
       font-size: 1.5rem;
       cursor: pointer;
       padding: 0.4rem 0.7rem;
-      border-radius: 8px;
+      border-radius: var(--r-sm);
       transition: all var(--dur-xs) var(--ease-smooth);
     }
 
@@ -741,7 +759,7 @@
       flex: 1;
       width: 100%;
       height: 100%;
-      border-radius: 0 0 16px 16px;
+      border-radius: 0 0 var(--r-md) var(--r-md);
       background: var(--bg);
     }
 
@@ -816,7 +834,7 @@
     .cta-buttons a,
     .btn,
     .contact-links a {
-      border-radius: 10px;
+      border-radius: var(--r-md);
     }
 
     /* ===== HAMBURGER BUTTON ===== */
@@ -830,8 +848,8 @@
       height: 38px;
       padding: 0;
       background: none;
-      border: 1.5px solid var(--border-bright);
-      border-radius: 8px;
+      border: 1px solid var(--border-bright);
+      border-radius: var(--r-sm);
       cursor: pointer;
       z-index: 1001;
       flex-shrink: 0;
@@ -843,7 +861,7 @@
       width: 18px;
       height: 2px;
       background: var(--ink);
-      border-radius: 2px;
+      border-radius: var(--r-sm);
       transition: transform var(--dur-sm) var(--ease-smooth), opacity var(--dur-sm) var(--ease-smooth), background 0.5s ease;
     }
 
@@ -871,13 +889,11 @@
         left: 0;
         right: 0;
         background: rgba(242, 242, 242, 0.97);
-        backdrop-filter: saturate(180%) blur(20px);
-        -webkit-backdrop-filter: saturate(180%) blur(20px);
         border-bottom: 1px solid var(--border-bright);
         padding: 0.75rem 1rem;
         gap: 0.25rem;
         z-index: 999;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        box-shadow: none;
       }
 
       [data-theme="dark"] nav {
@@ -886,7 +902,7 @@
 
       nav.is-open { display: flex; }
 
-      nav a { width: 100%; padding: 0.8rem 1.2rem; border-radius: 8px; }
+      nav a { width: 100%; padding: 0.8rem 1.2rem; border-radius: var(--r-sm); }
 
       .hero { padding: 4rem 1.5rem 3rem; }
       .section { padding: 3rem 1.5rem; }
@@ -903,31 +919,23 @@
 
   <!-- HEADER -->
   <header>
-    <h1>>_ Jakub Skrzynecki</h1>
+    <h1>Jakub Skrzynecki</h1>
     <div class="header-right">
       <nav>
-        <a href="#my-projects">
-          <span class="emoji">⚙️</span>
-          <span class="nav-text" data-i18n="nav_myprojects">My Projects</span>
+        <a href="#my-projects"> <span class="nav-text" data-i18n="nav_myprojects">My Projects</span>
         </a>
-        <a href="#projects">
-          <span class="emoji">🛡️</span>
-          <span class="nav-text" data-i18n="nav_cyber">Cybersecurity</span>
+        <a href="#projects"> <span class="nav-text" data-i18n="nav_cyber">Cybersecurity</span>
         </a>
-        <a href="#certificates">
-          <span class="emoji">📜</span>
-          <span class="nav-text" data-i18n="nav_certs">Certificates</span>
+        <a href="#certificates"> <span class="nav-text" data-i18n="nav_certs">Certificates</span>
         </a>
-        <a href="#contact">
-          <span class="emoji">✉️</span>
-          <span class="nav-text" data-i18n="nav_contact">Contact</span>
+        <a href="#contact"> <span class="nav-text" data-i18n="nav_contact">Contact</span>
         </a>
       </nav>
       <button class="header-btn" id="lang-toggle" aria-label="Toggle language">
-        <span class="btn-text" id="lang-label">🇬🇧 EN</span>
+        <span class="btn-text" id="lang-label">EN</span>
       </button>
       <button class="header-btn" id="theme-toggle" aria-label="Toggle theme">
-        <span class="btn-text" id="theme-icon">☀️ Light</span>
+        <span class="btn-text" id="theme-icon">Light</span>
       </button>
       <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span class="bar"></span>
@@ -941,22 +949,23 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-text">
-      <h2 data-i18n="hero_title">Electronics Engineer &amp; Cybersecurity Specialist</h2>
-      <p data-i18n="hero_subtitle">M.Sc. in Cybersecurity · B.Eng. in Electronics &amp; Telecommunications · I solve real-world problems through embedded systems, network security, and software engineering.</p>
+      <h2 data-i18n="hero_title">Cybersecurity &amp; Electronics Graduate</h2>
+      <p data-i18n="hero_subtitle">M.Sc. Eng. in Computer Science, Cybersecurity · B.Eng. in Electronics, Cybersecurity · CompTIA Security+ · I build small, well-documented tools for systems administration and security monitoring, and I explore how AI can take over the repetitive parts of that work.</p>
       <div class="hero-traits">
-        <span data-i18n="trait_solver">Problem Solver</span>
-        <span data-i18n="trait_learner">Fast Learner</span>
-        <span data-i18n="trait_detail">Detail-Oriented</span>
+        <span data-i18n="tag_linux">Linux</span>
+        <span data-i18n="tag_winserver">Windows Server</span>
+        <span data-i18n="tag_proxmox">Proxmox</span>
+        <span data-i18n="tag_scripting">Bash &amp; Python</span>
+        <span data-i18n="tag_network">Networking &amp; Telecom</span>
+        <span data-i18n="tag_ai">AI &amp; Automation</span>
+        <span data-i18n="tag_security">Security+</span>
       </div>
       <div class="cta-buttons">
-        <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank" rel="noopener">
-          <span class="emoji">🔗</span> <span>LinkedIn</span>
+        <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"> <span>LinkedIn</span>
         </a>
-        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener">
-          <span class="emoji">🧩</span> <span>TryHackMe</span>
+        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"> <span>TryHackMe</span>
         </a>
-        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener">
-          <span class="emoji">🌐</span> <span>GitHub</span>
+        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"> <span>GitHub</span>
         </a>
       </div>
 
@@ -979,28 +988,22 @@
 
   <!-- MY PROJECTS SECTION -->
   <section id="my-projects" class="section reveal">
-    <h3>
-      <span class="emoji">⚙️</span>
-      <span class="section-title" data-i18n="myprojects_title">My Projects</span>
+    <h3> <span class="section-title" data-i18n="myprojects_title">My Projects</span>
     </h3>
     <div class="projects">
 
       <!-- Card: Mini Gauge -->
       <details class="project-card">
-        <summary data-i18n="minigauge_title">⚙️ Mini Gauge – Hyundai Coupé</summary>
+        <summary data-i18n="minigauge_title">Mini Gauge – Hyundai Coupé</summary>
         <div class="accordion">
-          <ul>
-            <li data-i18n="minigauge_bullet1">Problem: Upgrading to an aftermarket 2DIN radio in Hyundai Coupé/Tiburon (GK FL 2002–2008) makes the original factory multi-gauge physically incompatible — it simply cannot fit.</li>
-            <li data-i18n="minigauge_bullet2">Solution: A compact custom embedded device that displays battery voltage (hybrid ADC + CAN bus weighted average), coolant temperature from the Siemens SIMK43 ECU via CAN, and real-time fuel consumption (L/100 km while driving, L/h at idle).</li>
-            <li data-i18n="minigauge_bullet3">Impact: Automatic night mode, 60 FPS UI via LVGL on a 1.28" round IPS LCD — seamlessly replacing the OEM gauge with no loss of information.</li>
-          </ul>
+          <p data-i18n="minigauge_p1">Swapping the factory radio for a 2DIN head unit in a Hyundai Coupé GK FL leaves no room for the original multi-gauge. It physically stops fitting. I built a replacement around an ESP32 and a 1.28-inch round IPS display.</p>
+          <p data-i18n="minigauge_p2">Battery voltage is a weighted average of the ADC reading and the CAN bus, coolant temperature comes from the Siemens SIMK43 ECU, and fuel use is calculated as L/100 km on the move and L/h at idle. The LVGL interface runs at 60 FPS and switches to night mode by itself.</p>
           <div class="tags">
             <span>ESP32</span><span>C/C++</span><span>LVGL</span><span>SquareLine Studio</span>
             <span>PlatformIO</span><span>CAN bus</span><span>SN65HVD230</span><span>LM2596S</span>
           </div>
           <div class="cta-buttons github-link">
-            <a href="https://github.com/JakubSx01/Mini_gauge_Hyundai_coupe" target="_blank" rel="noopener">
-              <span class="emoji">🌐</span> <span data-i18n="btn_github">GitHub Repo</span>
+            <a href="https://github.com/JakubSx01/Mini_gauge_Hyundai_coupe" target="_blank" rel="noopener"> <span data-i18n="btn_github">GitHub Repo</span>
             </a>
           </div>
         </div>
@@ -1008,13 +1011,10 @@
 
       <!-- Card: MyCarWallet -->
       <details class="project-card">
-        <summary data-i18n="mycarwallet_title">🚗 MyCarWallet</summary>
+        <summary data-i18n="mycarwallet_title">MyCarWallet</summary>
         <div class="accordion">
-          <ul>
-            <li data-i18n="mycarwallet_bullet1">Problem: Car owners have no convenient offline-first tool to track fuel costs, maintenance schedules, and expenses across multiple vehicles without sending data to external servers.</li>
-            <li data-i18n="mycarwallet_bullet2">Solution: Multi-vehicle garage manager with interactive analytics, fuel consumption tracking, OCR receipt scanning (Google ML Kit), automated maintenance alerts, and full offline SQLite storage. No data leaves the device.</li>
-            <li data-i18n="mycarwallet_bullet3">Impact: Clean Architecture Android app that puts the user fully in control of their vehicle data, with a polished chart-driven dashboard.</li>
-          </ul>
+          <p data-i18n="mycarwallet_p1">I wanted to track fuel costs and service intervals for several cars at once without pushing the data to someone else's server. Everything stays in a local SQLite database and the app works with no connection at all.</p>
+          <p data-i18n="mycarwallet_p2">Receipts are scanned with Google ML Kit OCR, service reminders are worked out in the app, and consumption charts are drawn with fl_chart. Written in Flutter, structured along Clean Architecture lines.</p>
           <div class="tags">
             <span>Flutter</span><span>Dart</span><span>Provider</span><span>SQLite</span>
             <span>Google ML Kit</span><span>fl_chart</span><span>Clean Architecture</span><span>Android</span>
@@ -1027,29 +1027,25 @@
 
   <!-- CYBERSECURITY PROJECTS SECTION -->
   <section id="projects" class="section reveal">
-    <h3>
-      <span class="emoji">📂</span>
-      <span class="section-title" data-i18n="cyber_title">Cybersecurity Projects</span>
+    <h3> <span class="section-title" data-i18n="cyber_title">Cybersecurity Projects</span>
     </h3>
     <div class="projects">
 
       <div class="project-subsection">
-        <h4 data-i18n="cyber_group_web_title">🧪 Web &amp; Application Security</h4>
+        <h4 data-i18n="cyber_group_web_title">Web &amp; Application Security</h4>
         <p data-i18n="cyber_group_web_desc">Practical security testing of web applications, upload flows, OWASP controls, and remediation planning.</p>
       </div>
 
       <!-- Project 1: File Upload -->
       <details class="project-card">
-        <summary data-i18n="proj1_title">🛡️ File Upload Vulnerabilities</summary>
+        <summary data-i18n="proj1_title">File Upload Vulnerabilities</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="proj1_b1">Risk analysis and attack methodology for file upload endpoints</li>
             <li data-i18n="proj1_b2">Penetration testing using Wireshark, Node.js, PHP, Nginx</li>
-            <li data-i18n="proj1_b3">Implementation of defense-in-depth recommendations</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>Security</span><span>Pentest</span></div>
@@ -1058,19 +1054,16 @@
 
       <!-- Project 4: PlantCare -->
       <details class="project-card">
-        <summary data-i18n="proj4_title">🌱 PlantCare – Security Analysis</summary>
+        <summary data-i18n="proj4_title">PlantCare – Security Analysis</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="proj4_b1">Comprehensive security testing of a web application using OWASP ZAP</li>
             <li data-i18n="proj4_b2">Identified vulnerabilities: missing CSRF tokens, CSP policy, and CORS configuration</li>
-            <li data-i18n="proj4_b3">Security implementation proposals compliant with OWASP Top 10</li>
           </ul>
           <div class="cta-buttons">
-            <a href="https://github.com/JakubSx01/WateringAppV2" target="_blank" rel="noopener">
-              <span class="emoji">💻</span> <span data-i18n="btn_ghrepo">GitHub Repo</span>
+            <a href="https://github.com/JakubSx01/WateringAppV2" target="_blank" rel="noopener"> <span data-i18n="btn_ghrepo">GitHub Repo</span>
             </a>
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>OWASP</span><span>Security Audit</span></div>
@@ -1078,22 +1071,20 @@
       </details>
 
       <div class="project-subsection">
-        <h4 data-i18n="cyber_group_network_title">🌐 Network, Identity &amp; Reconnaissance</h4>
+        <h4 data-i18n="cyber_group_network_title">Network, Identity &amp; Reconnaissance</h4>
         <p data-i18n="cyber_group_network_desc">Network attack simulations, SSO/IAM deployment, reconnaissance, fuzzing, and infrastructure security.</p>
       </div>
 
       <!-- Project 3: MITM Audit -->
       <details class="project-card">
-        <summary data-i18n="proj3_title">🌐 Security Audit (MITM)</summary>
+        <summary data-i18n="proj3_title">Security Audit (MITM)</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="proj3_b1">Attack simulation: ARP Poisoning, DNS Spoofing, SSLStrip</li>
             <li data-i18n="proj3_b2">Isolated lab environment using Bettercap and BEEF</li>
-            <li data-i18n="proj3_b3">Comprehensive network security recommendations</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Network Security</span><span>MITM</span><span>Audit</span></div>
@@ -1102,16 +1093,14 @@
 
       <!-- Project 5: SSO -->
       <details class="project-card">
-        <summary data-i18n="proj5_title">☁️ Cloud SSO (Authentik + OIDC/SAML)</summary>
+        <summary data-i18n="proj5_title">Cloud SSO (Authentik + OIDC/SAML)</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="proj5_b1">Single Sign-On deployment in Azure Cloud environment</li>
             <li data-i18n="proj5_b2">Service integration: Portainer (OAuth2) + Nextcloud (SAML)</li>
-            <li data-i18n="proj5_b3">Centralised identity and access management</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Cloud</span><span>SSO</span><span>Identity Management</span></div>
@@ -1120,16 +1109,14 @@
 
       <!-- Project 6: Pentest ffuf -->
       <details class="project-card">
-        <summary data-i18n="proj6_title">🔍 Pentest with ffuf</summary>
+        <summary data-i18n="proj6_title">Pentest with ffuf</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="proj6_b1">Content discovery, parameter mining, virtual host enumeration</li>
             <li data-i18n="proj6_b2">Comparative tool analysis: ffuf vs wfuzz vs DirBuster</li>
-            <li data-i18n="proj6_b3">Effective identification and exploitation of attack vectors</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Fuzzing</span><span>Pentest</span><span>Recon</span></div>
@@ -1137,13 +1124,13 @@
       </details>
 
       <div class="project-subsection">
-        <h4 data-i18n="cyber_group_auth_title">⌨️ Authentication &amp; Behavioural Biometrics</h4>
+        <h4 data-i18n="cyber_group_auth_title">⌨Authentication &amp; Behavioural Biometrics</h4>
         <p data-i18n="cyber_group_auth_desc">Authentication mechanisms, user behaviour analysis, classification metrics, and identity assurance.</p>
       </div>
 
       <!-- Project 2: Biometrics -->
       <details class="project-card">
-        <summary data-i18n="proj2_title">⌨️ Behavioural Biometrics – Keystroke Dynamics</summary>
+        <summary data-i18n="proj2_title">⌨Behavioural Biometrics – Keystroke Dynamics</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="proj2_b1">Advanced behavioural authentication based on keystroke dynamics</li>
@@ -1151,8 +1138,7 @@
             <li data-i18n="proj2_b3">Comparative analysis of two classification algorithms</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Biometrics</span><span>Authentication</span><span>ML</span></div>
@@ -1160,22 +1146,20 @@
       </details>
 
       <div class="project-subsection">
-        <h4 data-i18n="cyber_group_soc_title">🤖 SOC, Threat Research &amp; Malware</h4>
+        <h4 data-i18n="cyber_group_soc_title">SOC, Threat Research &amp; Malware</h4>
         <p data-i18n="cyber_group_soc_desc">Security operations, AI-assisted incident prediction, malware threats, and defensive strategy.</p>
       </div>
 
       <!-- Research 1: AI SOC Incident Prediction -->
       <details class="project-card">
-        <summary data-i18n="research1_title">🤖 AI-Driven Incident Prediction in SOC</summary>
+        <summary data-i18n="research1_title">AI-Driven Incident Prediction in SOC</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="research1_b1">Analysis of how AI can support early detection and prediction of security incidents in SOC environments</li>
             <li data-i18n="research1_b2">Focus on event correlation, alert prioritisation, anomaly detection, and incident response acceleration</li>
-            <li data-i18n="research1_b3">Practical view on integrating predictive models into monitoring and triage workflows</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/predykcja-incydentow-przy-uzyciu-ai-w-srodowisku-soc.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/predykcja-incydentow-przy-uzyciu-ai-w-srodowisku-soc.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>SOC</span><span>AI</span><span>Incident Response</span></div>
@@ -1184,16 +1168,14 @@
 
       <!-- Research 2: Malicious Software Threats -->
       <details class="project-card">
-        <summary data-i18n="research2_title">🦠 Malicious Software Threats in IT Systems</summary>
+        <summary data-i18n="research2_title">Malicious Software Threats in IT Systems</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="research2_b1">Structured overview of threats caused by malicious software in modern IT environments</li>
             <li data-i18n="research2_b2">Discussion of attack vectors, system impact, detection challenges, and defensive controls</li>
-            <li data-i18n="research2_b3">Emphasis on practical security awareness and layered protection strategies</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/zagrozenia-bezpieczenstwa-systemow-it-wynikajace-ze-zlosliwego.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/zagrozenia-bezpieczenstwa-systemow-it-wynikajace-ze-zlosliwego.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Malware</span><span>Threat Analysis</span><span>Defense-in-Depth</span></div>
@@ -1201,22 +1183,20 @@
       </details>
 
       <div class="project-subsection">
-        <h4 data-i18n="cyber_group_management_title">📊 IT Security Project Management</h4>
+        <h4 data-i18n="cyber_group_management_title">IT Security Project Management</h4>
         <p data-i18n="cyber_group_management_desc">Methodology selection and governance for projects where security, delivery control, and agility must be balanced.</p>
       </div>
 
       <!-- Management 1: Hybrid Methodologies -->
       <details class="project-card">
-        <summary data-i18n="management1_title">📈 Hybrid Project Management Methodologies</summary>
+        <summary data-i18n="management1_title">Hybrid Project Management Methodologies</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="management1_b1">Comparison of AgilePM, PRINCE2 Agile, Hybrid Waterfall, and Disciplined Agile approaches</li>
             <li data-i18n="management1_b2">Evaluation of governance, delivery flexibility, documentation level, and implementation context</li>
-            <li data-i18n="management1_b3">Useful reference for selecting a methodology based on project risk, team maturity, and organisational constraints</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid-waterfall-disciplined-agile.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid-waterfall-disciplined-agile.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>AgilePM</span><span>PRINCE2 Agile</span><span>Hybrid</span><span>Disciplined Agile</span></div>
@@ -1225,16 +1205,14 @@
 
       <!-- Management 2: AgilePM / PRINCE2 Agile / Hybrid -->
       <details class="project-card">
-        <summary data-i18n="management2_title">🧭 AgilePM, PRINCE2 Agile &amp; Hybrid Comparison</summary>
+        <summary data-i18n="management2_title">AgilePM, PRINCE2 Agile &amp; Hybrid Comparison</summary>
         <div class="accordion">
           <ul>
             <li data-i18n="management2_b1">Focused comparison of hybrid project-management frameworks used in technology projects</li>
             <li data-i18n="management2_b2">Highlights differences in roles, control points, iteration planning, and change management</li>
-            <li data-i18n="management2_b3">Supports choosing a delivery model for projects combining formal governance with agile execution</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid.pdf')">
-              <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Project Management</span><span>Agile</span><span>Governance</span></div>
@@ -1246,25 +1224,21 @@
 
   <!-- CERTIFICATES SECTION -->
   <section id="certificates" class="section reveal">
-    <h3>
-      <span class="emoji">📜</span>
-      <span class="section-title" data-i18n="certs_title">Achievements &amp; Certificates</span>
+    <h3> <span class="section-title" data-i18n="certs_title">Achievements &amp; Certificates</span>
     </h3>
     <div class="certificates">
 
       <!-- Certificate 1: CompTIA -->
       <details class="project-card">
-        <summary data-i18n="cert1_title">📜 CompTIA Security+</summary>
+        <summary data-i18n="cert1_title">CompTIA Security+</summary>
         <div class="accordion">
           <p data-i18n="cert1_desc"><strong>ID:</strong> COMP001022861425 | <strong>Date:</strong> 18.08.2025<br />
             <strong>Verification code:</strong> N6CYW7Z54EB4QSFJ | <strong>Valid until:</strong> 18.08.2028
           </p>
           <div class="cta-buttons">
-            <a href="http://verify.CompTIA.org" target="_blank" rel="noopener">
-              <span class="emoji">🔍</span> <span data-i18n="cert1_verify">Verify Online</span>
+            <a href="http://verify.CompTIA.org" target="_blank" rel="noopener"> <span data-i18n="cert1_verify">Verify Online</span>
             </a>
-            <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')">
-              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1272,12 +1246,11 @@
 
       <!-- Certificate 2: Network Security -->
       <details class="project-card">
-        <summary data-i18n="cert2_title">🔒 Network Security Certificate</summary>
+        <summary data-i18n="cert2_title">Network Security Certificate</summary>
         <div class="accordion">
           <p data-i18n="cert2_desc">Certificate confirming comprehensive competencies in network security, issued by Rzeszów University of Technology (I. Łukasiewicz) through the Cisco Networking Academy programme.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/network_security_certificate.pdf')">
-              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/network_security_certificate.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1287,12 +1260,11 @@
 
       <!-- Certificate 3: TryHackMe Cyber Security 101 -->
       <details class="project-card">
-        <summary data-i18n="cert3_title">🧩 TryHackMe – Cyber Security 101</summary>
+        <summary data-i18n="cert3_title">TryHackMe – Cyber Security 101</summary>
         <div class="accordion">
           <p data-i18n="cert3_desc">Certificate of completion for the Cyber Security 101 Learning Path. Completed on 4 November 2024.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-FDA40U8F8X.pdf')">
-              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-FDA40U8F8X.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1300,12 +1272,11 @@
 
       <!-- Certificate 4: TryHackMe Red Teaming -->
       <details class="project-card">
-        <summary data-i18n="cert4_title">🧩 TryHackMe – Red Teaming</summary>
+        <summary data-i18n="cert4_title">TryHackMe – Red Teaming</summary>
         <div class="accordion">
           <p data-i18n="cert4_desc">Certificate of completion for the Red Teaming Learning Path. Completed on 25 September 2024.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-S5DPZ78DVL.pdf')">
-              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-S5DPZ78DVL.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1313,12 +1284,11 @@
 
       <!-- Certificate 5: TryHackMe Web Fundamentals -->
       <details class="project-card">
-        <summary data-i18n="cert5_title">🧩 TryHackMe – Web Fundamentals</summary>
+        <summary data-i18n="cert5_title">TryHackMe – Web Fundamentals</summary>
         <div class="accordion">
           <p data-i18n="cert5_desc">Certificate of completion for the Web Fundamentals Learning Path. Completed on 5 November 2024. Time to complete: 17 hours 20 minutes.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-Y4LALXDOMB.pdf')">
-              <span class="emoji">📜</span> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-Y4LALXDOMB.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1328,22 +1298,16 @@
 
   <!-- CONTACT SECTION -->
   <section id="contact" class="section reveal">
-    <h3>
-      <span class="emoji">✉️</span>
-      <span class="section-title" data-i18n="contact_title">Contact</span>
+    <h3> <span class="section-title" data-i18n="contact_title">Contact</span>
     </h3>
     <div class="contact-links">
-      <a href="mailto:sjakubskrzynecki@gmail.com">
-        <span class="emoji">✉️</span> <span>sjakubskrzynecki@gmail.com</span>
+      <a href="mailto:sjakubskrzynecki@gmail.com"> <span>sjakubskrzynecki@gmail.com</span>
       </a>
-      <a href="https://www.linkedin.com/in/jakub-skrzynecki-f0r-vv0rk/" target="_blank" rel="noopener">
-        <span class="emoji">🔗</span> <span>LinkedIn</span>
+      <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"> <span>LinkedIn</span>
       </a>
-      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener">
-        <span class="emoji">🧩</span> <span>TryHackMe</span>
+      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"> <span>TryHackMe</span>
       </a>
-      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener">
-        <span class="emoji">🌐</span> <span>GitHub</span>
+      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"> <span>GitHub</span>
       </a>
     </div>
   </section>
@@ -1351,8 +1315,7 @@
   <!-- FOOTER -->
   <footer>
     <span data-i18n="footer_text">© 2026 Jakub Skrzynecki</span>
-    <a class="btn" href="https://github.com/JakubSx01" target="_blank" rel="noopener">
-      <span class="emoji">🌐</span> <span data-i18n="footer_github">GitHub Repo</span>
+    <a class="btn" href="https://github.com/JakubSx01" target="_blank" rel="noopener"> <span data-i18n="footer_github">GitHub Repo</span>
     </a>
   </footer>
 
@@ -1375,85 +1338,78 @@
         nav_cyber:           'Cybersecurity',
         nav_certs:           'Certificates',
         nav_contact:         'Contact',
-        hero_title:          'Electronics Engineer &amp; Cybersecurity Specialist',
-        hero_subtitle:       'M.Sc. in Cybersecurity · B.Eng. in Electronics &amp; Telecommunications · I solve real-world problems through embedded systems, network security, and software engineering.',
-        trait_solver:        'Problem Solver',
-        trait_learner:       'Fast Learner',
-        trait_detail:        'Detail-Oriented',
+        hero_title:          'Cybersecurity &amp; Electronics Graduate',
+        hero_subtitle:       'M.Sc. Eng. in Computer Science, Cybersecurity · B.Eng. in Electronics, Cybersecurity · CompTIA Security+ · I build small, well-documented tools for systems administration and security monitoring, and I explore how AI can take over the repetitive parts of that work.',
+        tag_linux:           'Linux',
+        tag_winserver:       'Windows Server',
+        tag_proxmox:         'Proxmox',
+        tag_scripting:       'Bash &amp; Python',
+        tag_network:         'Networking &amp; Telecom',
+        tag_ai:              'AI &amp; Automation',
+        tag_security:        'Security+',
         myprojects_title:    'My Projects',
-        minigauge_title:     '⚙️ Mini Gauge – Hyundai Coupé',
-        minigauge_bullet1:   'Problem: Upgrading to an aftermarket 2DIN radio in Hyundai Coupé/Tiburon (GK FL 2002–2008) makes the original factory multi-gauge physically incompatible — it simply cannot fit.',
-        minigauge_bullet2:   'Solution: A compact custom embedded device that displays battery voltage (hybrid ADC + CAN bus weighted average), coolant temperature from the Siemens SIMK43 ECU via CAN, and real-time fuel consumption (L/100 km while driving, L/h at idle).',
-        minigauge_bullet3:   'Impact: Automatic night mode, 60 FPS UI via LVGL on a 1.28" round IPS LCD — seamlessly replacing the OEM gauge with no loss of information.',
-        mycarwallet_title:   '🚗 MyCarWallet',
-        mycarwallet_bullet1: 'Problem: Car owners have no convenient offline-first tool to track fuel costs, maintenance schedules, and expenses across multiple vehicles without sending data to external servers.',
-        mycarwallet_bullet2: 'Solution: Multi-vehicle garage manager with interactive analytics, fuel consumption tracking, OCR receipt scanning (Google ML Kit), automated maintenance alerts, and full offline SQLite storage. No data leaves the device.',
-        mycarwallet_bullet3: 'Impact: Clean Architecture Android app that puts the user fully in control of their vehicle data, with a polished chart-driven dashboard.',
+        minigauge_title:     'Mini Gauge – Hyundai Coupé',
+        minigauge_p1:        'Swapping the factory radio for a 2DIN head unit in a Hyundai Coupé GK FL leaves no room for the original multi-gauge. It physically stops fitting. I built a replacement around an ESP32 and a 1.28-inch round IPS display.',
+        minigauge_p2:        'Battery voltage is a weighted average of the ADC reading and the CAN bus, coolant temperature comes from the Siemens SIMK43 ECU, and fuel use is calculated as L/100 km on the move and L/h at idle. The LVGL interface runs at 60 FPS and switches to night mode by itself.',
+        mycarwallet_title:   'MyCarWallet',
+        mycarwallet_p1:      'I wanted to track fuel costs and service intervals for several cars at once without pushing the data to someone else’s server. Everything stays in a local SQLite database and the app works with no connection at all.',
+        mycarwallet_p2:      'Receipts are scanned with Google ML Kit OCR, service reminders are worked out in the app, and consumption charts are drawn with fl_chart. Written in Flutter, structured along Clean Architecture lines.',
         btn_github:          'GitHub Repo',
         cyber_title:         'Cybersecurity Projects',
-        cyber_group_web_title: '🧪 Web &amp; Application Security',
-        cyber_group_web_desc: 'Practical security testing of web applications, upload flows, OWASP controls, and remediation planning.',
-        cyber_group_network_title: '🌐 Network, Identity &amp; Reconnaissance',
-        cyber_group_network_desc: 'Network attack simulations, SSO/IAM deployment, reconnaissance, fuzzing, and infrastructure security.',
-        cyber_group_auth_title: '⌨️ Authentication &amp; Behavioural Biometrics',
-        cyber_group_auth_desc: 'Authentication mechanisms, user behaviour analysis, classification metrics, and identity assurance.',
-        cyber_group_soc_title: '🤖 SOC, Threat Research &amp; Malware',
-        cyber_group_soc_desc: 'Security operations, AI-assisted incident prediction, malware threats, and defensive strategy.',
-        cyber_group_management_title: '📊 IT Security Project Management',
-        cyber_group_management_desc: 'Methodology selection and governance for projects where security, delivery control, and agility must be balanced.',
-        proj1_title:         '🛡️ File Upload Vulnerabilities',
-        proj1_b1:            'Risk analysis and attack methodology for file upload endpoints',
-        proj1_b2:            'Penetration testing using Wireshark, Node.js, PHP, Nginx',
-        proj1_b3:            'Implementation of defense-in-depth recommendations',
-        proj2_title:         '⌨️ Behavioural Biometrics – Keystroke Dynamics',
-        proj2_b1:            'Advanced behavioural authentication based on keystroke dynamics',
-        proj2_b2:            'Effectiveness tests with AUC metric reaching ~0.81',
-        proj2_b3:            'Comparative analysis of two classification algorithms',
-        proj3_title:         '🌐 Security Audit (MITM)',
-        proj3_b1:            'Attack simulation: ARP Poisoning, DNS Spoofing, SSLStrip',
-        proj3_b2:            'Isolated lab environment using Bettercap and BEEF',
-        proj3_b3:            'Comprehensive network security recommendations',
-        proj4_title:         '🌱 PlantCare – Security Analysis',
-        proj4_b1:            'Comprehensive security testing of a web application using OWASP ZAP',
-        proj4_b2:            'Identified vulnerabilities: missing CSRF tokens, CSP policy, and CORS configuration',
-        proj4_b3:            'Security implementation proposals compliant with OWASP Top 10',
-        proj5_title:         '☁️ Cloud SSO (Authentik + OIDC/SAML)',
-        proj5_b1:            'Single Sign-On deployment in Azure Cloud environment',
-        proj5_b2:            'Service integration: Portainer (OAuth2) + Nextcloud (SAML)',
-        proj5_b3:            'Centralised identity and access management',
-        proj6_title:         '🔍 Pentest with ffuf',
-        proj6_b1:            'Content discovery, parameter mining, virtual host enumeration',
-        proj6_b2:            'Comparative tool analysis: ffuf vs wfuzz vs DirBuster',
-        proj6_b3:            'Effective identification and exploitation of attack vectors',
-        research1_title:     '🤖 AI-Driven Incident Prediction in SOC',
-        research1_b1:        'Analysis of how AI can support early detection and prediction of security incidents in SOC environments',
-        research1_b2:        'Focus on event correlation, alert prioritisation, anomaly detection, and incident response acceleration',
-        research1_b3:        'Practical view on integrating predictive models into monitoring and triage workflows',
-        research2_title:     '🦠 Malicious Software Threats in IT Systems',
-        research2_b1:        'Structured overview of threats caused by malicious software in modern IT environments',
-        research2_b2:        'Discussion of attack vectors, system impact, detection challenges, and defensive controls',
-        research2_b3:        'Emphasis on practical security awareness and layered protection strategies',
-        management1_title:   '📈 Hybrid Project Management Methodologies',
-        management1_b1:      'Comparison of AgilePM, PRINCE2 Agile, Hybrid Waterfall, and Disciplined Agile approaches',
-        management1_b2:      'Evaluation of governance, delivery flexibility, documentation level, and implementation context',
-        management1_b3:      'Useful reference for selecting a methodology based on project risk, team maturity, and organisational constraints',
-        management2_title:   '🧭 AgilePM, PRINCE2 Agile &amp; Hybrid Comparison',
-        management2_b1:      'Focused comparison of hybrid project-management frameworks used in technology projects',
-        management2_b2:      'Highlights differences in roles, control points, iteration planning, and change management',
-        management2_b3:      'Supports choosing a delivery model for projects combining formal governance with agile execution',
+        cyber_group_web_title: 'Web &amp; Application Security',
+        cyber_group_web_desc: 'Testing web applications and file upload handling against OWASP controls.',
+        cyber_group_network_title: 'Network, Identity &amp; Reconnaissance',
+        cyber_group_network_desc: 'Attacks reproduced in an isolated lab, SSO deployment, reconnaissance and fuzzing.',
+        cyber_group_auth_title: 'Authentication &amp; Behavioural Biometrics',
+        cyber_group_auth_desc: 'Authentication based on user behaviour, and measuring how well it actually works.',
+        cyber_group_soc_title: 'SOC, Threat Research &amp; Malware',
+        cyber_group_soc_desc: 'Written work on security monitoring, AI in the SOC, and malware threats.',
+        cyber_group_management_title: 'IT Security Project Management',
+        cyber_group_management_desc: 'Choosing a methodology where governance has to coexist with delivery pace.',
+        proj1_title:         'File Upload Vulnerabilities',
+        proj1_b1:            'Risk analysis and attack methods against file upload endpoints',
+        proj1_b2:            'Testing on a Node.js, PHP and Nginx stack, traffic inspected in Wireshark',
+        proj2_title:         'Behavioural Biometrics – Keystroke Dynamics',
+        proj2_b1:            'Authentication based on keystroke dynamics',
+        proj2_b2:            'AUC of 0.81 on the collected sample set',
+        proj2_b3:            'Two classification algorithms compared',
+        proj3_title:         'Security Audit (MITM)',
+        proj3_b1:            'ARP poisoning, DNS spoofing and SSLStrip reproduced in an isolated lab',
+        proj3_b2:            'Tooling: Bettercap and BeEF',
+        proj4_title:         'PlantCare – Security Analysis',
+        proj4_b1:            'Web application scanned with OWASP ZAP',
+        proj4_b2:            'Gaps found: CSRF tokens, CSP policy, CORS configuration',
+        proj5_title:         'Cloud SSO (Authentik + OIDC/SAML)',
+        proj5_b1:            'Authentik as the identity provider in an Azure environment',
+        proj5_b2:            'Portainer wired up over OAuth2, Nextcloud over SAML',
+        proj6_title:         'Pentest with ffuf',
+        proj6_b1:            'Content discovery, parameter mining and virtual host enumeration',
+        proj6_b2:            'ffuf, wfuzz and DirBuster compared against the same target',
+        research1_title:     'AI-Driven Incident Prediction in SOC',
+        research1_b1:        'A review of how machine learning is used for event correlation and alert prioritisation in a SOC',
+        research1_b2:        'A written review, not a production deployment',
+        research2_title:     'Malicious Software Threats in IT Systems',
+        research2_b1:        'Attack vectors and the difficulty of detecting modern malware',
+        research2_b2:        'A written review',
+        management1_title:   'Hybrid Project Management Methodologies',
+        management1_b1:      'AgilePM, PRINCE2 Agile, Hybrid Waterfall and Disciplined Agile compared',
+        management1_b2:      'Criteria: governance, delivery flexibility, documentation overhead',
+        management2_title:   'AgilePM, PRINCE2 Agile &amp; Hybrid Comparison',
+        management2_b1:      'Differences in roles, control points and change management across hybrid frameworks',
+        management2_b2:      'A written review',
         btn_pdf:             'Open PDF',
         btn_ghrepo:          'GitHub Repo',
         certs_title:         'Achievements &amp; Certificates',
-        cert1_title:         '📜 CompTIA Security+',
+        cert1_title:         'CompTIA Security+',
         cert1_desc:          '<strong>ID:</strong> COMP001022861425 | <strong>Date:</strong> 18.08.2025<br /><strong>Verification code:</strong> N6CYW7Z54EB4QSFJ | <strong>Valid until:</strong> 18.08.2028',
         cert1_verify:        'Verify Online',
-        cert2_title:         '🔒 Network Security Certificate',
+        cert2_title:         'Network Security Certificate',
         cert2_desc:          'Certificate confirming comprehensive competencies in network security, issued by Rzeszów University of Technology (I. Łukasiewicz) through the Cisco Networking Academy programme.',
-        cert3_title:         '🧩 TryHackMe – Cyber Security 101',
+        cert3_title:         'TryHackMe – Cyber Security 101',
         cert3_desc:          'Certificate of completion for the Cyber Security 101 Learning Path. Completed on 4 November 2024.',
-        cert4_title:         '🧩 TryHackMe – Red Teaming',
+        cert4_title:         'TryHackMe – Red Teaming',
         cert4_desc:          'Certificate of completion for the Red Teaming Learning Path. Completed on 25 September 2024.',
-        cert5_title:         '🧩 TryHackMe – Web Fundamentals',
+        cert5_title:         'TryHackMe – Web Fundamentals',
         cert5_desc:          'Certificate of completion for the Web Fundamentals Learning Path. Completed on 5 November 2024. Time to complete: 17 hours 20 minutes.',
         btn_viewcert:        'View Certificate',
         contact_title:       'Contact',
@@ -1461,89 +1417,82 @@
         footer_github:       'GitHub Repo',
       },
       pl: {
-        nav_myprojects:      'Moje Projekty',
+        nav_myprojects:      'Moje projekty',
         nav_cyber:           'Cyberbezpieczeństwo',
         nav_certs:           'Certyfikaty',
         nav_contact:         'Kontakt',
-        hero_title:          'Inżynier Elektronik &amp; Specjalista ds. Cyberbezpieczeństwa',
-        hero_subtitle:       'Mgr inż. Cyberbezpieczeństwo · Inż. Elektronika i Telekomunikacja · Rozwiązuję realne problemy przez systemy wbudowane, bezpieczeństwo sieci i inżynierię oprogramowania.',
-        trait_solver:        'Rozwiązuję Problemy',
-        trait_learner:       'Szybko się Uczę',
-        trait_detail:        'Dbam o Szczegóły',
-        myprojects_title:    'Moje Projekty',
-        minigauge_title:     '⚙️ Mini Gauge – Hyundai Coupé',
-        minigauge_bullet1:   'Problem: Montaż aftermarketowego radia 2DIN w Hyundai Coupé/Tiburon (GK FL 2002–2008) uniemożliwia fizyczne umieszczenie oryginalnego wyświetlacza fabrycznego.',
-        minigauge_bullet2:   'Rozwiązanie: Kompaktowe urządzenie wbudowane wyświetlające napięcie akumulatora (hybrydowa średnia ADC + CAN), temperaturę płynu chłodzącego z ECU Siemens SIMK43 przez CAN oraz zużycie paliwa w czasie rzeczywistym (L/100 km podczas jazdy, L/h na postoju).',
-        minigauge_bullet3:   'Efekt: Automatyczny tryb nocny, interfejs 60 FPS przez LVGL na okrągłym wyświetlaczu IPS 1.28" — pełna zamienność z oryginalnym wskaźnikiem bez utraty informacji.',
-        mycarwallet_title:   '🚗 MyCarWallet',
-        mycarwallet_bullet1: 'Problem: Właściciele aut nie mają wygodnego narzędzia offline-first do śledzenia kosztów paliwa, harmonogramów serwisowych i wydatków dla wielu pojazdów bez wysyłania danych na zewnętrzne serwery.',
-        mycarwallet_bullet2: 'Rozwiązanie: Menedżer garażu wielu pojazdów z interaktywną analityką, śledzeniem spalania, skanowaniem paragonów (Google ML Kit), automatycznymi alertami serwisowymi i pełnym lokalnym przechowywaniem danych w SQLite. Żadne dane nie opuszczają urządzenia.',
-        mycarwallet_bullet3: 'Efekt: Aplikacja Android w architekturze Clean Architecture dająca użytkownikowi pełną kontrolę nad danymi pojazdu, z dopracowanym dashboardem opartym na wykresach.',
+        hero_title:          'Absolwent cyberbezpieczeństwa i elektroniki',
+        hero_subtitle:       'Mgr inż. informatyki, spec. cyberbezpieczeństwo · Inż. elektroniki, spec. cyberbezpieczeństwo · CompTIA Security+ · Buduję niewielkie, dobrze udokumentowane narzędzia do administracji systemami i monitoringu bezpieczeństwa, a powtarzalne części tej pracy automatyzuję z użyciem AI.',
+        tag_linux:           'Linux',
+        tag_winserver:       'Windows Server',
+        tag_proxmox:         'Proxmox',
+        tag_scripting:       'Bash i Python',
+        tag_network:         'Sieci i telekomunikacja',
+        tag_ai:              'AI i automatyzacja',
+        tag_security:        'Security+',
+        myprojects_title:    'Moje projekty',
+        minigauge_title:     'Mini Gauge – Hyundai Coupé',
+        minigauge_p1:        'Po wymianie fabrycznego radia na 2DIN w Hyundaiu Coupé GK FL oryginalny zegar wielofunkcyjny przestaje się mieścić. Po prostu nie ma go gdzie włożyć. Zbudowałem zamiennik na ESP32 z okrągłym wyświetlaczem IPS 1,28 cala.',
+        minigauge_p2:        'Napięcie akumulatora liczę jako średnią ważoną z odczytu ADC i magistrali CAN, temperaturę płynu czytam ze sterownika Siemens SIMK43, a zużycie paliwa przeliczam na L/100 km w ruchu i L/h na postoju. Interfejs w LVGL chodzi w 60 FPS i sam przechodzi w tryb nocny.',
+        mycarwallet_title:   'MyCarWallet',
+        mycarwallet_p1:      'Chciałem śledzić koszty paliwa i terminy przeglądów dla kilku aut naraz, bez wysyłania tych danych na cudzy serwer. Wszystko siedzi w lokalnej bazie SQLite, a aplikacja działa bez połączenia z siecią.',
+        mycarwallet_p2:      'Paragony skanuje OCR z Google ML Kit, terminy przeglądów aplikacja wylicza sama, a wykresy zużycia rysuje fl_chart. Napisane we Flutterze, poukładane według Clean Architecture.',
         btn_github:          'Repo GitHub',
-        cyber_title:         'Projekty – Cyberbezpieczeństwo',
-        cyber_group_web_title: '🧪 Bezpieczeństwo aplikacji webowych',
-        cyber_group_web_desc: 'Praktyczne testy bezpieczeństwa aplikacji webowych, uploadu plików, kontroli OWASP i planowania poprawek.',
-        cyber_group_network_title: '🌐 Sieci, tożsamość i rekonesans',
-        cyber_group_network_desc: 'Symulacje ataków sieciowych, wdrożenia SSO/IAM, rekonesans, fuzzing i bezpieczeństwo infrastruktury.',
-        cyber_group_auth_title: '⌨️ Uwierzytelnianie i biometria behawioralna',
-        cyber_group_auth_desc: 'Mechanizmy uwierzytelniania, analiza zachowań użytkownika, metryki klasyfikacji i potwierdzanie tożsamości.',
-        cyber_group_soc_title: '🤖 SOC, analiza zagrożeń i malware',
-        cyber_group_soc_desc: 'Operacje bezpieczeństwa, predykcja incydentów wspierana AI, zagrożenia malware i strategia obrony.',
-        cyber_group_management_title: '📊 Zarządzanie projektami IT/security',
-        cyber_group_management_desc: 'Dobór metodyki i nadzoru dla projektów, w których trzeba równoważyć bezpieczeństwo, kontrolę dostarczania i zwinność.',
-        proj1_title:         '🛡️ Podatności File Upload',
-        proj1_b1:            'Analiza ryzyk i metod ataków związanych z przesyłaniem plików',
-        proj1_b2:            'Testy penetracyjne z użyciem Wiresharka, Node.js, PHP, Nginx',
-        proj1_b3:            'Implementacja rekomendacji defense-in-depth',
-        proj2_title:         '⌨️ Biometria behawioralna – tempo pisania',
-        proj2_b1:            'Zaawansowane uwierzytelnianie behawioralne na podstawie dynamiki pisania',
-        proj2_b2:            'Testy skuteczności z metryką AUC osiągającą ~0.81',
-        proj2_b3:            'Porównanie wydajności dwóch algorytmów klasyfikacji',
-        proj3_title:         '🌐 Audyt bezpieczeństwa (MITM)',
-        proj3_b1:            'Symulacja ataków: ARP Poisoning, DNS Spoofing, SSLStrip',
-        proj3_b2:            'Laboratorium izolowane z wykorzystaniem Bettercap i BEEF',
-        proj3_b3:            'Kompleksowe rekomendacje zabezpieczeń sieciowych',
-        proj4_title:         '🌱 PlantCare – analiza bezpieczeństwa',
-        proj4_b1:            'Kompleksowe testy zabezpieczeń aplikacji webowej przy użyciu OWASP ZAP',
-        proj4_b2:            'Identyfikacja luk: brak tokenów CSRF, polityki CSP oraz CORS',
-        proj4_b3:            'Propozycje implementacji zabezpieczeń zgodnie z OWASP Top 10',
-        proj5_title:         '☁️ SSO w chmurze (Authentik + OIDC/SAML)',
-        proj5_b1:            'Wdrożenie rozwiązania Single Sign-On w środowisku Azure Cloud',
-        proj5_b2:            'Integracja usług: Portainer (OAuth2) + Nextcloud (SAML)',
-        proj5_b3:            'Centralizacja zarządzania tożsamością i dostępem',
-        proj6_title:         '🔍 Pentest z ffuf',
-        proj6_b1:            'Content discovery, parameter mining, virtual host enumeration',
-        proj6_b2:            'Porównawcza analiza narzędzi: ffuf vs wfuzz vs DirBuster',
-        proj6_b3:            'Skuteczna identyfikacja i eksploitacja wektorów ataku',
-        research1_title:     '🤖 Predykcja incydentów w SOC z użyciem AI',
-        research1_b1:        'Analiza sposobów wykorzystania AI do wczesnego wykrywania i przewidywania incydentów bezpieczeństwa w środowiskach SOC',
-        research1_b2:        'Nacisk na korelację zdarzeń, priorytetyzację alertów, wykrywanie anomalii i przyspieszenie reakcji na incydenty',
-        research1_b3:        'Praktyczne spojrzenie na integrację modeli predykcyjnych z monitoringiem i triage alertów',
-        research2_title:     '🦠 Zagrożenia ze strony złośliwego oprogramowania',
-        research2_b1:        'Uporządkowany przegląd zagrożeń wynikających ze złośliwego oprogramowania w nowoczesnych środowiskach IT',
-        research2_b2:        'Omówienie wektorów ataku, wpływu na systemy, trudności detekcji i mechanizmów obronnych',
-        research2_b3:        'Nacisk na praktyczną świadomość bezpieczeństwa i warstwowe strategie ochrony',
-        management1_title:   '📈 Hybrydowe metodyki zarządzania projektami',
-        management1_b1:      'Porównanie podejść AgilePM, PRINCE2 Agile, Hybrid Waterfall i Disciplined Agile',
-        management1_b2:      'Ocena nadzoru, elastyczności dostarczania, poziomu dokumentacji i kontekstu wdrożenia',
-        management1_b3:      'Materiał pomocny przy wyborze metodyki według ryzyka projektu, dojrzałości zespołu i ograniczeń organizacyjnych',
-        management2_title:   '🧭 Porównanie AgilePM, PRINCE2 Agile i Hybrid',
-        management2_b1:      'Skoncentrowane porównanie hybrydowych frameworków zarządzania projektami używanych w projektach technologicznych',
-        management2_b2:      'Wskazanie różnic w rolach, punktach kontrolnych, planowaniu iteracji i zarządzaniu zmianą',
-        management2_b3:      'Wsparcie wyboru modelu prowadzenia projektu łączącego formalny nadzór ze zwinną realizacją',
+        cyber_title:         'Projekty z cyberbezpieczeństwa',
+        cyber_group_web_title: 'Bezpieczeństwo aplikacji webowych',
+        cyber_group_web_desc: 'Testy aplikacji webowych i obsługi przesyłania plików, w oparciu o kontrole z OWASP.',
+        cyber_group_network_title: 'Sieci, tożsamość i rekonesans',
+        cyber_group_network_desc: 'Ataki odtwarzane w izolowanym laboratorium, wdrożenie SSO, rekonesans i fuzzing.',
+        cyber_group_auth_title: 'Uwierzytelnianie i biometria behawioralna',
+        cyber_group_auth_desc: 'Uwierzytelnianie oparte na zachowaniu użytkownika i pomiar jego skuteczności.',
+        cyber_group_soc_title: 'SOC, analiza zagrożeń i malware',
+        cyber_group_soc_desc: 'Opracowania o monitoringu bezpieczeństwa, zastosowaniach AI w SOC i zagrożeniach malware.',
+        cyber_group_management_title: 'Zarządzanie projektami IT/security',
+        cyber_group_management_desc: 'Dobór metodyki tam, gdzie trzeba pogodzić nadzór z tempem dostarczania.',
+        proj1_title:         'Podatności File Upload',
+        proj1_b1:            'Analiza ryzyka i metod ataku na endpointy przyjmujące pliki',
+        proj1_b2:            'Testy na stosie Node.js, PHP i Nginx, ruch podglądany w Wiresharku',
+        proj2_title:         'Biometria behawioralna – tempo pisania',
+        proj2_b1:            'Uwierzytelnianie na podstawie dynamiki pisania na klawiaturze',
+        proj2_b2:            'AUC 0,81 na zebranym zbiorze próbek',
+        proj2_b3:            'Porównanie dwóch algorytmów klasyfikacji',
+        proj3_title:         'Audyt bezpieczeństwa (MITM)',
+        proj3_b1:            'ARP poisoning, DNS spoofing i SSLStrip odtworzone w izolowanym laboratorium',
+        proj3_b2:            'Narzędzia: Bettercap i BeEF',
+        proj4_title:         'PlantCare – analiza bezpieczeństwa',
+        proj4_b1:            'Skan aplikacji webowej w OWASP ZAP',
+        proj4_b2:            'Znalezione braki: tokeny CSRF, polityka CSP, konfiguracja CORS',
+        proj5_title:         'SSO w chmurze (Authentik + OIDC/SAML)',
+        proj5_b1:            'Authentik jako dostawca tożsamości w środowisku Azure',
+        proj5_b2:            'Portainer podpięty przez OAuth2, Nextcloud przez SAML',
+        proj6_title:         'Pentest z ffuf',
+        proj6_b1:            'Content discovery, parameter mining i enumeracja virtual hostów',
+        proj6_b2:            'Porównanie ffuf, wfuzz i DirBustera na tym samym celu',
+        research1_title:     'Predykcja incydentów w SOC z użyciem AI',
+        research1_b1:        'Przegląd zastosowań uczenia maszynowego do korelacji zdarzeń i priorytetyzacji alertów w SOC',
+        research1_b2:        'Opracowanie przeglądowe, bez wdrożenia produkcyjnego',
+        research2_title:     'Zagrożenia ze strony złośliwego oprogramowania',
+        research2_b1:        'Wektory ataku i trudności w wykrywaniu współczesnego złośliwego oprogramowania',
+        research2_b2:        'Opracowanie przeglądowe',
+        management1_title:   'Hybrydowe metodyki zarządzania projektami',
+        management1_b1:      'Porównanie AgilePM, PRINCE2 Agile, Hybrid Waterfall i Disciplined Agile',
+        management1_b2:      'Kryteria oceny: nadzór, elastyczność dostarczania, poziom dokumentacji',
+        management2_title:   'Porównanie AgilePM, PRINCE2 Agile i Hybrid',
+        management2_b1:      'Różnice w rolach, punktach kontrolnych i zarządzaniu zmianą między frameworkami hybrydowymi',
+        management2_b2:      'Opracowanie przeglądowe',
         btn_pdf:             'Otwórz PDF',
         btn_ghrepo:          'Repo GitHub',
-        certs_title:         'Osiągnięcia i Certyfikaty',
-        cert1_title:         '📜 CompTIA Security+',
+        certs_title:         'Osiągnięcia i certyfikaty',
+        cert1_title:         'CompTIA Security+',
         cert1_desc:          '<strong>ID:</strong> COMP001022861425 | <strong>Data:</strong> 18.08.2025<br /><strong>Kod weryfikacyjny:</strong> N6CYW7Z54EB4QSFJ | <strong>Ważny do:</strong> 18.08.2028',
         cert1_verify:        'Weryfikacja Online',
-        cert2_title:         '🔒 Certyfikat Network Security',
+        cert2_title:         'Certyfikat Network Security',
         cert2_desc:          'Certyfikat potwierdzający kompleksowe kompetencje w zakresie bezpieczeństwa sieciowego, wydany przez Politechnikę Rzeszowską im. I. Łukasiewicza poprzez program Cisco Networking Academy.',
-        cert3_title:         '🧩 TryHackMe – Cyber Security 101',
+        cert3_title:         'TryHackMe – Cyber Security 101',
         cert3_desc:          'Certyfikat ukończenia ścieżki Cyber Security 101 Learning Path. Ukończono 4 listopada 2024.',
-        cert4_title:         '🧩 TryHackMe – Red Teaming',
+        cert4_title:         'TryHackMe – Red Teaming',
         cert4_desc:          'Certyfikat ukończenia ścieżki Red Teaming Learning Path. Ukończono 25 września 2024.',
-        cert5_title:         '🧩 TryHackMe – Web Fundamentals',
+        cert5_title:         'TryHackMe – Web Fundamentals',
         cert5_desc:          'Certyfikat ukończenia ścieżki Web Fundamentals Learning Path. Ukończono 5 listopada 2024. Czas ukończenia: 17 godzin 20 minut.',
         btn_viewcert:        'Zobacz Certyfikat',
         contact_title:       'Kontakt',
@@ -1564,7 +1513,7 @@
         }
       });
       document.documentElement.lang = lang;
-      document.getElementById('lang-label').textContent = lang === 'en' ? '🇬🇧 EN' : '🇵🇱 PL';
+      document.getElementById('lang-label').textContent = lang === 'en' ? 'EN' : 'PL';
     }
 
     document.getElementById('lang-toggle').addEventListener('click', () => {
@@ -1578,7 +1527,7 @@
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
-      themeIcon.textContent = theme === 'dark' ? '🌙 Dark' : '☀️ Light';
+      themeIcon.textContent = theme === 'dark' ? 'Dark' : 'Light';
       localStorage.setItem('theme', theme);
     }
 
@@ -1607,8 +1556,7 @@
         preview.className = 'pdf-preview';
         preview.innerHTML = `
           <iframe data-pdf-src="${pdfPath}#toolbar=1&navpanes=0" title="PDF preview" loading="lazy"></iframe>
-          <a class="pdf-open-fallback" href="${pdfPath}" target="_blank" rel="noopener">
-            <span class="emoji">📂</span> <span data-i18n="btn_pdf">Open PDF</span>
+          <a class="pdf-open-fallback" href="${pdfPath}" target="_blank" rel="noopener"> <span data-i18n="btn_pdf">Open PDF</span>
           </a>
         `;
 
