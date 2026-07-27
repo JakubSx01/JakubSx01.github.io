@@ -364,7 +364,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.7rem 1.4rem;
-      border: 1.5px solid var(--brand);
+      border: 1px solid var(--brand);
       border-radius: var(--r-md);
       text-decoration: none;
       color: var(--brand);
@@ -632,6 +632,31 @@
         min-height: 420px;
       }
     }
+
+
+    /* ===== IKONY LINKOW ===== */
+    .ico {
+      width: 1em;
+      height: 1em;
+      flex: none;
+      vertical-align: -0.125em;
+    }
+
+    .issuer {
+      display: flex;
+      width: fit-content;
+      align-items: center;
+      gap: 0.4em;
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      color: var(--ink-weak);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--r-sm);
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
 
     /* ===== TAGS ===== */
     .tags {
@@ -918,6 +943,16 @@
   <div id="bg-overlay"></div>
 
   <!-- HEADER -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13M7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 5h11l-2 3.5L16 12H5"/></symbol>
+  </svg>
+
   <header>
     <h1>Jakub Skrzynecki</h1>
     <div class="header-right">
@@ -961,11 +996,11 @@
         <span data-i18n="tag_security">Security+</span>
       </div>
       <div class="cta-buttons">
-        <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"> <span>LinkedIn</span>
+        <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span>
         </a>
-        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"> <span>TryHackMe</span>
+        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg><span>TryHackMe</span>
         </a>
-        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"> <span>GitHub</span>
+        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span>
         </a>
       </div>
 
@@ -1003,7 +1038,7 @@
             <span>PlatformIO</span><span>CAN bus</span><span>SN65HVD230</span><span>LM2596S</span>
           </div>
           <div class="cta-buttons github-link">
-            <a href="https://github.com/JakubSx01/Mini_gauge_Hyundai_coupe" target="_blank" rel="noopener"> <span data-i18n="btn_github">GitHub Repo</span>
+            <a href="https://github.com/JakubSx01/Mini_gauge_Hyundai_coupe" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="btn_github">GitHub Repo</span>
             </a>
           </div>
         </div>
@@ -1045,7 +1080,7 @@
             <li data-i18n="proj1_b2">Penetration testing using Wireshark, Node.js, PHP, Nginx</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>Security</span><span>Pentest</span></div>
@@ -1063,7 +1098,7 @@
           <div class="cta-buttons">
             <a href="https://github.com/JakubSx01/WateringAppV2" target="_blank" rel="noopener"> <span data-i18n="btn_ghrepo">GitHub Repo</span>
             </a>
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>OWASP</span><span>Security Audit</span></div>
@@ -1084,7 +1119,7 @@
             <li data-i18n="proj3_b2">Isolated lab environment using Bettercap and BEEF</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Network Security</span><span>MITM</span><span>Audit</span></div>
@@ -1100,7 +1135,7 @@
             <li data-i18n="proj5_b2">Service integration: Portainer (OAuth2) + Nextcloud (SAML)</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Cloud</span><span>SSO</span><span>Identity Management</span></div>
@@ -1116,7 +1151,7 @@
             <li data-i18n="proj6_b2">Comparative tool analysis: ffuf vs wfuzz vs DirBuster</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Fuzzing</span><span>Pentest</span><span>Recon</span></div>
@@ -1138,7 +1173,7 @@
             <li data-i18n="proj2_b3">Comparative analysis of two classification algorithms</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Biometrics</span><span>Authentication</span><span>ML</span></div>
@@ -1159,7 +1194,7 @@
             <li data-i18n="research1_b2">Focus on event correlation, alert prioritisation, anomaly detection, and incident response acceleration</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/predykcja-incydentow-przy-uzyciu-ai-w-srodowisku-soc.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/predykcja-incydentow-przy-uzyciu-ai-w-srodowisku-soc.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>SOC</span><span>AI</span><span>Incident Response</span></div>
@@ -1175,7 +1210,7 @@
             <li data-i18n="research2_b2">Discussion of attack vectors, system impact, detection challenges, and defensive controls</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/zagrozenia-bezpieczenstwa-systemow-it-wynikajace-ze-zlosliwego.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/zagrozenia-bezpieczenstwa-systemow-it-wynikajace-ze-zlosliwego.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Malware</span><span>Threat Analysis</span><span>Defense-in-Depth</span></div>
@@ -1196,7 +1231,7 @@
             <li data-i18n="management1_b2">Evaluation of governance, delivery flexibility, documentation level, and implementation context</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid-waterfall-disciplined-agile.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid-waterfall-disciplined-agile.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>AgilePM</span><span>PRINCE2 Agile</span><span>Hybrid</span><span>Disciplined Agile</span></div>
@@ -1212,7 +1247,7 @@
             <li data-i18n="management2_b2">Highlights differences in roles, control points, iteration planning, and change management</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Project Management</span><span>Agile</span><span>Governance</span></div>
@@ -1232,13 +1267,14 @@
       <details class="project-card">
         <summary data-i18n="cert1_title">CompTIA Security+</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>CompTIA</span>
           <p data-i18n="cert1_desc"><strong>ID:</strong> COMP001022861425 | <strong>Date:</strong> 18.08.2025<br />
             <strong>Verification code:</strong> N6CYW7Z54EB4QSFJ | <strong>Valid until:</strong> 18.08.2028
           </p>
           <div class="cta-buttons">
-            <a href="http://verify.CompTIA.org" target="_blank" rel="noopener"> <span data-i18n="cert1_verify">Verify Online</span>
+            <a href="http://verify.CompTIA.org" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="cert1_verify">Verify Online</span>
             </a>
-            <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1248,9 +1284,10 @@
       <details class="project-card">
         <summary data-i18n="cert2_title">Network Security Certificate</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>Cisco Networking Academy</span>
           <p data-i18n="cert2_desc">Certificate confirming comprehensive competencies in network security, issued by Rzeszów University of Technology (I. Łukasiewicz) through the Cisco Networking Academy programme.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/network_security_certificate.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/network_security_certificate.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1262,9 +1299,10 @@
       <details class="project-card">
         <summary data-i18n="cert3_title">TryHackMe – Cyber Security 101</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg>TryHackMe</span>
           <p data-i18n="cert3_desc">Certificate of completion for the Cyber Security 101 Learning Path. Completed on 4 November 2024.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-FDA40U8F8X.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-FDA40U8F8X.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1274,9 +1312,10 @@
       <details class="project-card">
         <summary data-i18n="cert4_title">TryHackMe – Red Teaming</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg>TryHackMe</span>
           <p data-i18n="cert4_desc">Certificate of completion for the Red Teaming Learning Path. Completed on 25 September 2024.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-S5DPZ78DVL.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-S5DPZ78DVL.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1286,9 +1325,10 @@
       <details class="project-card">
         <summary data-i18n="cert5_title">TryHackMe – Web Fundamentals</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg>TryHackMe</span>
           <p data-i18n="cert5_desc">Certificate of completion for the Web Fundamentals Learning Path. Completed on 5 November 2024. Time to complete: 17 hours 20 minutes.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-Y4LALXDOMB.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-Y4LALXDOMB.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1301,13 +1341,13 @@
     <h3> <span class="section-title" data-i18n="contact_title">Contact</span>
     </h3>
     <div class="contact-links">
-      <a href="mailto:sjakubskrzynecki@gmail.com"> <span>sjakubskrzynecki@gmail.com</span>
+      <a href="mailto:sjakubskrzynecki@gmail.com"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>sjakubskrzynecki@gmail.com</span>
       </a>
-      <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"> <span>LinkedIn</span>
+      <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span>
       </a>
-      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"> <span>TryHackMe</span>
+      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg><span>TryHackMe</span>
       </a>
-      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"> <span>GitHub</span>
+      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span>
       </a>
     </div>
   </section>
