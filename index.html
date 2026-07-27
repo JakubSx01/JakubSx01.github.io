@@ -364,7 +364,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.7rem 1.4rem;
-      border: 1.5px solid var(--brand);
+      border: 1px solid var(--brand);
       border-radius: var(--r-md);
       text-decoration: none;
       color: var(--brand);
@@ -632,6 +632,31 @@
         min-height: 420px;
       }
     }
+
+
+    /* ===== IKONY LINKOW ===== */
+    .ico {
+      width: 1em;
+      height: 1em;
+      flex: none;
+      vertical-align: -0.125em;
+    }
+
+    .issuer {
+      display: flex;
+      width: fit-content;
+      align-items: center;
+      gap: 0.4em;
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      color: var(--ink-weak);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--r-sm);
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
 
     /* ===== TAGS ===== */
     .tags {
@@ -918,6 +943,17 @@
   <div id="bg-overlay"></div>
 
   <!-- HEADER -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13M7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-tryhackme" viewBox="0 0 24 24"><path fill="currentColor" d="M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0-4.107 4.5 4.525 4.525 0 0 0 4.52 4.52h6.761a.625.625 0 1 0 0-1.25H4.761a3.273 3.273 0 0 1-3.27-3.27A3.273 3.273 0 0 1 6.59 7.08a.625.625 0 0 0 .7-1.035 4.488 4.488 0 0 0-1.68-.69 5.223 5.223 0 0 1 5.096-4.104 5.221 5.221 0 0 1 5.174 4.57 4.489 4.489 0 0 0-.488.305.625.625 0 1 0 .731 1.013 3.245 3.245 0 0 1 1.912-.616 3.278 3.278 0 0 1 3.203 2.61.625.625 0 0 0 1.225-.251 4.533 4.533 0 0 0-4.428-3.61 4.54 4.54 0 0 0-.958.105C16.556 2.328 13.9 0 10.705 0zm5.192 10.64a.925.925 0 0 0-.462.108.913.913 0 0 0-.313.29 1.27 1.27 0 0 0-.175.427 2.39 2.39 0 0 0-.054.514c0 .181.018.353.054.517.036.164.095.307.175.43a.899.899 0 0 0 .313.297c.127.073.281.11.462.11.18 0 .334-.037.46-.11a.897.897 0 0 0 .309-.296c.08-.124.137-.267.173-.431.036-.164.054-.336.054-.517 0-.18-.018-.352-.054-.514a1.271 1.271 0 0 0-.173-.426.901.901 0 0 0-.309-.291.917.917 0 0 0-.46-.108zm6.486 0a.925.925 0 0 0-.462.108.913.913 0 0 0-.313.29 1.27 1.27 0 0 0-.175.427 2.39 2.39 0 0 0-.053.514c0 .181.017.353.053.517.036.164.095.307.175.43a.899.899 0 0 0 .313.297c.127.073.281.11.462.11.18 0 .334-.037.46-.11a.897.897 0 0 0 .31-.296c.078-.124.136-.267.172-.431.036-.164.054-.336.054-.517 0-.18-.018-.352-.054-.514a1.271 1.271 0 0 0-.173-.426.901.901 0 0 0-.308-.291.916.916 0 0 0-.461-.108zm-8.537.068l-.84.618.313.43.476-.368v1.877h.603v-2.557zm6.486 0l-.841.618.314.43.477-.368v1.877h.603v-2.557zm-4.435.445c.08 0 .143.028.193.084.05.057.087.127.114.21.026.083.044.173.054.269a2.541 2.541 0 0 1 0 .533c-.01.097-.028.187-.054.27a.584.584 0 0 1-.114.21.243.243 0 0 1-.193.085.248.248 0 0 1-.195-.086.584.584 0 0 1-.118-.209 1.245 1.245 0 0 1-.056-.27 2.645 2.645 0 0 1 0-.533c.01-.096.029-.186.056-.27a.583.583 0 0 1 .118-.209.25.25 0 0 1 .195-.084zm6.486 0c.08 0 .144.028.193.084.05.057.087.127.114.21.027.083.044.173.054.269a2.541 2.541 0 0 1 0 .533c-.01.097-.027.187-.054.27a.584.584 0 0 1-.114.21.243.243 0 0 1-.193.085.249.249 0 0 1-.195-.086.581.581 0 0 1-.117-.209 1.245 1.245 0 0 1-.056-.27 2.642 2.642 0 0 1 0-.533c.01-.096.028-.186.056-.27a.58.58 0 0 1 .117-.209.25.25 0 0 1 .195-.084zm-2.191 3.51a.93.93 0 0 0-.463.109.908.908 0 0 0-.312.291c-.08.122-.139.263-.175.426a2.383 2.383 0 0 0-.054.514c0 .18.018.353.054.516.036.164.094.308.175.432a.91.91 0 0 0 .312.296.92.92 0 0 0 .463.11c.18 0 .333-.037.46-.11a.892.892 0 0 0 .308-.296 1.32 1.32 0 0 0 .174-.432c.036-.163.054-.335.054-.516 0-.18-.018-.352-.054-.514a1.274 1.274 0 0 0-.174-.426.89.89 0 0 0-.309-.291.918.918 0 0 0-.46-.108zm-6.402.07l-.841.617.314.43.476-.369v1.878h.604v-2.557zm2.125 0l-.841.617.314.43.477-.369v1.878h.603v-2.557zm2.116 0l-.84.617.313.43.477-.369v1.878h.603v-2.557zm2.16.443c.08 0 .144.028.194.085a.605.605 0 0 1 .114.21c.026.083.044.172.053.269a2.639 2.639 0 0 1 0 .532 1.28 1.28 0 0 1-.053.27.585.585 0 0 1-.114.21.244.244 0 0 1-.193.085.25.25 0 0 1-.196-.085.589.589 0 0 1-.117-.21 1.245 1.245 0 0 1-.056-.27 2.597 2.597 0 0 1 0-.532c.01-.097.028-.186.056-.27a.589.589 0 0 1 .117-.209.249.249 0 0 1 .196-.085zm-6.729 3.073a.676.676 0 0 0-.335.078.661.661 0 0 0-.227.211.91.91 0 0 0-.127.31c-.027.118-.04.242-.04.373s.013.256.04.375a.93.93 0 0 0 .127.313.65.65 0 0 0 .227.215c.092.053.204.08.335.08a.655.655 0 0 0 .334-.08.65.65 0 0 0 .225-.215c.057-.09.1-.194.125-.313a1.75 1.75 0 0 0 .04-.375c0-.13-.014-.255-.04-.373a.931.931 0 0 0-.125-.31.658.658 0 0 0-.225-.21.667.667 0 0 0-.334-.08zm3.086 0a.675.675 0 0 0-.336.078.661.661 0 0 0-.226.211.907.907 0 0 0-.127.31 1.69 1.69 0 0 0-.04.373c0 .131.013.256.04.375a.928.928 0 0 0 .127.313c.058.09.134.162.226.215.093.053.205.08.336.08a.655.655 0 0 0 .334-.08.65.65 0 0 0 .224-.215c.058-.09.1-.194.126-.313a1.752 1.752 0 0 0 0-.748.94.94 0 0 0-.126-.31.657.657 0 0 0-.224-.21.667.667 0 0 0-.334-.08zm5.108 0a.675.675 0 0 0-.336.078.661.661 0 0 0-.226.211.91.91 0 0 0-.127.31c-.027.118-.04.242-.04.373s.013.256.04.375a.931.931 0 0 0 .127.313c.058.09.134.162.226.215.093.053.205.08.336.08.13 0 .243-.027.334-.08a.65.65 0 0 0 .224-.215c.058-.09.1-.194.126-.313a1.75 1.75 0 0 0 .04-.375c0-.13-.014-.255-.04-.373a.943.943 0 0 0-.126-.31.657.657 0 0 0-.224-.21.668.668 0 0 0-.334-.08zm-6.658.05l-.61.448.227.311.346-.266v1.362h.438v-1.856zm3.068 0l-.61.448.227.311.346-.266v1.362h.438v-1.856zm5.108 0l-.611.448.228.311.346-.266v1.362h.438v-1.856zm-9.712.322c.058 0 .105.02.14.062a.421.421 0 0 1 .083.151.96.96 0 0 1 .04.196 1.932 1.932 0 0 1 0 .386.954.954 0 0 1-.04.197.421.421 0 0 1-.083.152.176.176 0 0 1-.14.061.18.18 0 0 1-.141-.06.427.427 0 0 1-.085-.153.887.887 0 0 1-.041-.197 1.96 1.96 0 0 1 0-.386.893.893 0 0 1 .04-.196.42.42 0 0 1 .086-.151.181.181 0 0 1 .141-.062zm3.086 0c.058 0 .104.02.14.062a.421.421 0 0 1 .082.151.94.94 0 0 1 .04.196 1.906 1.906 0 0 1 0 .386.93.93 0 0 1-.04.197.421.421 0 0 1-.082.152.176.176 0 0 1-.14.061.18.18 0 0 1-.141-.06.42.42 0 0 1-.086-.153.846.846 0 0 1-.04-.197 1.965 1.965 0 0 1-.011-.195c0-.057.004-.121.01-.191a.849.849 0 0 1 .041-.196.42.42 0 0 1 .086-.151.182.182 0 0 1 .141-.062zm5.108 0c.058 0 .104.02.14.062a.421.421 0 0 1 .082.151.92.92 0 0 1 .04.196 1.963 1.963 0 0 1 0 .386.943.943 0 0 1-.04.197.421.421 0 0 1-.082.152.177.177 0 0 1-.14.061.18.18 0 0 1-.142-.06.437.437 0 0 1-.085-.153.95.95 0 0 1-.04-.197 1.965 1.965 0 0 1-.011-.195c0-.057.004-.121.01-.191a.959.959 0 0 1 .04-.196.47.47 0 0 1 .086-.151.181.181 0 0 1 .142-.062zm-1.684 1.814a.675.675 0 0 0-.336.079.66.66 0 0 0-.227.21.91.91 0 0 0-.127.31 1.731 1.731 0 0 0 0 .748.939.939 0 0 0 .127.314c.059.09.134.162.227.215.093.053.205.08.336.08a.66.66 0 0 0 .334-.08.648.648 0 0 0 .224-.215c.058-.09.1-.195.126-.314a1.737 1.737 0 0 0-.001-.747.928.928 0 0 0-.125-.31.65.65 0 0 0-.224-.211.668.668 0 0 0-.334-.079zm3.063 0a.676.676 0 0 0-.336.079.664.664 0 0 0-.227.21.906.906 0 0 0-.127.31 1.74 1.74 0 0 0 0 .748.936.936 0 0 0 .127.314.66.66 0 0 0 .227.215c.092.053.204.08.336.08a.654.654 0 0 0 .334-.08.648.648 0 0 0 .223-.215c.058-.09.1-.195.126-.314a1.74 1.74 0 0 0 0-.747.928.928 0 0 0-.126-.31.65.65 0 0 0-.223-.211.666.666 0 0 0-.334-.079zm-1.545.05l-.611.448.228.312.346-.267v1.363h.438v-1.856zm-1.518.323c.057 0 .104.02.14.061a.42.42 0 0 1 .082.152.91.91 0 0 1 .04.195 1.966 1.966 0 0 1 0 .387.951.951 0 0 1-.04.197.421.421 0 0 1-.082.152.177.177 0 0 1-.14.06.18.18 0 0 1-.142-.06.428.428 0 0 1-.085-.152.914.914 0 0 1-.04-.197 1.96 1.96 0 0 1-.011-.195c0-.058.003-.122.01-.192a.923.923 0 0 1 .041-.195c.02-.06.048-.11.085-.152a.181.181 0 0 1 .142-.061zm3.063 0c.057 0 .104.02.14.061a.42.42 0 0 1 .082.152.94.94 0 0 1 .04.195 1.91 1.91 0 0 1 0 .387.93.93 0 0 1-.04.197.422.422 0 0 1-.083.152.175.175 0 0 1-.14.06.18.18 0 0 1-.141-.06.423.423 0 0 1-.085-.152.907.907 0 0 1-.04-.197 1.95 1.95 0 0 1 0-.387.915.915 0 0 1 .04-.195c.02-.06.048-.11.085-.152a.182.182 0 0 1 .142-.061zm-9.713.185a.465.465 0 0 0-.232.055.456.456 0 0 0-.157.146.627.627 0 0 0-.089.215 1.168 1.168 0 0 0-.027.259c0 .09.009.177.027.26a.648.648 0 0 0 .089.216c.04.063.093.112.157.149a.459.459 0 0 0 .232.056c.09 0 .168-.02.231-.056a.45.45 0 0 0 .156-.149.67.67 0 0 0 .087-.217 1.218 1.218 0 0 0 0-.518.647.647 0 0 0-.087-.215.448.448 0 0 0-.156-.146.458.458 0 0 0-.23-.055zm1.052.035l-.423.31.158.217.24-.185v.944h.303v-1.286zm-1.052.224c.04 0 .073.014.097.042a.284.284 0 0 1 .057.105.69.69 0 0 1 .028.136c.004.049.007.092.007.133 0 .04-.003.086-.007.135a.684.684 0 0 1-.028.136.285.285 0 0 1-.057.105.123.123 0 0 1-.097.043.125.125 0 0 1-.098-.043.298.298 0 0 1-.059-.105.612.612 0 0 1-.028-.136 1.39 1.39 0 0 1 0-.268.62.62 0 0 1 .028-.136.297.297 0 0 1 .06-.105.125.125 0 0 1 .097-.042zm3.775 1.394a.463.463 0 0 0-.232.054.452.452 0 0 0-.157.146.621.621 0 0 0-.088.214 1.19 1.19 0 0 0 0 .519.641.641 0 0 0 .088.217.46.46 0 0 0 .157.15.458.458 0 0 0 .232.054.454.454 0 0 0 .232-.055.45.45 0 0 0 .155-.149.664.664 0 0 0 .087-.217 1.189 1.189 0 0 0 0-.519.642.642 0 0 0-.087-.214.446.446 0 0 0-.155-.146.459.459 0 0 0-.232-.054zm1.052.034l-.423.31.158.216.24-.185v.945h.303V22.68zm-1.052.223c.04 0 .073.014.098.043a.3.3 0 0 1 .057.105.643.643 0 0 1 .027.135 1.31 1.31 0 0 1 0 .268.654.654 0 0 1-.027.137.307.307 0 0 1-.057.105.124.124 0 0 1-.098.042.125.125 0 0 1-.098-.042.293.293 0 0 1-.059-.105.618.618 0 0 1-.028-.137 1.364 1.364 0 0 1 0-.268.612.612 0 0 1 .028-.135.287.287 0 0 1 .06-.105.123.123 0 0 1 .097-.043z"/></symbol>
+    <symbol id="i-cisco" viewBox="0 0 24 24"><path fill="currentColor" d="M16.331 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.186 1.186 0 01-.806-.237 1.038 1.038 0 01-.352-.498 1.21 1.21 0 01-.023-.667c.052-.225.178-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.34 2.34 0 00-.903.206c-.287.132-.54.327-.739.571a2.221 2.221 0 00-.04 2.705c.295.378.709.645 1.175.756.491.12 1.006.102 1.487-.052l.082-.023M5.336 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.183 1.183 0 01-.806-.237 1.03 1.03 0 01-.351-.498 1.202 1.202 0 01-.024-.667c.052-.225.177-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.344 2.344 0 00-.903.206 2.08 2.08 0 00-.74.571 2.224 2.224 0 00-.041 2.705 2.11 2.11 0 001.176.756c.491.12 1.005.102 1.487-.052l.083-.023M9.26 17.249l-.004.957.07.012c.22.041.441.069.664.085.195.019.391.022.587.012.187-.014.372-.049.551-.104.21-.06.405-.163.571-.305a1.16 1.16 0 00.333-.478 1.31 1.31 0 00-.007-.96 1.068 1.068 0 00-.298-.414 1.261 1.261 0 00-.438-.255l-.722-.268a.388.388 0 01-.197-.188.245.245 0 01.008-.219.382.382 0 01.154-.142.798.798 0 01.257-.074c.153-.022.308-.021.46.005.18.02.358.051.533.096l.038.008v-.883l-.069-.015a4.749 4.749 0 00-.543-.097 2.844 2.844 0 00-.714-.003c-.3.027-.585.143-.821.33-.16.126-.281.293-.351.484-.104.29-.105.608 0 .899.054.145.14.274.252.381.097.093.207.173.327.236.157.084.324.149.497.195.057.017.114.035.17.054l.085.031.024.01c.084.03.162.078.226.14.045.042.08.094.101.151a.325.325 0 01.001.161.339.339 0 01-.166.198.856.856 0 01-.275.086 2.032 2.032 0 01-.427.021 5.208 5.208 0 01-.557-.074 9.195 9.195 0 01-.287-.067l-.033-.006zm-2.475.995h1.05v-4.167h-1.05v4.167zm12.162-2.936a1.095 1.095 0 011.541.158 1.094 1.094 0 01-.157 1.541l-.017.014a1.096 1.096 0 01-1.367-1.713m-1.525.854a2.193 2.193 0 002.666 2.107 2.139 2.139 0 00.701-3.937 2.207 2.207 0 00-3.367 1.83M22.961 10.728a.52.52 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M20.117 10.728a.522.522 0 001.041 0V8.139a.521.521 0 00-1.04 0v2.589M17.231 11.771a.521.521 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M14.393 10.728a.521.521 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M11.494 10.728a.522.522 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M8.624 10.728a.52.52 0 001.039 0V8.139a.52.52 0 00-1.039 0v2.589M5.737 11.771a.52.52 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M2.876 10.728a.522.522 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M0 10.728a.521.521 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155"/></symbol>
+  </svg>
+
   <header>
     <h1>Jakub Skrzynecki</h1>
     <div class="header-right">
@@ -961,11 +997,11 @@
         <span data-i18n="tag_security">Security+</span>
       </div>
       <div class="cta-buttons">
-        <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"> <span>LinkedIn</span>
+        <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span>
         </a>
-        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"> <span>TryHackMe</span>
+        <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-tryhackme"/></svg><span>TryHackMe</span>
         </a>
-        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"> <span>GitHub</span>
+        <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span>
         </a>
       </div>
 
@@ -1003,7 +1039,7 @@
             <span>PlatformIO</span><span>CAN bus</span><span>SN65HVD230</span><span>LM2596S</span>
           </div>
           <div class="cta-buttons github-link">
-            <a href="https://github.com/JakubSx01/Mini_gauge_Hyundai_coupe" target="_blank" rel="noopener"> <span data-i18n="btn_github">GitHub Repo</span>
+            <a href="https://github.com/JakubSx01/Mini_gauge_Hyundai_coupe" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="btn_github">GitHub Repo</span>
             </a>
           </div>
         </div>
@@ -1045,7 +1081,7 @@
             <li data-i18n="proj1_b2">Penetration testing using Wireshark, Node.js, PHP, Nginx</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/file-upload-vulnerabilities.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>Security</span><span>Pentest</span></div>
@@ -1063,7 +1099,7 @@
           <div class="cta-buttons">
             <a href="https://github.com/JakubSx01/WateringAppV2" target="_blank" rel="noopener"> <span data-i18n="btn_ghrepo">GitHub Repo</span>
             </a>
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/plantcare-webapp-security.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>WebApp</span><span>OWASP</span><span>Security Audit</span></div>
@@ -1084,7 +1120,7 @@
             <li data-i18n="proj3_b2">Isolated lab environment using Bettercap and BEEF</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/mitm-audit.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Network Security</span><span>MITM</span><span>Audit</span></div>
@@ -1100,7 +1136,7 @@
             <li data-i18n="proj5_b2">Service integration: Portainer (OAuth2) + Nextcloud (SAML)</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/sso-authentik-oidc-saml.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Cloud</span><span>SSO</span><span>Identity Management</span></div>
@@ -1116,7 +1152,7 @@
             <li data-i18n="proj6_b2">Comparative tool analysis: ffuf vs wfuzz vs DirBuster</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/pentests-ffuf.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Fuzzing</span><span>Pentest</span><span>Recon</span></div>
@@ -1138,7 +1174,7 @@
             <li data-i18n="proj2_b3">Comparative analysis of two classification algorithms</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/biometric-keystroke-dynamics.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Biometrics</span><span>Authentication</span><span>ML</span></div>
@@ -1159,7 +1195,7 @@
             <li data-i18n="research1_b2">Focus on event correlation, alert prioritisation, anomaly detection, and incident response acceleration</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/predykcja-incydentow-przy-uzyciu-ai-w-srodowisku-soc.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/predykcja-incydentow-przy-uzyciu-ai-w-srodowisku-soc.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>SOC</span><span>AI</span><span>Incident Response</span></div>
@@ -1175,7 +1211,7 @@
             <li data-i18n="research2_b2">Discussion of attack vectors, system impact, detection challenges, and defensive controls</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/zagrozenia-bezpieczenstwa-systemow-it-wynikajace-ze-zlosliwego.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/zagrozenia-bezpieczenstwa-systemow-it-wynikajace-ze-zlosliwego.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Malware</span><span>Threat Analysis</span><span>Defense-in-Depth</span></div>
@@ -1196,7 +1232,7 @@
             <li data-i18n="management1_b2">Evaluation of governance, delivery flexibility, documentation level, and implementation context</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid-waterfall-disciplined-agile.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid-waterfall-disciplined-agile.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>AgilePM</span><span>PRINCE2 Agile</span><span>Hybrid</span><span>Disciplined Agile</span></div>
@@ -1212,7 +1248,7 @@
             <li data-i18n="management2_b2">Highlights differences in roles, control points, iteration planning, and change management</li>
           </ul>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid.pdf')"> <span data-i18n="btn_pdf">Open PDF</span>
+            <a onclick="openModal('pliki/cyberbezpieczeństwo/porownanie-hybrydowych-metodyk-zarzadzania-projektami-agilepm-prince2agile-hybrid.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_pdf">Open PDF</span>
             </a>
           </div>
           <div class="tags"><span>Project Management</span><span>Agile</span><span>Governance</span></div>
@@ -1232,13 +1268,14 @@
       <details class="project-card">
         <summary data-i18n="cert1_title">CompTIA Security+</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>CompTIA</span>
           <p data-i18n="cert1_desc"><strong>ID:</strong> COMP001022861425 | <strong>Date:</strong> 18.08.2025<br />
             <strong>Verification code:</strong> N6CYW7Z54EB4QSFJ | <strong>Valid until:</strong> 18.08.2028
           </p>
           <div class="cta-buttons">
-            <a href="http://verify.CompTIA.org" target="_blank" rel="noopener"> <span data-i18n="cert1_verify">Verify Online</span>
+            <a href="http://verify.CompTIA.org" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="cert1_verify">Verify Online</span>
             </a>
-            <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/comptia-security-plus.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1248,9 +1285,10 @@
       <details class="project-card">
         <summary data-i18n="cert2_title">Network Security Certificate</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-cisco"/></svg>Cisco Networking Academy</span>
           <p data-i18n="cert2_desc">Certificate confirming comprehensive competencies in network security, issued by Rzeszów University of Technology (I. Łukasiewicz) through the Cisco Networking Academy programme.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/network_security_certificate.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/network_security_certificate.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1262,9 +1300,10 @@
       <details class="project-card">
         <summary data-i18n="cert3_title">TryHackMe – Cyber Security 101</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-tryhackme"/></svg>TryHackMe</span>
           <p data-i18n="cert3_desc">Certificate of completion for the Cyber Security 101 Learning Path. Completed on 4 November 2024.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-FDA40U8F8X.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-FDA40U8F8X.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1274,9 +1313,10 @@
       <details class="project-card">
         <summary data-i18n="cert4_title">TryHackMe – Red Teaming</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-tryhackme"/></svg>TryHackMe</span>
           <p data-i18n="cert4_desc">Certificate of completion for the Red Teaming Learning Path. Completed on 25 September 2024.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-S5DPZ78DVL.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-S5DPZ78DVL.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1286,9 +1326,10 @@
       <details class="project-card">
         <summary data-i18n="cert5_title">TryHackMe – Web Fundamentals</summary>
         <div class="accordion">
+          <span class="issuer"><svg class="ico" aria-hidden="true"><use href="#i-tryhackme"/></svg>TryHackMe</span>
           <p data-i18n="cert5_desc">Certificate of completion for the Web Fundamentals Learning Path. Completed on 5 November 2024. Time to complete: 17 hours 20 minutes.</p>
           <div class="cta-buttons">
-            <a onclick="openModal('pliki/dokumenty/THM-Y4LALXDOMB.pdf')"> <span data-i18n="btn_viewcert">View Certificate</span>
+            <a onclick="openModal('pliki/dokumenty/THM-Y4LALXDOMB.pdf')"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span data-i18n="btn_viewcert">View Certificate</span>
             </a>
           </div>
         </div>
@@ -1301,13 +1342,13 @@
     <h3> <span class="section-title" data-i18n="contact_title">Contact</span>
     </h3>
     <div class="contact-links">
-      <a href="mailto:sjakubskrzynecki@gmail.com"> <span>sjakubskrzynecki@gmail.com</span>
+      <a href="mailto:sjakubskrzynecki@gmail.com"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>sjakubskrzynecki@gmail.com</span>
       </a>
-      <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"> <span>LinkedIn</span>
+      <a href="https://www.linkedin.com/in/jakub-skrzynecki-cyber/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span>
       </a>
-      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"> <span>TryHackMe</span>
+      <a href="https://tryhackme.com/p/CyberhelperJS" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-tryhackme"/></svg><span>TryHackMe</span>
       </a>
-      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"> <span>GitHub</span>
+      <a href="https://github.com/JakubSx01" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span>
       </a>
     </div>
   </section>
